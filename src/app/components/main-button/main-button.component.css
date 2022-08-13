@@ -1,0 +1,66 @@
+.buttonContainer {
+    display:flex;
+    flex-direction:column;
+    padding: 2.5%;
+    background-color: yellow;
+    min-aspect-ratio: 1.6/1;
+    border-radius:2vmax;
+
+  }
+  
+  .button {
+    min-height: 10vw;
+    height: -webkit-fill-available;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    margin: 10%;
+    transition: 0.25s;
+    box-shadow: 2vh 1vh 5px 0px rgb(255, 255, 255, 0.45) inset,
+        -1vh -1.5vh 0px 0px rgba(0, 0, 0, 0.25) inset,
+        0.5vh 1.5vh 0vh 0 rgb(0, 0, 0, 0.9);
+    aspect-ratio: 1/1;
+    color: var(--white);
+    background-color: red;
+    border-radius: 50%;
+    transition: 0.25s;
+    box-shadow: 2vh 1vh 5px 0px rgb(255, 255, 255, 0.45) inset,
+        -1vh -1.5vh 0px 0px rgba(0, 0, 0, 0.25) inset,
+        0.5vh 1.5vh 0vh 0 rgb(0, 0, 0, 0.9);
+}
+  .button:hover {
+
+  }
+  .button:active {
+    box-shadow: 2vh 2vh 10px 2px rgb(0, 0, 0, 0.25) inset,
+      -2vh 0vh 10px 2px rgba(0, 0, 0, 0.25) inset,
+      0vh 0vh 0px 0 rgb(0, 0, 0, 0.25);
+
+    /* disable select */
+    user-select: none; /* supported by Chrome and Opera */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+  }
+  
+  .count {
+    display: flex;
+    font-weight: bold;
+    font-size: 10vw;
+    justify-content: center;
+    align-items: center;
+    color: var(--black);
+    border-radius: 2vmax;
+  
+    /* disable select */
+    user-select: none; /* supported by Chrome and Opera */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+  }
+  /* box-shadow: 
+    rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+     rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset; */
+  

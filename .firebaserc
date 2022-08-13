@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "cleanfollow-ec3a6": {
+      "hosting": {
+        "cleancollection": [
+          "cleanfollow-ec3a6"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "cleanfollow-ec3a6"
+  }
+}
