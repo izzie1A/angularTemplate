@@ -1,4 +1,5 @@
 <div class="buttonContainer">
-    <div class="button" (click)="btnClick('dio')"></div>
-    <div class="count">{{this.input}}</div>
+    <div class="button" (click)="btnClick()"></div>
+    <div class="count" *ngIf="this.input.qnumber== null">{{this.input}}</div>
+    <div class="count" *ngIf="this.input.qnumber!= null">{{this.input.qnumber}}</div>
 </div>

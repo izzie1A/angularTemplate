@@ -3,6 +3,7 @@
     display: grid;
     grid-template-rows: 0% 85% 15% ;
     flex-direction: column;
+    overflow: scroll;
 }
 
 @media screen and (min-width: 1200px) {

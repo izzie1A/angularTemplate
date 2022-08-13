@@ -1,35 +1,15 @@
 <mat-toolbar color="primary">
-  <div class="button-74" (click)="goNode('root')">home</div>
-  <div class="button-74" (click)="NavNode(-1)">back</div>
-  <span>DataBase Viewer</span>
-  <div class="button-80">{{this.dir}}</div>
-
+    <span>Collection Viewer</span>
 </mat-toolbar>
-
 <div class="menuContainer">
-  <div class="menuHeader">
-  </div>
-  <div class="menuDetail">
-    <div>
+    <div class="menuHeader">
+    </div>
+    <mat-card class="menuDetail">
 
-      <div class="click" *ngFor="let item of container; index as i;" (click)="getNode(item)">
-        <div class="button-80">{{item.toString()}}</div>
-      </div>
+  
+    </mat-card>
+    <div class="detailContent">
 
     </div>
-
-    <div>
-      <div *ngFor="let item of container; index as i;" (click)="peekChild(item)">
-        <div class="button-80" role="button" *ngIf="containerChild[i].toString()!='[object Object]'">moewe</div>
-        <div class="button-80" role="button" *ngIf="containerChild[i].toString()=='[object Object]'">...peek</div>
-        <div class="button-80" role="button" *ngIf="containerChild[i].toString()!='[object Object]'">{{containerChild[i]}}</div>
-      </div>
-    </div>
-
   </div>
-  <div class="detailContent">
-    <div>
-      <div *ngFor="let item2 of containerChildDetail; index as i;">{{item2}}</div>
-    </div>
-  </div>
-</div>
+<app-fb-rtdb-nav-ui></app-fb-rtdb-nav-ui>

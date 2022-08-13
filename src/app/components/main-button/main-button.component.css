@@ -4,8 +4,8 @@
     padding: 2.5%;
     background-color: yellow;
     min-aspect-ratio: 1.6/1;
-    border-radius:2vmax;
-
+    border-radius:1vmax;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px, rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
   }
   
   .button {
@@ -16,25 +16,25 @@
     align-items: center;
     margin: 10%;
     transition: 0.25s;
-    box-shadow: 2vh 1vh 5px 0px rgb(255, 255, 255, 0.45) inset,
-        -1vh -1.5vh 0px 0px rgba(0, 0, 0, 0.25) inset,
-        0.5vh 1.5vh 0vh 0 rgb(0, 0, 0, 0.9);
+    box-shadow: 2vmin 1vmin 5vmin 0vmin rgb(255, 255, 255, 0.45) inset,
+        -1vmin -1.5vmin 0vmin 0vmin rgba(0, 0, 0, 0.25) inset,
+        0.5vmin 1.5vmin 0vmin 0 rgb(0, 0, 0, 0.9);
     aspect-ratio: 1/1;
     color: var(--white);
     background-color: red;
     border-radius: 50%;
-    transition: 0.25s;
-    box-shadow: 2vh 1vh 5px 0px rgb(255, 255, 255, 0.45) inset,
-        -1vh -1.5vh 0px 0px rgba(0, 0, 0, 0.25) inset,
-        0.5vh 1.5vh 0vh 0 rgb(0, 0, 0, 0.9);
+    transition: 0.5s;
+    box-shadow: 2vmin 1vmin 5vmin 0vmin rgb(255, 255, 255, 0.45) inset,
+        -1vmin -1.5vmin 0vmin 0vmin rgba(0, 0, 0, 0.25) inset,
+        0.5vmin 1.5vmin 0vmin 0 rgb(0, 0, 0, 0.9);
 }
   .button:hover {
-
+    cursor: pointer;
   }
   .button:active {
-    box-shadow: 2vh 2vh 10px 2px rgb(0, 0, 0, 0.25) inset,
-      -2vh 0vh 10px 2px rgba(0, 0, 0, 0.25) inset,
-      0vh 0vh 0px 0 rgb(0, 0, 0, 0.25);
+    box-shadow: 2vmin 2vmin 10vmin 2vmin rgb(0, 0, 0, 0.3) inset,
+      -2vmin 0vmin 10vmin 2vmin rgba(0, 0, 0, 0.4) inset,
+      0vmin 0vmin 0vmin 0 rgb(0, 0, 0, 0.3);
 
     /* disable select */
     user-select: none; /* supported by Chrome and Opera */
@@ -47,11 +47,11 @@
   .count {
     display: flex;
     font-weight: bold;
-    font-size: 10vw;
+    font-size: 3vw;
     justify-content: center;
     align-items: center;
     color: var(--black);
-    border-radius: 2vmax;
+    padding:20%;
   
     /* disable select */
     user-select: none; /* supported by Chrome and Opera */

@@ -1,4 +1,5 @@
 import { Component, OnInit , Input} from '@angular/core';
+import { FirebaseRtdbService } from 'src/app/services/firebase-rtdb.service';
 
 @Component({
   selector: 'app-main-button',
@@ -7,17 +8,29 @@ import { Component, OnInit , Input} from '@angular/core';
 })
 export class MainButtonComponent implements OnInit {
   @Input() outputFunction?: ((args: any) => void);
-  input:string
+  input:any
 
-  constructor() {
+  constructor(private firebase: FirebaseRtdbService) {
     this.input = 'null';
+    this.watchBtnCount();
    }
 
   ngOnInit(): void {
   }
 
-  btnClick(input?:any){
-    if(input!!) this.input =input;
+  async btnClick(input?:any){
     if(this.outputFunction) this.outputFunction(input);
+    if(input==null){
+      let x = {
+        qnumber: this.input.qnumber++
+      }
+      await this.firebase.set('rbt',x);
+    } 
+
   }
+
+  async watchBtnCount(){
+    this.input = await this.firebase.read('rbt');
+  }
+
 }

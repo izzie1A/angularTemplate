@@ -74,7 +74,39 @@ export class FirebaseRtdbService {
     const dbRef = ref(db, '/root');
   }
 
+  set(dir:string,input:any) {
+    const db = getDatabase();
+    set(ref(db, dir), input);
+  }
 
+  async read(dir:string):Promise<number>{
+    const db = getDatabase();
+    const snapshot = await get(ref(db,dir))
+    console.log(snapshot.val().qnumber)
+    let user = snapshot.val().qnumber;
+    return snapshot.val();
+  }
 
+  async readChildList(dir:string):Promise<any[]>{
+    console.log("?")
+    const db = getDatabase();
+    let x :any[]= [];
+    await onValue(ref( db,dir), (snapshot) => {
+      snapshot.forEach((childSnapshot) => {
+        const childKey = childSnapshot.key;
+        const childData = childSnapshot.val();
+        console.log(childKey,childData);
+        childSnapshot.forEach((child: any)=>{
+          console.log(child)
+        })
+        x.push([childKey,childData]);
+        // ...
+      });
+      
+    }, {
+      onlyOnce: true
+    });
+    return x;
+  }
 
 }
