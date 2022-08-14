@@ -5,10 +5,10 @@
 <div class="slideshow-container">
     <span class="prev" (click)="switchSlide(imageIndex-1)">&#10094;</span>
     <span class="next" (click)="switchSlide(imageIndex+1)">&#10095;</span>
-    <img mat-card-image src={{imageSrc}}>
+    <img mat-card-image class="slideshowImg" src={{imageSrc}}>
 </div>
 
-<mat-toolbar>
+<mat-toolbar color="primary">
     <span>Item</span>
 </mat-toolbar>
 
@@ -16,7 +16,7 @@
 
 <div class="test">
     <div  class="testItem" *ngFor="let x of watchh; index as i;">
-        <img mat-card-image src="https://picsum.photos/300/150">
+        <img class src="https://picsum.photos/300/150">
         {{x[0]}}
     </div>
 </div>
@@ -25,20 +25,36 @@
     <span>Grid</span>
 </mat-toolbar>
 
-<mat-card class="example-card">
+<div class="example-card">
 
-    <mat-card-content class="grid">
-        <div  class="testItem" *ngFor="let x of watchh; index as i;">
+    <div class="grid">
+        <mat-card  class="testItem" *ngFor="let x of watchh; index as i;">
             <img mat-card-image src="https://picsum.photos/300/150">
             <mat-card-header>
                 <div mat-card-avatar class="example-header-image"></div>
                 <mat-card-title>{{x[0]}}</mat-card-title>
                 <mat-card-subtitle>{{x[1]}}</mat-card-subtitle>
             </mat-card-header>
-        </div>
-    </mat-card-content>
+        </mat-card>
+        <mat-card  class="testItem" *ngFor="let x of watchh; index as i;">
+            <img mat-card-image src="https://picsum.photos/300/150">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>{{x[0]}}</mat-card-title>
+                <mat-card-subtitle>{{x[1]}}</mat-card-subtitle>
+            </mat-card-header>
+        </mat-card>
+        <mat-card  class="testItem" *ngFor="let x of watchh; index as i;">
+            <img mat-card-image src="https://picsum.photos/300/150">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>{{x[0]}}</mat-card-title>
+                <mat-card-subtitle>{{x[1]}}</mat-card-subtitle>
+            </mat-card-header>
+        </mat-card>
+    </div>
 
-</mat-card>
+</div>
 
 <mat-toolbar color="primary">
     <span>Single Item</span>
@@ -75,9 +91,9 @@
 
 
 
-
+<!-- 
 
 
 <div class="example-box" cdkDrag>
     <app-main-button></app-main-button>
-</div>
+</div> -->

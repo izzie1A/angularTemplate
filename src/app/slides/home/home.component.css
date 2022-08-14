@@ -69,6 +69,12 @@
   background-color: rgba(0, 0, 0, 0.8);
 }
 
+.mat-card-image {
+  margin: 0 0px 0px 0px;
+  display: block;
+  overflow: hidden;
+}
+
 .test{
   display: flex;
   justify-content: space-evenly;
@@ -77,7 +83,6 @@
 .testItem{
   overflow: hidden;
   font-size: 3vmin;
-  min-height: 10vh;
   align-items: center;
 }
 .grid{
@@ -89,6 +94,16 @@
 .gridItem{
   overflow: hidden;
   font-size: 3vmin;
-  min-height: 10vh;
   align-items: center;
+}
+
+.mat-card-header .mat-card-title{
+  font-size: 60%;
+}
+.mat-card-subtitle{
+  font-size: 50%;
+}
+.mat-card-header{
+  padding-left: 0px;
+  padding-right: 0px;
 }

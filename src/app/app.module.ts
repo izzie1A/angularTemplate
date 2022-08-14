@@ -38,6 +38,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
+
 
 // component 
 import { MainComponentComponent } from './components/main-component/main-component.component';
@@ -122,6 +124,7 @@ import { TaskDialogComponent } from './components/fb-cloudstorare-ui/task-dialog
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     MatDialogModule,
+    MatButtonModule,
   ],
   providers: [
     ScreenTrackingService,UserTrackingService

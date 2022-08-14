@@ -1,36 +1,45 @@
-<mat-toolbar color="primary">
-
+<div>
+  <mat-toolbar color="primary">
     <span>rt-DataBase Viewer</span>
-    <div class="button-80">{{this.dir}}</div>
-  
   </mat-toolbar>
-  
+
+
+
   <div class="menuContainer">
     <div class="menuHeader">
-      <div class="button-74" (click)="goNode('root')">home</div>
-      <div class="button-74" (click)="NavNode(-1)">back</div>
+      <div class="test" (click)="goNode('root')">home</div>
+      <div class="test" (click)="NavNode(-1)">back</div>
+      <div class="test">{{this.dir}}</div>
     </div>
-    <mat-card class="menuDetail">
-      <div>
-  
-        <div class="click" *ngFor="let item of container; index as i;" (click)="getNode(item)">
-          <div class="button-80">{{item.toString()}}</div>
+
+
+    <div class="menuDetail">
+
+      <div class="menuDir">
+        <div>
+          <div  class="test" *ngFor="let item of container; index as i;" (click)="getNode(item)">
+            <div >{{item.toString()}}</div>
+          </div>
         </div>
-  
-      </div>
-  
-      <div>
-        <div *ngFor="let item of container; index as i;" (click)="peekChild(item)">
-          <div class="button-80" role="button" *ngIf="containerChild[i].toString()!='[object Object]'">moewe</div>
-          <div class="button-80" role="button" *ngIf="containerChild[i].toString()=='[object Object]'">...peek</div>
-          <div class="button-80" role="button" *ngIf="containerChild[i].toString()!='[object Object]'">{{containerChild[i]}}</div>
+
+
+        <div >
+          <div *ngFor="let item of container; index as i;" (click)="peekChild(item)">
+            <button mat-button *ngIf="containerChild[i].toString()=='[object Object]'">Peek...</button>
+            <div>
+              <div class="test" role="button" *ngIf="containerChild[i].toString()!='[object Object]'">
+                {{containerChild[i]}}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-  
-    </mat-card>
-    <div class="detailContent">
-      <div>
+
+
+      <div class="detailContent">
         <div *ngFor="let item2 of containerChildDetail; index as i;">{{item2}}</div>
       </div>
+
     </div>
   </div>
+</div>

@@ -1,32 +1,31 @@
-import { CollectionViewer, DataSource, SelectionChange } from '@angular/cdk/collections';
-import {FlatTreeControl} from '@angular/cdk/tree';
 import {Component, Injectable} from '@angular/core';
-import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
-import { child, get, limitToLast, onValue, orderByChild, orderByKey, query, ref } from 'firebase/database';
-import { BehaviorSubject, map, merge, Observable } from 'rxjs';
-import { FirebaseRtdbService } from 'src/app/services/firebase-rtdb.service';
-import { FirebaseCloudstoreService } from 'src/app/services/firebase-cloudstore.service';
-import { CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import { MatDialog } from '@angular/material/dialog';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 
-
-
-
-
-export interface Task {
-  id?: string;
-  title: string;
-  description: string;
+interface Food {
+  value: string;
+  viewValue: string;
 }
+
+
 @Component({
   selector: 'menu.component',
   templateUrl: 'menu.component.html',
   styleUrls: ['menu.component.css'],
 })
 export class MenuComponent {
-  
-  constructor() {
+  foods: Food[] = [
+    {value: 'steak-0', viewValue: 'Steak'},
+    {value: 'pizza-1', viewValue: 'Pizza'},
+    {value: 'tacos-2', viewValue: 'Tacos'},
+  ];
+  constructor(private dialog: MatDialog, private store: AngularFirestore) {
   }
 
 
+
 }
+

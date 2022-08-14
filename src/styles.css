@@ -65,7 +65,12 @@ menu {
 }
 
 .kbutton {
-  border-radius: 2vmax;
+  border-radius: 2vmin;
+  box-shadow: var(--shadow1);
+  font-size:70%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 /* 
 
