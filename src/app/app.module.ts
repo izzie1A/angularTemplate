@@ -37,6 +37,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import { MatDialogModule } from '@angular/material/dialog';
 
 // component 
 import { MainComponentComponent } from './components/main-component/main-component.component';
@@ -53,6 +54,9 @@ import { LoginComponent } from './components/login/login.component';
 import { providePerformance,getPerformance } from '@angular/fire/performance';
 import { FbRtdbNavUiComponent } from './components/fb-rtdb-nav-ui/fb-rtdb-nav-ui.component';
 import { MainDisplayBlockComponent } from './components/main-display-block/main-display-block.component';
+import { TaskComponent } from './components/fb-cloudstorare-ui/task/task.component';
+import { TaskListComponent } from './components/fb-cloudstorare-ui/task-list/task-list.component';
+import { TaskDialogComponent } from './components/fb-cloudstorare-ui/task-dialog/task-dialog.component';
 // component
 
 
@@ -71,6 +75,9 @@ import { MainDisplayBlockComponent } from './components/main-display-block/main-
     LoginComponent,
     FbRtdbNavUiComponent,
     MainDisplayBlockComponent,
+    TaskComponent,
+    TaskListComponent,
+    TaskDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -112,6 +119,9 @@ import { MainDisplayBlockComponent } from './components/main-display-block/main-
     MatProgressBarModule,
     MatToolbarModule,
     DragDropModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    MatDialogModule,
   ],
   providers: [
     ScreenTrackingService,UserTrackingService
