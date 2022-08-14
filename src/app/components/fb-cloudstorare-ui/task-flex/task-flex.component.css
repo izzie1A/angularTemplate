@@ -1,0 +1,29 @@
+  .test{
+    display: flex;
+    justify-content: space-evenly;
+    overflow: hidden;
+    padding:0.5%;
+  
+  }
+  .testItem{
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    font-size: 3vmin;
+    align-items: center;
+  }
+
+  .mat-card-header .mat-card-title{
+    font-size: 60%;
+  }
+  .mat-card-subtitle{
+    font-size: 50%;
+  }
+  .mat-card-header{
+    padding-left: 0px;
+    padding-right: 0px;
+    display: flex;
+    justify-content: space-evenly;
+    overflow: hidden;
+    padding:0.5%;
+  }

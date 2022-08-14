@@ -1,5 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import { BehaviorSubject } from 'rxjs';
+import { Observable } from 'rxjs/internal/Observable';
 import { FirebaseRtdbService } from 'src/app/services/firebase-rtdb.service';
+import { Task } from '../../interface/task.model';
+
+const getObservable = (collection: AngularFirestoreCollection<Task>) => {
+  const subject = new BehaviorSubject<Task[]>([]);
+  collection.valueChanges({ idField: 'id' }).subscribe((val: Task[]) => {
+    subject.next(val);
+  });
+  return subject;
+};
+
 
 @Component({
   selector: 'app-home',
@@ -12,7 +25,8 @@ export class HomeComponent implements OnInit {
   imageIndex=3;
   imageMaxIndex=3;
   watchh:any
-  constructor(private fbrtdbService: FirebaseRtdbService) { 
+  todo = getObservable(this.store.collection('todo')) as Observable<Task[]>;
+  constructor(private fbrtdbService: FirebaseRtdbService, private store: AngularFirestore) { 
     this.watch();
   }
 
@@ -42,3 +56,5 @@ export class HomeComponent implements OnInit {
     console.log(this.watchh)
   }
 }
+
+

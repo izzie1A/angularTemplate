@@ -3,6 +3,13 @@
     <input matInput cdkFocusInitial [(ngModel)]="data.task.title" />
 </mat-form-field>
 
+<select matInput [(ngModel)]="data.task.description">
+    <option value="1">Slidshow</option>
+    <option value="2">Item</option>
+    <option value="3">Grid</option>
+    <option value="3">detail</option>
+</select>
+
 <mat-form-field>
     <mat-label>Description</mat-label>
     <textarea matInput [(ngModel)]="data.task.description"></textarea>

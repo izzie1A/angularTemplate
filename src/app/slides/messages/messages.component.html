@@ -1,5 +1,5 @@
 <div class="chatContainer">
-    <mat-card class="chatHeader">
+    <mat-toolbar color="primary"d class="chatHeader">
         <mat-form-field appearance="fill">
             <mat-label>from</mat-label>
             <mat-select [(value)]="selected">
@@ -14,18 +14,19 @@
                 <mat-option *ngFor="let user of userArray" value="{{user.uid}}"> {{user.displayName}} </mat-option>
             </mat-select>
         </mat-form-field>
-    </mat-card>
+    </mat-toolbar>
 
     <mat-card class="chatDeatil">
         <mat-card *ngFor="let chat of chatArray" class="chatMessage">
             <div class="chatMessageHeader">
                 <div>From:{{chat.fromUser}}</div>
-                <div>To:{{chat.toUser}}</div>
-                <div>time:{{chat.time}}</div>
+                <div>{{chat.time}}</div>
             </div>
+            <div>To:{{chat.toUser}}</div>
             <div>messages:{{chat.messages}}</div>
         </mat-card>
     </mat-card>
+    
     <mat-card class="chatfooter">
         <input class="messageBox" matInput placeholder="Enter message here..." value="" [(ngModel)]="msgBoxInput">
         <button class="kbutton" (click)="sendMessage('2', msgBoxInput)">
@@ -34,4 +35,4 @@
     </mat-card>
 </div>
 
-<app-main-button [outputFunction]="myCallbackFunction"></app-main-button>
+<!-- <app-main-button [outputFunction]="myCallbackFunction"></app-main-button> -->

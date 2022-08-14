@@ -71,16 +71,19 @@
 
 .mat-card-image {
   margin: 0 0px 0px 0px;
-  display: block;
-  overflow: hidden;
+  width: 100%;
 }
 
 .test{
   display: flex;
   justify-content: space-evenly;
   overflow: hidden;
+  padding:0.5%;
+
 }
 .testItem{
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
   font-size: 3vmin;
   align-items: center;
@@ -106,4 +109,8 @@
 .mat-card-header{
   padding-left: 0px;
   padding-right: 0px;
+  display: flex;
+  justify-content: space-evenly;
+  overflow: hidden;
+  padding:0.5%;
 }

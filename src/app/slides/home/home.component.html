@@ -2,93 +2,23 @@
     <span>Home Page</span>
 </mat-toolbar>
 
-<div class="slideshow-container">
-    <span class="prev" (click)="switchSlide(imageIndex-1)">&#10094;</span>
-    <span class="next" (click)="switchSlide(imageIndex+1)">&#10095;</span>
-    <img mat-card-image class="slideshowImg" src={{imageSrc}}>
-</div>
-
-<mat-toolbar color="primary">
-    <span>Item</span>
-</mat-toolbar>
-
-
-
-<div class="test">
-    <div  class="testItem" *ngFor="let x of watchh; index as i;">
-        <img class src="https://picsum.photos/300/150">
-        {{x[0]}}
-    </div>
-</div>
-
-<mat-toolbar color="primary">
-    <span>Grid</span>
-</mat-toolbar>
-
-<div class="example-card">
-
-    <div class="grid">
-        <mat-card  class="testItem" *ngFor="let x of watchh; index as i;">
-            <img mat-card-image src="https://picsum.photos/300/150">
-            <mat-card-header>
-                <div mat-card-avatar class="example-header-image"></div>
-                <mat-card-title>{{x[0]}}</mat-card-title>
-                <mat-card-subtitle>{{x[1]}}</mat-card-subtitle>
-            </mat-card-header>
-        </mat-card>
-        <mat-card  class="testItem" *ngFor="let x of watchh; index as i;">
-            <img mat-card-image src="https://picsum.photos/300/150">
-            <mat-card-header>
-                <div mat-card-avatar class="example-header-image"></div>
-                <mat-card-title>{{x[0]}}</mat-card-title>
-                <mat-card-subtitle>{{x[1]}}</mat-card-subtitle>
-            </mat-card-header>
-        </mat-card>
-        <mat-card  class="testItem" *ngFor="let x of watchh; index as i;">
-            <img mat-card-image src="https://picsum.photos/300/150">
-            <mat-card-header>
-                <div mat-card-avatar class="example-header-image"></div>
-                <mat-card-title>{{x[0]}}</mat-card-title>
-                <mat-card-subtitle>{{x[1]}}</mat-card-subtitle>
-            </mat-card-header>
-        </mat-card>
-    </div>
-
-</div>
-
-<mat-toolbar color="primary">
-    <span>Single Item</span>
-</mat-toolbar>
-
-
-<mat-card class="example-card">
-    <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>Shiba Inu</mat-card-title>
-        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image src="https://picsum.photos/300/150">
-    <mat-card-content>
-        <p>
-            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-            bred for hunting.
-        </p>
-        <h1>
-            Price:
-        </h1>
-        <h1>
-            Detail:
-        </h1>
-    </mat-card-content>
-    <mat-card-actions>
-        <button mat-button>Save</button>
-        <button mat-button>Add to cart</button>
-    </mat-card-actions>
+<mat-card>
+    <p class="empty-label" *ngIf="(todo | async)?.length === 0">Empty list</p>
+    <mat-card *ngFor="let task of todo | async" >
+        <div *ngIf="task.description=='1'">
+            <app-img-slideshow></app-img-slideshow>
+        </div>
+        <div *ngIf="task.description=='2'">
+            <app-task-flex></app-task-flex>
+        </div>
+        <div *ngIf="task.description=='3'">
+            <app-task-grid></app-task-grid>
+        </div>
+        <div *ngIf="task.description=='4'">
+            <app-task-detail></app-task-detail>
+        </div>
+    </mat-card>
 </mat-card>
-
-
-
 
 
 <!-- 

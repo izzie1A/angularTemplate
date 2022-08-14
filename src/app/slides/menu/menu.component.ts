@@ -18,9 +18,8 @@ interface Food {
 })
 export class MenuComponent {
   foods: Food[] = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'},
+    {value: 'rtdb-0', viewValue: 'realtime Database'},
+    {value: 'pizza-1', viewValue: 'firebase cloudtore'},
   ];
   constructor(private dialog: MatDialog, private store: AngularFirestore) {
   }

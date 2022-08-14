@@ -1,0 +1,44 @@
+<mat-toolbar color="primary">
+    <span>Grid</span>
+</mat-toolbar>
+
+<div class="example-card">
+
+    <div class="grid">
+        
+        <div class="testItemContainer" *ngFor="let x of watchh; index as i;">
+            <img mat-card-image class="testItemImg" src="https://picsum.photos/300/150">
+            <div class="testItemDeatil">
+                <div mat-card-avatar class="example-header-image"></div>
+                <div>
+                    <div>{{x[0]}}</div>
+                    <div>{{x[1]}}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="testItemContainer" *ngFor="let x of watchh; index as i;">
+            <img mat-card-image class="testItemImg" src="https://picsum.photos/300/150">
+            <div class="testItemDeatil">
+                <div mat-card-avatar class="example-header-image"></div>
+                <div>
+                    <div>{{x[0]}}</div>
+                    <div>{{x[1]}}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="testItemContainer" *ngFor="let x of watchh; index as i;">
+            <img mat-card-image class="testItemImg" src="https://picsum.photos/300/150">
+            <div class="testItemDeatil">
+                <div mat-card-avatar class="example-header-image"></div>
+                <div>
+                    <div>{{x[0]}}</div>
+                    <div>{{x[1]}}</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

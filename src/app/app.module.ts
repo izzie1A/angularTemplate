@@ -59,6 +59,10 @@ import { MainDisplayBlockComponent } from './components/main-display-block/main-
 import { TaskComponent } from './components/fb-cloudstorare-ui/task/task.component';
 import { TaskListComponent } from './components/fb-cloudstorare-ui/task-list/task-list.component';
 import { TaskDialogComponent } from './components/fb-cloudstorare-ui/task-dialog/task-dialog.component';
+import { TaskFlexComponent } from './components/fb-cloudstorare-ui/task-flex/task-flex.component';
+import { ImgSlideshowComponent } from './components/img-slideshow/img-slideshow.component';
+import { TaskGridComponent } from './components/fb-cloudstorare-ui/task-grid/task-grid.component';
+import { TaskDetailComponent } from './components/fb-cloudstorare-ui/task-detail/task-detail.component';
 // component
 
 
@@ -80,6 +84,10 @@ import { TaskDialogComponent } from './components/fb-cloudstorare-ui/task-dialog
     TaskComponent,
     TaskListComponent,
     TaskDialogComponent,
+    ImgSlideshowComponent,
+    TaskFlexComponent,
+    TaskGridComponent,
+    TaskDetailComponent,
   ],
   imports: [
     BrowserModule,

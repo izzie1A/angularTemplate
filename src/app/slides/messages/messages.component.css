@@ -7,9 +7,11 @@
 }
 
 .chatMessage{
-    font-size: 0.5em;
     width: 95%;
     margin:1%;
+    height: 18vh;
+    shadow:var(--shadow1);
+    display: grid;
 }
 
 .chatHeader {
@@ -21,12 +23,12 @@
 }
 .chatDeatil {
     display: flex;
-    flex-direction:column;
-    justify-content: space-evenly;
-    align-items: center;
+    flex-direction:column-reverse;
+    justify-content: invert;
     width: inherit;
     padding:0%;
     overflow: scroll;
+    background-color: var(--bg-primary);
 }
 
 .chatMessageHeader{

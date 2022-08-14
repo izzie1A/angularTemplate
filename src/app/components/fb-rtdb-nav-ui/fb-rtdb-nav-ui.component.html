@@ -6,6 +6,7 @@
 
 
   <div class="menuContainer">
+
     <div class="menuHeader">
       <div class="test" (click)="goNode('root')">home</div>
       <div class="test" (click)="NavNode(-1)">back</div>
@@ -16,30 +17,22 @@
     <div class="menuDetail">
 
       <div class="menuDir">
-        <div>
-          <div  class="test" *ngFor="let item of container; index as i;" (click)="getNode(item)">
-            <div >{{item.toString()}}</div>
-          </div>
-        </div>
-
-
-        <div >
-          <div *ngFor="let item of container; index as i;" (click)="peekChild(item)">
-            <button mat-button *ngIf="containerChild[i].toString()=='[object Object]'">Peek...</button>
-            <div>
-              <div class="test" role="button" *ngIf="containerChild[i].toString()!='[object Object]'">
-                {{containerChild[i]}}
-              </div>
+        <div class="testItem" *ngFor="let item of container; index as i;">
+          <div (click)="getNode(item)"><div>{{item.toString()}}</div></div>
+          <div (click)="peekChild(item)">
+            <div mat-button *ngIf="containerChild[i].toString()=='[object Object]'">Peek...</div>
+            <div *ngIf="containerChild[i].toString()!='[object Object]'">
+              {{containerChild[i]}}
             </div>
           </div>
         </div>
       </div>
 
-
       <div class="detailContent">
-        <div *ngFor="let item2 of containerChildDetail; index as i;">{{item2}}</div>
+        <div class="testItem" *ngFor="let item2 of containerChildDetail; index as i;">{{item2}}</div>
       </div>
 
     </div>
   </div>
+
 </div>
