@@ -3,3 +3,9 @@
     justify-content: space-around;
     align-items: flex-start;
 }
+
+.collectionHeader{
+    display:grid;
+    grid-template-columns: 60% 40%;
+    justify-content: space-around;
+}

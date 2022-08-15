@@ -63,6 +63,7 @@ import { TaskFlexComponent } from './components/fb-cloudstorare-ui/task-flex/tas
 import { ImgSlideshowComponent } from './components/img-slideshow/img-slideshow.component';
 import { TaskGridComponent } from './components/fb-cloudstorare-ui/task-grid/task-grid.component';
 import { TaskDetailComponent } from './components/fb-cloudstorare-ui/task-detail/task-detail.component';
+import { FbStorageUiComponent } from './components/fb-storage-ui/fb-storage-ui.component';
 // component
 
 
@@ -88,6 +89,7 @@ import { TaskDetailComponent } from './components/fb-cloudstorare-ui/task-detail
     TaskFlexComponent,
     TaskGridComponent,
     TaskDetailComponent,
+    FbStorageUiComponent,
   ],
   imports: [
     BrowserModule,
