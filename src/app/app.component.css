@@ -1,7 +1,7 @@
 .content{
     height: 85vh;
     display: grid;
-    grid-template-rows: 0% 85% 15% ;
+    grid-template-rows: 85% 15% ;
     flex-direction: column;
     overflow: scroll;
     background-color:var(--bg-primary);

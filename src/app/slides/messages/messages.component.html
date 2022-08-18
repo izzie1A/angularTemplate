@@ -28,7 +28,7 @@
     </mat-card>
     
     <mat-card class="chatfooter">
-        <input class="messageBox" matInput placeholder="Enter message here..." value="" [(ngModel)]="msgBoxInput">
+        <mat-input class="messageBox" matInput placeholder="Enter message here..." value="" [(ngModel)]="msgBoxInput"></mat-input>
         <button class="kbutton" (click)="sendMessage('2', msgBoxInput)">
             <span class="material-icons">send</span>
         </button>

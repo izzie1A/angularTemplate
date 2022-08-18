@@ -39,6 +39,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatStepperModule} from '@angular/material/stepper';
 
 
 // component 
@@ -90,6 +92,7 @@ import { FbStorageUiComponent } from './components/fb-storage-ui/fb-storage-ui.c
     TaskGridComponent,
     TaskDetailComponent,
     FbStorageUiComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -135,6 +138,8 @@ import { FbStorageUiComponent } from './components/fb-storage-ui/fb-storage-ui.c
     AngularFirestoreModule,
     MatDialogModule,
     MatButtonModule,
+    MatRadioModule,
+    MatStepperModule,
   ],
   providers: [
     ScreenTrackingService,UserTrackingService

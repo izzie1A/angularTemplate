@@ -1,6 +1,98 @@
-<div class="main-container">
-    <div class="btnContainer">
-        <app-main-button  [outputFunction]="myCallbackFunction" ></app-main-button>
+<mat-card class="example-input-wrapper">
+    <label for="duration">Animation duration:</label>
+</mat-card>
+
+<mat-vertical-stepper [linear]="false" #stepper [animationDuration]="'1000'">
+
+
+    <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>What you need to storage</ng-template>
+            <mat-form-field appearance="fill">
+                <mat-label>Select Upload Type</mat-label>
+                <mat-select #type>
+                    <mat-option>None</mat-option>
+                    <mat-option value="Item">Item</mat-option>
+                    <mat-option value="Page">Page</mat-option>
+                    <mat-option value="Block">Block</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <p>You selected: {{type.value}}</p>
+
+            <div>
+                <button mat-button matStepperNext (click)="packagePush(type.value)">Next</button>
+            </div>
+        </form>
+    </mat-step>
+
+
+    <mat-step [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>What is it called?</ng-template>
+            <input #box (keyup)="0">
+            <p>{{box.value}}</p>
+            <div>
+                <button mat-button matStepperPrevious (click)="packagePop()">Back</button>
+                <button mat-button matStepperNext (click)="packagePush(box.value)">Next</button>
+            </div>
+        </form>
+    </mat-step>
+
+
+    <mat-step [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>What does it store?</ng-template> 
+            <input #row (keyup)="0" matInput placeholder="{{row}}" formControlName="secondCtrl" required>
+            <mat-form-field *ngFor="let row of content, let i = index">
+                <input #row (keyup)="0" matInput placeholder="{{row}}" formControlName="secondCtrl" required>
+                <p>{{row.value}}</p>
+            </mat-form-field>
+            <button mat-mini-fab color="primary" class="upload-btn" accept=".png,.jpg" (click)="packageContentPush(row.value)">
+                <mat-icon>add</mat-icon>
+            </button>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext (click)="packagePush(this.content)">Next</button>
+            </div>
+        </form>
+    </mat-step>
+
+
+    <mat-step [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Summary</ng-template>
+            <mat-form-field>
+                <input matInput placeholder="Address" formControlName="secondCtrl" required>
+            </mat-form-field>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </form>
+    </mat-step>
+
+
+    <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        You are now done.
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+        </div>
+    </mat-step>
+
+
+</mat-vertical-stepper>
+
+
+<mat-card>
+    <div *ngFor="let content of package">
+        <li>{{content}}</li>
     </div>
-    <app-ng-rtdb-component></app-ng-rtdb-component>
+</mat-card>
+
+
+<div class="btnContainer">
+    <app-main-button [outputFunction]="myCallbackFunction"></app-main-button>
 </div>

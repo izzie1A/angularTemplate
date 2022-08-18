@@ -26,13 +26,10 @@ export class MessagesComponent implements OnInit {
     
     // smarter 
     this.getChatRecord();
-
     // 
 
     // get to everyUser
     this.getAllUser();
-
-
     // 
 
   }

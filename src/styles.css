@@ -11,9 +11,13 @@
 ::-webkit-scrollbar {
   display: none;
 }
+
 * {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }
 
 :root {
@@ -31,6 +35,7 @@
   --shadow1: rgb(38, 57, 77) 0px 20px 30px -10px,
     rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
     rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+  --shadow2: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
 }
 
 .body {
@@ -65,13 +70,54 @@ menu {
 }
 
 .kbutton {
-  border-radius: 2vmin;
-  box-shadow: var(--shadow1);
-  font-size:70%;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+  font-size: 2vmin;
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #000;
+  cursor: pointer;
+  border: 0.5vmin solid;
+  box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+  position: relative;
+  margin: 0.5vh;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  overflow: hidden;
 }
+
+.kbutton:active {
+  box-shadow: 0px 0px 0px 0px;
+  top: 5px;
+  left: 5px;
+  
+}
+
+.kbutton:focus{
+  background-color:var(--bg-secondary);
+}
+
+
+
+
+.kflex{
+  display: flex;
+}
+.kflexColumn{
+  display: flex;
+  flex-direction: column;
+}
+.kgrid{
+  display: grid;
+}
+
+
+
+
+
+
+
+
 /* 
 
 /* css debug mode */

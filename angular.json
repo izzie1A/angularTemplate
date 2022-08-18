@@ -37,7 +37,7 @@
                 {
                   "type": "initial",
                   "maximumWarning": "1500kb",
-                  "maximumError": "2mb"
+                  "maximumError": "2.5mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -101,6 +101,13 @@
             "scripts": []
           }
         },
+        "architect": {
+          "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+          "browserTarget": "your-application-name:build",
+          "proxyConfig": "src/proxy.conf.json"
+          },
         "deploy": {
           "builder": "@angular/fire:deploy",
           "options": {
@@ -117,4 +124,9 @@
   "cli": {
     "analytics": "df0598be-8335-4cce-861e-f94e4b8df4ca"
   }
+}
+},
+"cli": {
+  "analytics": false
+}
 }

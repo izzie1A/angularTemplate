@@ -8,9 +8,9 @@
             <button class="loginButton" *ngIf="auth.user$ === null" (click)="signin()">Sign-In with Google </button>
             <button class="loginButton" *ngIf="auth.user$!= null" (click)="signout()">Sign-Out</button>
         </div>
-        
-
 </div>
+
+
 
 <div class="displayblock" *ngIf=" auth.user$!= null">
     <div class="displayHeader">

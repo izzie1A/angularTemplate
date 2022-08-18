@@ -1,6 +1,30 @@
-<p (click)="upload()">fb-storage-ui works!</p>
-<mat-card >
-    <input type="file" id="myFile" name="filename">
-    <input type="submit" (click)="upload(file)">
+<mat-card class="file-upload" (change)="upload($event)" [(ngModel)]="file">
+    <h2>File Upload</h2>
+    <button mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()"
+        onchange="console.log(event.target.files)" accept=".png,.jpg">
+        <mat-icon>attach_file</mat-icon>
+    </button>
+    <a>{{ file || "No file uploaded yet."}}</a>
+    <input type="file" class="file-input" style="display:none" [(ngModel)]="file" #fileUpload>
 </mat-card>
-{{file}}
+
+<br><br>
+
+<mat-card>
+    <h2>File View</h2>
+    <mat-card class="fileSelectContainer">
+        <div class="fbImageContainer">
+            <img id="input" class="fbImage" />
+        </div>
+
+        <mat-card class="fbStoreDirContainer">
+            <mat-radio-group  aria-labelledby="example-radio-group-label" class="fbStoreDirContainer" aria-label="Select an option">
+                <mat-radio-button class="kbutton" value="{{i}}" id="{{file.name}}" *ngFor="let file of childArray ,let i = index" (click)="select(file[0])">
+                    <p>{{file[0]}}</p>
+                </mat-radio-button>
+            </mat-radio-group>
+        </mat-card>
+
+
+    </mat-card>
+</mat-card>
