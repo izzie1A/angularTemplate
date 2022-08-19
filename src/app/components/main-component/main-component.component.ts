@@ -1,6 +1,4 @@
 import { Component, OnInit , Output} from '@angular/core';
-import { AuthGuard } from 'src/app/services/auth.service';
-import { FirebaseRtdbService } from 'src/app/services/firebase-rtdb.service';
 import {FormBuilder, Validators} from '@angular/forms';
 
 @Component({
@@ -24,6 +22,7 @@ export class MainComponentComponent implements OnInit {
 
   constructor(private _formBuilder: FormBuilder) {
   }
+  
 
   ngOnInit(): void {
   }
@@ -31,8 +30,9 @@ export class MainComponentComponent implements OnInit {
   packagePush(input:any){
     this.package.push(input);
   }
-  packageContentPush(input:any){
-    this.content.push(input);
+  packageContentPush(){
+    this.content.push(this.content.length);
+    console.log(this.content);
   }
   packagePushContent(input:any){
     this.package.push(input);

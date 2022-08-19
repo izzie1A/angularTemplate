@@ -14,12 +14,6 @@ export class FileUpload {
 }
 
 
-
-
-
-
-
-
 @Component({
   selector: 'app-fb-storage-ui',
   templateUrl: './fb-storage-ui.component.html',
@@ -53,10 +47,6 @@ export class FbStorageUiComponent implements OnInit {
           console.log(folderRef.fullPath);
         });
         res.items.forEach(async (itemRef) => {
-          // All the items under listRef.
-          // let x = ''
-          // await this.read(itemRef.name).then( res => x=res);
-          // this.childArray.push([itemRef.name,x]);
           this.childArray.push([itemRef.name]);
         });
       }).catch((error) => {

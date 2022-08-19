@@ -43,12 +43,12 @@
     <mat-step [stepControl]="secondFormGroup">
         <form [formGroup]="secondFormGroup">
             <ng-template matStepLabel>What does it store?</ng-template> 
-            <input #row (keyup)="0" matInput placeholder="{{row}}" formControlName="secondCtrl" required>
-            <mat-form-field *ngFor="let row of content, let i = index">
-                <input #row (keyup)="0" matInput placeholder="{{row}}" formControlName="secondCtrl" required>
-                <p>{{row.value}}</p>
-            </mat-form-field>
-            <button mat-mini-fab color="primary" class="upload-btn" accept=".png,.jpg" (click)="packageContentPush(row.value)">
+            <div *ngFor="let x of content" id="'content-'{{x}}">
+                <input id="'contentInput-'{{x}}">
+                <div>{{x}}</div>
+            </div>
+            <li  *ngFor="let x of content">{{x}}</li>
+            <button mat-mini-fab color="primary" class="upload-btn" accept=".png,.jpg" (click)="packageContentPush()">
                 <mat-icon>add</mat-icon>
             </button>
             <div>
