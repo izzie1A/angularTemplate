@@ -18,6 +18,17 @@
                 </mat-select>
             </mat-form-field>
 
+            <h4>Basic native select</h4>
+            <mat-form-field appearance="fill">
+                <mat-label>Cars</mat-label>
+                <select matNativeControl required>
+                    <option value="volvo">Volvo</option>
+                    <option value="saab">Saab</option>
+                    <option value="mercedes">Mercedes</option>
+                    <option value="audi">Audi</option>
+                </select>
+            </mat-form-field>
+
             <p>You selected: {{type.value}}</p>
 
             <div>
@@ -42,14 +53,14 @@
 
     <mat-step [stepControl]="secondFormGroup">
         <form [formGroup]="secondFormGroup">
-            <ng-template matStepLabel>What does it store?</ng-template> 
-                <input (change)="packageContentPush(username.value)" id="'contentInput-'{{x}}"  #username>
-                <div>{{username.value}}</div>
+            <ng-template matStepLabel>What does it store?</ng-template>
+            <input (change)="packageContentPush(username.value)" id="'contentInput-'{{x}}" #username>
+            <div>{{username.value}}</div>
             <div *ngFor="let x of content" id="'content-'{{x}}" [style]="'display:flex;`'">
-                <input (change)="packageContentPush(username.value)" id="'contentInput-'{{x}}"  #username>
+                <input (change)="packageContentPush(username.value)" id="'contentInput-'{{x}}" #username>
                 <div>{{username.value}}</div>
             </div>
-            <button mat-mini-fab color="primary" class="upload-btn" accept=".png,.jpg" >
+            <button mat-mini-fab color="primary" class="upload-btn" accept=".png,.jpg">
                 <mat-icon>add</mat-icon>
             </button>
             <div>

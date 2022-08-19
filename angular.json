@@ -103,11 +103,23 @@
         },
         "architect": {
           "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-          "browserTarget": "your-application-name:build",
-          "proxyConfig": "src/proxy.conf.json"
-          },
+            "builder": "@angular-devkit/build-angular:dev-server",
+            "options": {
+              "browserTarget": "your-application-name:build",
+              "proxyConfig": "src/proxy.conf.json"
+            },
+            "deploy": {
+              "builder": "@angular/fire:deploy",
+              "options": {
+                "prerender": false,
+                "ssr": false,
+                "browserTarget": "cleancollection:build:production",
+                "firebaseProject": "cleanfollow-ec3a6",
+                "firebaseHostingSite": "cleanfollow-ec3a6"
+              }
+            }
+          }
+        },
         "deploy": {
           "builder": "@angular/fire:deploy",
           "options": {
@@ -118,15 +130,13 @@
             "firebaseHostingSite": "cleanfollow-ec3a6"
           }
         }
+      },
+      "cli": {
+        "analytics": "df0598be-8335-4cce-861e-f94e4b8df4ca"
       }
     }
   },
   "cli": {
-    "analytics": "df0598be-8335-4cce-861e-f94e4b8df4ca"
+    "analytics": false
   }
-}
-},
-"cli": {
-  "analytics": false
-}
 }
