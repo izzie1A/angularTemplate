@@ -43,12 +43,13 @@
     <mat-step [stepControl]="secondFormGroup">
         <form [formGroup]="secondFormGroup">
             <ng-template matStepLabel>What does it store?</ng-template> 
-            <div *ngFor="let x of content" id="'content-'{{x}}">
-                <input id="'contentInput-'{{x}}">
-                <div>{{x}}</div>
+                <input (change)="packageContentPush(username.value)" id="'contentInput-'{{x}}"  #username>
+                <div>{{username.value}}</div>
+            <div *ngFor="let x of content" id="'content-'{{x}}" [style]="'display:flex;`'">
+                <input (change)="packageContentPush(username.value)" id="'contentInput-'{{x}}"  #username>
+                <div>{{username.value}}</div>
             </div>
-            <li  *ngFor="let x of content">{{x}}</li>
-            <button mat-mini-fab color="primary" class="upload-btn" accept=".png,.jpg" (click)="packageContentPush()">
+            <button mat-mini-fab color="primary" class="upload-btn" accept=".png,.jpg" >
                 <mat-icon>add</mat-icon>
             </button>
             <div>

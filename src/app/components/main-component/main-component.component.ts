@@ -30,8 +30,8 @@ export class MainComponentComponent implements OnInit {
   packagePush(input:any){
     this.package.push(input);
   }
-  packageContentPush(){
-    this.content.push(this.content.length);
+  packageContentPush(input:any){
+    this.content.push(input);
     console.log(this.content);
   }
   packagePushContent(input:any){
