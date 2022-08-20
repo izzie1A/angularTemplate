@@ -2,6 +2,8 @@
     <label for="duration">Animation duration:</label>
 </mat-card>
 
+
+
 <mat-vertical-stepper [linear]="false" #stepper [animationDuration]="'1000'">
 
 
@@ -18,17 +20,6 @@
                 </mat-select>
             </mat-form-field>
 
-            <h4>Basic native select</h4>
-            <mat-form-field appearance="fill">
-                <mat-label>Cars</mat-label>
-                <select matNativeControl required>
-                    <option value="volvo">Volvo</option>
-                    <option value="saab">Saab</option>
-                    <option value="mercedes">Mercedes</option>
-                    <option value="audi">Audi</option>
-                </select>
-            </mat-form-field>
-
             <p>You selected: {{type.value}}</p>
 
             <div>
@@ -36,6 +27,7 @@
             </div>
         </form>
     </mat-step>
+
 
 
     <mat-step [stepControl]="secondFormGroup">
@@ -51,22 +43,140 @@
     </mat-step>
 
 
+
+    <!--  -->
+
+    <!--  -->
+    <mat-step [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Enter Your Contact Detail</ng-template>
+            <!-- contact  -->
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Name</mat-label>
+                <input matInput placeholder="Ex. Lee mud mud" value="" #name>
+            </mat-form-field>
+            <mat-form-field class="example-full-width" appearance="fill" >
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Ex. xxx@xxx.com" value=""#email>
+            </mat-form-field>
+            <mat-form-field class="example-full-width" appearance="fill" >
+                <mat-label>Phone number</mat-label>
+                <input matInput placeholder="Ex. xxx-xxx" value=""#pnum>
+            </mat-form-field>
+
+
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext (click)="packagePush([name.value,email.value,pnum.value])">Next</button>
+            </div>
+
+
+
+        </form>
+    </mat-step>
+    <!--  -->
+    <!--  -->
+    <!--  -->
+    <mat-step [stepControl]="secondFormGroup">
+        <button mat-mini-fab color="primary" class="upload-btn" (click)="addHero('nullHero')">
+            <mat-icon>add</mat-icon>
+        </button>
+        <form [formGroup]="secondFormGroup">
+            <ul>
+                <li *ngFor="let hero of heroes, index as j">
+                    {{hero}}
+                    <input #newHero id="heroChild'{{j}}'" (keyup.enter)="setHero(j,newHero.value)"
+                        (blur)="setHero(j,newHero.value); newHero.value='' ">
+                </li>
+            </ul>
+        </form>
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext (click)="packagePush(heroes)">Next</button>
+        </div>
+
+    </mat-step>
+    <!--  -->
+<!--  -->
+
+
+
+
     <mat-step [stepControl]="secondFormGroup">
         <form [formGroup]="secondFormGroup">
             <ng-template matStepLabel>What does it store?</ng-template>
-            <input (change)="packageContentPush(username.value)" id="'contentInput-'{{x}}" #username>
-            <div>{{username.value}}</div>
-            <div *ngFor="let x of content" id="'content-'{{x}}" [style]="'display:flex;`'">
-                <input (change)="packageContentPush(username.value)" id="'contentInput-'{{x}}" #username>
-                <div>{{username.value}}</div>
+                        <!-- for input box -->
+                        <div *ngFor="let x of content; index as i" id="'content-'{{x}}" [style]="'display:flex;'">
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <mat-label>Optional Deatil</mat-label>
+                                <input matInput placeholder="Ex. Lee mud mud" value="">
+                            </mat-form-field>
+                            <button mat-mini-fab color="primary" (click)="packageContentRemove(i)">
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                        </div>
+            
+                        <button mat-mini-fab color="primary" class="upload-btn" (click)="packageContentPush()">
+                            <mat-icon>add</mat-icon>
+                        </button>
+                        <!--  -->
+            <!-- for input box -->
+            <div *ngFor="let x of content; index as i" id="'content-'{{x}}" [style]="'display:flex;`'">
+                <!-- select option -->
+                <mat-form-field appearance="fill">
+                    <select matNativeControl required #selectBoxValue>
+                        <option value="detail">Detail</option>
+                        <option value="time">Time</option>
+                        <option value="price">Price</option>
+                    </select>
+                </mat-form-field>
+                <!-- select option -->
+
+                <!-- date select -->
+                <mat-form-field *ngIf="selectBoxValue.value=='time'" appearance="fill" class="example-form-field">
+                    <mat-label>Choose a date</mat-label>
+                    <input matInput [matDatepicker]="datepicker" #username>
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+                    <mat-datepicker #datepicker>
+                        <mat-datepicker-actions>
+                            <button mat-button matDatepickerCancel>Cancel</button>
+                            <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                        </mat-datepicker-actions>
+                    </mat-datepicker>
+                </mat-form-field>
+                <!-- date select -->
+
+
+                <mat-form-field *ngIf="selectBoxValue.value!='time'" appearance="fill" class="example-form-field">
+                    <mat-label>Choose a date</mat-label>
+                    <input matInput #username2>
+
+                </mat-form-field>
+
+                <!-- input -->
+
+                <input #box (keyup)="0" value="{{x}}"> {{x}}
+                <button *ngIf="selectBoxValue.value!='time'" color="primary" (click)="packageContentSet(i+0,box.value)">
+                    <mat-icon>upload</mat-icon>
+                </button>
+                <!-- input -->
+
+                <button color="primary" (click)="packageContentRemove(i)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+
             </div>
-            <button mat-mini-fab color="primary" class="upload-btn" accept=".png,.jpg">
+
+            <button mat-mini-fab color="primary" class="upload-btn" (click)="packagePush('')">
                 <mat-icon>add</mat-icon>
             </button>
+
             <div>
                 <button mat-button matStepperPrevious>Back</button>
                 <button mat-button matStepperNext (click)="packagePush(this.content)">Next</button>
             </div>
+
         </form>
     </mat-step>
 
@@ -74,9 +184,10 @@
     <mat-step [stepControl]="secondFormGroup">
         <form [formGroup]="secondFormGroup">
             <ng-template matStepLabel>Summary</ng-template>
-            <mat-form-field>
-                <input matInput placeholder="Address" formControlName="secondCtrl" required>
-            </mat-form-field>
+            <div *ngFor="let list of package">
+                <li>{{list}}</li>
+                <input value="{{list}}">
+            </div>
             <div>
                 <button mat-button matStepperPrevious>Back</button>
                 <button mat-button matStepperNext>Next</button>
@@ -87,8 +198,9 @@
 
     <mat-step>
         <ng-template matStepLabel>Done</ng-template>
-        You are now done.
+        You are now done. Please click upload to save.
         <div>
+            <button mat-button (click)="uploadStepper()">Upload</button>
             <button mat-button matStepperPrevious>Back</button>
             <button mat-button (click)="stepper.reset()">Reset</button>
         </div>
@@ -99,8 +211,13 @@
 
 
 <mat-card>
-    <div *ngFor="let content of package">
-        <li>{{content}}</li>
+    <div>
+        <li *ngFor="let contents of package">
+            {{contents}}
+            <div *ngIf="contents[0]!=0">
+                <div *ngFor="let contentItem of contents">{{contentItem}}</div>
+            </div>
+        </li>
     </div>
 </mat-card>
 

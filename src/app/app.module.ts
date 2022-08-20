@@ -41,7 +41,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatStepperModule} from '@angular/material/stepper';
-
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 // component 
 import { MainComponentComponent } from './components/main-component/main-component.component';
@@ -140,6 +140,7 @@ import { FbStorageUiComponent } from './components/fb-storage-ui/fb-storage-ui.c
     MatButtonModule,
     MatRadioModule,
     MatStepperModule,
+    MatSlideToggleModule,
   ],
   providers: [
     ScreenTrackingService,UserTrackingService
