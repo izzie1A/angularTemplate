@@ -102,9 +102,3 @@
   }
   .testItemTitle{
   }
-  .testItemDeatil{
-    display:flex;
-    font-size:40%;
-    justify-content: space-around;
-    margin-bottom: 5%;
-  }

@@ -69,6 +69,19 @@ menu {
   opacity: 0;
 }
 
+.kcard{
+  border-radius: 1vmax;
+  box-shadow:var(--shadow2);
+  overflow: hidden;
+  font-size: 3vmin;
+}
+.kcardDeatil{
+  display: flex;
+    font-size: 40%;
+    /* align-items: center; */
+    justify-content: space-around;
+}
+
 .kbutton {
   font-size: 2vmin;
   letter-spacing: 2px;
@@ -85,23 +98,28 @@ menu {
   touch-action: manipulation;
   overflow: hidden;
 }
-
 .kbutton:active {
   box-shadow: 0px 0px 0px 0px;
   top: 5px;
   left: 5px;
-  
 }
-
 .kbutton:focus{
   background-color:var(--bg-secondary);
 }
 
 
-
-
 .kflex{
   display: flex;
+  justify-content: space-evenly;
+  overflow: hidden;
+  padding:0.5%;
+}
+.kvflex{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  overflow: hidden;
+  padding:0.5%;
 }
 .kflexColumn{
   display: flex;
@@ -109,21 +127,51 @@ menu {
 }
 .kgrid{
   display: grid;
+  grid-template-columns: 25% 25% 25%;
+  justify-content: space-evenly;
+  overflow: hidden;
+}
+
+.kiconImg{
+  background-image: url("https://scontent-lhr8-1.xx.fbcdn.net/v/t1.6435-9/55944989_850122328671568_426981811499827200_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=lbpb_syRAPIAX8KPNcP&_nc_ht=scontent-lhr8-1.xx&oh=00_AT-lkC-mMlgWyYpze0Wuc3yH8Oewk2QsQr6pKhb5749peg&oe=6324F0E2");
+  background-size: cover;
+  border-radius: 50%;
+  width:30%;
+}
+
+.ktitle{
+  font-size: calc(16px + 6 * ((100vw - 320px) / 680));
+  font-size: 3vw;
 }
 
 
 
 
 
+/*  */
+html {
+  font-size: 3vw;
+}
+@media screen and (min-width: 320px) {
+  html {
+    font-size: calc(16px + 6 * ((100vw - 320px) / 680));
+  }
+}
+@media screen and (min-width: 1000px) {
+  html {
+    font-size: 2vw;
+  }
+}
+/*  */
 
 
 
-/* 
+
+
+
+
 
 /* css debug mode */
-
-
-
 
 
 /* 
