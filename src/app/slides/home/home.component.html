@@ -1,11 +1,11 @@
 <mat-toolbar color="primary">
-    <span>Home Page</span>
+    <div>Home Page</div>
 </mat-toolbar>
 
 <div>
     <p class="empty-label" *ngIf="(todo | async)?.length === 0">Empty list</p>
     <div *ngFor="let task of todo | async" >
-        <div *ngIf="task.description=='1'">
+        <div *ngIf="task.description=='1'" >
             <app-img-slideshow></app-img-slideshow>
         </div>
         <div *ngIf="task.description=='2'">

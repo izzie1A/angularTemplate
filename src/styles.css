@@ -32,10 +32,9 @@
   --bg-primary: #e5e5e5;
   --white: white;
   --black: rgb(40, 40, 40);
-  --shadow1: rgb(38, 57, 77) 0px 20px 30px -10px,
-    rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
-    rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+  --shadow1: rgb(38, 57, 77) 0px 20px 30px -10px,rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
   --shadow2: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+  --shadowMin: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
 .body {
@@ -60,7 +59,6 @@ menu {
   padding-inline-start: 0px;
 }
 
-
 .cdk-drag-animating {
   transition: transform 250ms;
 }
@@ -70,16 +68,22 @@ menu {
 }
 
 .kcard{
-  border-radius: 1vmax;
   box-shadow:var(--shadow2);
   overflow: hidden;
   font-size: 3vmin;
+  background-color: var(--white);
+  margin-top: 10%;
 }
+.kround {
+  height: 100%;
+  width: 100%;
+  border-radius: 2vmax;
+}
+
 .kcardDeatil{
   display: flex;
-    font-size: 40%;
-    /* align-items: center; */
-    justify-content: space-around;
+  font-size: 40%;
+  justify-content: space-around;
 }
 
 .kbutton {
@@ -104,9 +108,17 @@ menu {
   left: 5px;
 }
 .kbutton:focus{
-  background-color:var(--bg-secondary);
+  background-color:var(--white);
 }
 
+
+.kblock{ 
+  min-height:10vh;
+  margin-top: 1vw;
+  aspect-ratio: 1.61/1;
+  overflow: hidden;
+  background-color: var(--white);
+}
 
 .kflex{
   display: flex;
@@ -125,6 +137,18 @@ menu {
   display: flex;
   flex-direction: column;
 }
+.ktable{
+  display: grid;
+  grid-template-columns: 60% 40%;
+  justify-content: space-evenly;
+  overflow-x: scroll;
+}
+.kvtable{
+  display: grid;
+  grid-template-columns: 20% 80%;
+  justify-content: space-evenly;
+  overflow-x: scroll;
+}
 .kgrid{
   display: grid;
   grid-template-columns: 25% 25% 25%;
@@ -138,7 +162,10 @@ menu {
   border-radius: 50%;
   width:30%;
 }
-
+.kicon{
+  border-radius: 50%;
+  width:30%;
+}
 .ktitle{
   font-size: calc(16px + 6 * ((100vw - 320px) / 680));
   font-size: 3vw;
@@ -150,16 +177,17 @@ menu {
 
 /*  */
 html {
-  font-size: 3vw;
+  font-size: 1.5vw;
 }
 @media screen and (min-width: 320px) {
   html {
-    font-size: calc(16px + 6 * ((100vw - 320px) / 680));
+    /* font-size: calc(16px + 6 * ((100vw - 320px) / 680)); */
+    font-size: 3vw;
   }
 }
 @media screen and (min-width: 1000px) {
   html {
-    font-size: 2vw;
+    font-size: 2vmin;
   }
 }
 /*  */

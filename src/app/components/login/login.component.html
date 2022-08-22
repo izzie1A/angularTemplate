@@ -2,24 +2,23 @@
     <div class="loginblock">    
         <div id="loginDetail">
             <img src={{auth.user$.photoURL}} id="userImage" alt="img" *ngIf="auth.user$!!">
+            <div *ngIf="auth.user$==null"  class="kicon">
+                <span class="material-icons" >account_circle</span>
+            </div>
         </div>
 
-        <div id="loginButtonContainer">
-            <button class="loginButton" *ngIf="auth.user$ === null" (click)="signin()">Sign-In with Google </button>
-            <button class="loginButton" *ngIf="auth.user$!= null" (click)="signout()">Sign-Out</button>
+        <div >
+            <button class="kbutton kround kblock" *ngIf="auth.user$ === null" (click)="signin()">Sign-In with Google </button>
+            <button class="kbutton kround kblock" *ngIf="auth.user$!= null" (click)="signout()">Sign-Out</button>
         </div>
 </div>
 
 
 
-<div class="displayblock" *ngIf=" auth.user$!= null">
-    <div class="displayHeader">
-        <h6>{{auth.user$.displayName}}</h6>
-    </div>
-    <div class="displayTable">
-        <h6>Welcome : {{auth.user$.displayName}}</h6>
-        <h6>uid : {{auth.user$.uid}}</h6>
-        <div *ngIf="auth.user$!!">{{auth.user$.uid}}</div>
-        <div *ngIf="auth.user$!!">{{auth.user$.email}}</div>
+<div class="loginblock" *ngIf=" auth.user$!= null">
+    <div class="ktable">
+        <div>Welcome :</div> <div>{{auth.user$.displayName}}</div>
+        <div>uid :</div> <div>{{auth.user$.uid}}</div>
+        <div>email :</div> <div>{{auth.user$.email}}</div>
     </div>
 </div>

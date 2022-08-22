@@ -42,6 +42,14 @@ export class MainComponentComponent implements OnInit {
   packagePush(input:any){
     this.package.push(input);
   }
+  packageSet(dir:number, input:any){
+    if (this.heroes[dir]!=null) {
+      this.heroes[dir] = input;
+    }
+    this.package.push(input);
+  }
+  packagePop(){
+  }
   packageContentPush(){
     console.log(this.content);
     this.content.push('nullInput');
@@ -62,9 +70,7 @@ export class MainComponentComponent implements OnInit {
   packagePushContent(input:any){
     this.package.push(input);
   }
-  packagePop(){
 
-  }
   uploadStepper(){
     alert(this.package)
   }

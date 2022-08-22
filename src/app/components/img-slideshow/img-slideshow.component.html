@@ -1,5 +1,5 @@
-<div class="slideshow-container">
+<div class="slideshow-container" >
     <span class="prev" (click)="switchSlide(imageIndex-1)">&#10094;</span>
     <span class="next" (click)="switchSlide(imageIndex+1)">&#10095;</span>
-    <img [style.width]="'100vw'"  class="slideshowImg" src={{imageSrc}}>
+    <img class="slideshowImg" [style.max-width]="'100vw'" src={{imageSrc}}>
 </div>

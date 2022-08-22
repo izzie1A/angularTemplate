@@ -1,6 +1,20 @@
-<mat-card class="item" *ngIf="task" (dblclick)="edit.emit(task)">
-    <h2>{{ task.title }}</h2>
-    <p>
-      {{ task.description }}
-    </p>
- </mat-card>
+<div class="kcard" *ngIf="task" (dblclick)="edit.emit(task)" [style.width]="'20vw'" [style.height]="'20vw'">
+  <!-- <div>{{ task.title }}</div>
+  <div>
+    {{ task.description }}
+  </div> -->
+  <div>
+    <div *ngIf="task.description=='1'">
+      <app-img-slideshow></app-img-slideshow>
+    </div>
+    <div *ngIf="task.description=='2'">
+      <app-task-flex></app-task-flex>
+    </div>
+    <div *ngIf="task.description=='3'">
+      <app-task-grid></app-task-grid>
+    </div>
+    <div *ngIf="task.description=='4'">
+      <app-task-detail></app-task-detail>
+    </div>
+  </div>
+</div>

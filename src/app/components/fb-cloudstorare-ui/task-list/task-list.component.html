@@ -13,7 +13,7 @@
         <div class="container">
             <h2>Backlog</h2>
 
-            <mat-card cdkDropList id="todo" #todoList="cdkDropList" [cdkDropListData]="todo | async"
+            <mat-card  cdkDropList id="todo" #todoList="cdkDropList" [cdkDropListData]="todo | async"
                 [cdkDropListConnectedTo]="[doneList, inProgressList]" (cdkDropListDropped)="drop($event)" class="list">
 
                 <p class="empty-label" *ngIf="(todo | async)?.length === 0">Empty list</p>

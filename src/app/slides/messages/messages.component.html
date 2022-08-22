@@ -1,9 +1,8 @@
 <div class="chatContainer">
-    <mat-toolbar color="primary"d class="chatHeader">
+    <mat-toolbar color="primary" d class="chatHeader">
         <mat-form-field appearance="fill">
-            <mat-label>from</mat-label>
-            <mat-select [(value)]="selected">
-                <mat-option value="" selected></mat-option>
+            <mat-label>{{clientId}}</mat-label>
+            <mat-select [(value)]="selected" value="{{clientId}}">
                 <mat-option value="{{clientId}}"> {{clientId}} </mat-option>
             </mat-select>
         </mat-form-field>
@@ -15,24 +14,38 @@
             </mat-select>
         </mat-form-field>
     </mat-toolbar>
+    <div class="chatDeatil">
 
-    <mat-card class="chatDeatil">
-        <mat-card *ngFor="let chat of chatArray" class="chatMessage">
-            <div class="chatMessageHeader">
-                <div>From:{{chat.fromUser}}</div>
-                <div>{{chat.time}}</div>
+        <div *ngFor="let chat of chatArray" class="chatMessage  kblock kround">
+            <div *ngIf="chat.fromUsery!=clientId">
+                <div class="chatMessageHeader">
+                    <div>From:{{chat.fromUser}}</div>
+                    <div>{{chat.time}}</div>
+                </div>
+                <div>To:{{chat.toUser}}</div>
+                <div>messages:{{chat.messages}}</div>
             </div>
-            <div>To:{{chat.toUser}}</div>
-            <div>messages:{{chat.messages}}</div>
-        </mat-card>
-    </mat-card>
-    
-    <mat-card class="chatfooter">
-        <input class="messageBox" matInput placeholder="Enter message here..." value="" [(ngModel)]="msgBoxInput">
-        <button class="kbutton" (click)="sendMessage('2', msgBoxInput)">
+            <div *ngIf="chat.fromUsery===clientId">
+                <div class="chatMessageHeader">
+                    <div>From:{{chat.fromUser}}</div>
+                    <div>{{chat.time}}</div>
+                </div>
+                <div>To:{{chat.toUser}}</div>
+                <div>messages:{{chat.messages}}</div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <div class="chatfooter kround">
+        <input class="messageBox" matInput placeholder=" Type message here..." value="" [(ngModel)]="msgBoxInput">
+        <button class="kround" (click)="sendMessage('2', msgBoxInput)">
             <span class="material-icons">send</span>
         </button>
-    </mat-card>
+    </div>
+
 </div>
 
 <!-- <app-main-button [outputFunction]="myCallbackFunction"></app-main-button> -->

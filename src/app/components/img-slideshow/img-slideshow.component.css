@@ -2,7 +2,9 @@
   .slideshow-container {
     position: relative;
   }
-  
+  .slideshowImg{
+    width:100%;
+  }
   .next{
     position: absolute;
     top:45%;

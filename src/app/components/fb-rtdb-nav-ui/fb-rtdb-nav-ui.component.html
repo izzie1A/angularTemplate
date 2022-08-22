@@ -5,18 +5,18 @@
 
 
 
-  <div class="menuContainer">
+  <div class="kvtable">
 
-    <div class="menuHeader">
+    <div class="kflex">
       <div class="test" (click)="goNode('root')">home</div>
       <div class="test" (click)="NavNode(-1)">back</div>
       <div class="test">{{this.dir}}</div>
     </div>
 
 
-    <div class="menuDetail">
+    <div class="">
 
-      <div class="menuDir">
+      <div class="">
         <div class="testItem" *ngFor="let item of container; index as i;">
           <div (click)="getNode(item)"><div>{{item.toString()}}</div></div>
           <div (click)="peekChild(item)">
@@ -28,7 +28,7 @@
         </div>
       </div>
 
-      <div class="detailContent">
+      <div class="kcard">
         <div class="testItem" *ngFor="let item2 of containerChildDetail; index as i;">{{item2}}</div>
       </div>
 

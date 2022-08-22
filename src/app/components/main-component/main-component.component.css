@@ -10,4 +10,12 @@
     height: 85vh;
 }
 
+.package{
+    position:fixed;
+    left: 70vw;
+    top: 10vh;
+    height:25vh;
+    width: inherit;
+    aspect-ratio: 1/1.61;
+}
 

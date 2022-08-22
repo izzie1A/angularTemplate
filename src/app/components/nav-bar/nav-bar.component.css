@@ -2,12 +2,13 @@
 .nav {
     position: fixed;
     bottom: 0;
-    width: 100%;
-    left: 0;
+    width: 98vw;
+    left: 1vw;
     height: 15vh;
     box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
     background-color: #ffffff;
     display: flex;
+    justify-content: center;
     overflow-x: auto;
     border-top-left-radius:5vmin;
     border-top-right-radius:5vmin;
@@ -48,7 +49,7 @@
       top: 0;
       width: 100%;
       left: 0;
-      height: 5vh;
+      height: 10vh;
   
       box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
       background-color: #ffffff;
