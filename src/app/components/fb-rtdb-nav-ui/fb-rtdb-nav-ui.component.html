@@ -5,19 +5,19 @@
 
 
 
-  <div class="kvtable">
+  <div class="kvtable kblock kround" [style.width]="'100vw'">
 
-    <div class="kflex">
+    <div class="kflex" [style.width]="'100vw'">
       <div class="test" (click)="goNode('root')">home</div>
       <div class="test" (click)="NavNode(-1)">back</div>
       <div class="test">{{this.dir}}</div>
     </div>
 
 
-    <div class="">
+    <div class="" [style.width]="'100vw'">
 
       <div class="">
-        <div class="testItem" *ngFor="let item of container; index as i;">
+        <div class="ktable" *ngFor="let item of container; index as i;">
           <div (click)="getNode(item)"><div>{{item.toString()}}</div></div>
           <div (click)="peekChild(item)">
             <div mat-button *ngIf="containerChild[i].toString()=='[object Object]'">Peek...</div>
