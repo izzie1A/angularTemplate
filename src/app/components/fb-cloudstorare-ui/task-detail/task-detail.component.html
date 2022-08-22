@@ -2,29 +2,27 @@
     <div>Title</div>
 </mat-toolbar>
 
-<mat-card class="example-card">
-    <img mat-card-image src="https://picsum.photos/300/150">
-    <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>Shiba Inu</mat-card-title>
-        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-        <div>
-            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-            bred for hunting.
+<div class="kflex">
+    <div class="kcard kround">
+        <img class="kimg" src="https://picsum.photos/300/150">
+        <div class="ktitle">Title Name</div>
+        <div class="kcard">
+            <div>
+                The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+                A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+                bred for hunting.
+            </div>
+            <div> </div>
+            <div class="ktable ">
+                <div class="ktable">Price:</div>
+                <div>xxx</div>
+                <div class="ktable">Detail:</div>
+                <div>xxx</div>
+            </div>
         </div>
-        <div>
-            Price:
+        <div class="kflex">
+            <button mat-stroked-button color="warn">Save</button>
+            <button mat-raised-button color="warn" (click)="addToCart('test')">Add to cart</button>
         </div>
-        <div>
-            Detail:
-        </div>
-    </mat-card-content>
-    <mat-card-actions>
-        <button mat-button>Save</button>
-        <button mat-button>Add to cart</button>
-    </mat-card-actions>
-</mat-card>
-
+    </div>
+</div>

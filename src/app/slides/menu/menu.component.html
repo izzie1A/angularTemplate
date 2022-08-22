@@ -3,15 +3,16 @@
 </mat-toolbar>
 
 <mat-tab-group [style.width]="'100vw'">
+    <mat-tab label="Realtime Database">
+        <app-fb-rtdb-nav-ui></app-fb-rtdb-nav-ui>
+    </mat-tab>
     <mat-tab label="summit">
         <app-main-component></app-main-component>
     </mat-tab>
     <mat-tab label="Storage"> 
         <app-fb-storage-ui></app-fb-storage-ui>
     </mat-tab>
-    <mat-tab label="Realtime Database">
-        <app-fb-rtdb-nav-ui></app-fb-rtdb-nav-ui>
-    </mat-tab>
+
     <mat-tab label="Cloud Storage">
         <app-task-list></app-task-list>
     </mat-tab>

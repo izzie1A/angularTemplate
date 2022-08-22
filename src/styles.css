@@ -45,7 +45,7 @@
   display: flex;
 }
 
-  html,body {
+html,body {
   height: 100%;
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
@@ -67,25 +67,52 @@ menu {
   opacity: 0;
 }
 
-.kcard{
-  box-shadow:var(--shadow2);
-  overflow: hidden;
-  font-size: 3vmin;
-  background-color: var(--white);
-  margin-top: 10%;
-}
+
+
+
+
+
+
+/* custom */
 .kround {
   height: 100%;
   width: 100%;
-  border-radius: 2vmax;
+  border-radius: 1vmin                 ;
 }
+.kcard{
+  overflow: hidden;
+  font-size: 3vmin;
+  background-color: var(--white);
+  margin: 2.5%;
+  padding: 2.5%;
+  box-shadow:var(--shadow2);
+}
+.kblock{ 
+  min-height:2.5vh;
+  margin-top: 0.1vh;
+  overflow: hidden;
+  background-color: var(--white);
+  box-shadow:var(--shadowMin);
+
+}
+.kbar{ 
+  min-height:2vh;
+  overflow: hidden;
+  background-color: var(--white);
+  box-shadow:var(--shadow2);
+}
+
+.kratioh{aspect-ratio: 1.61/1;}
+.kratiov{aspect-ratio: 1/1.61;}
+
+
+/* CSS */
 
 .kcardDeatil{
   display: flex;
   font-size: 40%;
   justify-content: space-around;
 }
-
 .kbutton {
   font-size: 2vmin;
   letter-spacing: 2px;
@@ -101,6 +128,7 @@ menu {
   -webkit-user-select: none;
   touch-action: manipulation;
   overflow: hidden;
+  
 }
 .kbutton:active {
   box-shadow: 0px 0px 0px 0px;
@@ -110,32 +138,63 @@ menu {
 .kbutton:focus{
   background-color:var(--white);
 }
+.kclick {
+  -webkit-appearance: button;
+  appearance: button;
+  background-color: transparent;
+  background-image: linear-gradient(to bottom, var(--bg-primary), var(--white));
+  border: 0 solid #e5e7eb;
+  box-sizing: border-box;
+  color: #482307;
+  column-gap: 1rem;
+  cursor: pointer;
+  display: flex;
+  text-align: center;
+  text-transform: none;
+  transition: all .1s cubic-bezier(.4, 0, .2, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  padding:0.25%;
+  margin:0.25%;
+  box-shadow:var(--shadowMin);
 
-
-.kblock{ 
-  min-height:10vh;
-  margin-top: 1vw;
-  aspect-ratio: 1.61/1;
-  overflow: hidden;
-  background-color: var(--white);
 }
+.kclick:active {
+  background-color: #f3f4f6;
+  box-shadow: -1px 2px 5px rgba(81,41,10,0.15),0px 1px 1px rgba(81,41,10,0.15);
+  transform: translateY(0.125rem);
+}
+.kclick:focus {
+  box-shadow: rgba(72, 35, 7, .46) 0 0 0 4px, -6px 8px 10px rgba(81,41,10,0.1), 0px 2px 2px rgba(81,41,10,0.2);
+}
+
+/*  */
 
 .kflex{
   display: flex;
   justify-content: space-evenly;
-  overflow: hidden;
   padding:0.5%;
+  overflow:scroll;
 }
 .kvflex{
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  overflow: hidden;
+  padding:0.5%;
+  overflow:scroll;
+
+}
+.kflexRow{
+  display: flex;
+  overflow: scroll;
   padding:0.5%;
 }
 .kflexColumn{
   display: flex;
   flex-direction: column;
+  overflow: scroll;
+  padding:0.5%;
 }
 .ktable{
   display: grid;
@@ -155,7 +214,9 @@ menu {
   justify-content: space-evenly;
   overflow: hidden;
 }
-
+.kimg{
+  width: inherit;
+}
 .kiconImg{
   background-image: url("https://scontent-lhr8-1.xx.fbcdn.net/v/t1.6435-9/55944989_850122328671568_426981811499827200_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=lbpb_syRAPIAX8KPNcP&_nc_ht=scontent-lhr8-1.xx&oh=00_AT-lkC-mMlgWyYpze0Wuc3yH8Oewk2QsQr6pKhb5749peg&oe=6324F0E2");
   background-size: cover;
@@ -167,10 +228,9 @@ menu {
   width:30%;
 }
 .ktitle{
-  font-size: calc(16px + 6 * ((100vw - 320px) / 680));
   font-size: 3vw;
+  font-weight: bold;
 }
-
 
 
 

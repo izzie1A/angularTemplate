@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CartService } from '../../../services/cart.service';
 
 @Component({
   selector: 'app-task-detail',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskDetailComponent implements OnInit {
 
-  constructor() { }
+  constructor(private cartS : CartService) {
+   }
 
   ngOnInit(): void {
   }
+
+  addToCart(input:any){
+    this.cartS.addToCart(input);
+   }
 
 }

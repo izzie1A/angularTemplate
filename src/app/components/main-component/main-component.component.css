@@ -12,8 +12,8 @@
 
 .package{
     position:fixed;
-    left: 70vw;
-    top: 10vh;
+    right: 5vw;
+    top: 15vh;
     height:25vh;
     width: inherit;
     aspect-ratio: 1/1.61;

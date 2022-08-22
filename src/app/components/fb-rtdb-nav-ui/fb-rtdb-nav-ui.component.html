@@ -5,34 +5,32 @@
 
 
 
-  <div class="kvtable kblock kround" [style.width]="'100vw'">
+  <div class="kflexColumn kcard" >
 
-    <div class="kflex" [style.width]="'100vw'">
-      <div class="test" (click)="goNode('root')">home</div>
-      <div class="test" (click)="NavNode(-1)">back</div>
-      <div class="test">{{this.dir}}</div>
+    <div class="ktable  kblock" >
+      <div class="kflex ">
+        <div class="kclick" (click)="goNode('root')">home</div>
+        <div class="kclick" (click)="NavNode(-1)">back</div>
+      </div>
+      <div class="">{{this.dir}}</div>
     </div>
 
-
-    <div class="" [style.width]="'100vw'">
-
-      <div class="">
-        <div class="ktable" *ngFor="let item of container; index as i;">
-          <div (click)="getNode(item)"><div>{{item.toString()}}</div></div>
-          <div (click)="peekChild(item)">
+      <div class="kflexColumn kblock ">
+        <div class="ktable kblock" *ngFor="let item of container; index as i;">
+          <div class="kclick" (click)="getNode(item)" ><div>{{item.toString()}}</div></div>
+          <div class="kclick" (click)="peekChild(item)">
             <div mat-button *ngIf="containerChild[i].toString()=='[object Object]'">Peek...</div>
-            <div *ngIf="containerChild[i].toString()!='[object Object]'">
-              {{containerChild[i]}}
-            </div>
+            <div *ngIf="containerChild[i].toString()!='[object Object]'">{{containerChild[i]}}</div>
           </div>
         </div>
+
+      <div class=" kblock kcard kround">
+        <div>Detail:</div>
+        <div class=" kbar " *ngFor="let item2 of containerChildDetail; index as i;">{{item2}}</div>
       </div>
 
-      <div class="kcard">
-        <div class="testItem" *ngFor="let item2 of containerChildDetail; index as i;">{{item2}}</div>
-      </div>
+    </div>               
 
-    </div>
-  </div>
+  </div>               
 
 </div>

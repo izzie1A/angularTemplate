@@ -1,28 +1,41 @@
-<mat-card class="file-upload" (change)="upload($event)" [(ngModel)]="file">
-    <h2>File Upload</h2>
-    <button mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()"
-        onchange="console.log(event.target.files)" accept=".png,.jpg">
-        <mat-icon>attach_file</mat-icon>
-    </button>
-    <a>{{ file || "No file uploaded yet."}}</a>
-    <input type="file" class="file-input" style="display:none" [(ngModel)]="file" #fileUpload>
-</mat-card>
+<div>File Upload</div>
+<div class="kflex kblock" (change)="selectUploadFile($event)" [(ngModel)]="file">
+    <div>
+        <input type="file" class="file-input" style="display:none" [(ngModel)]="file" #fileUpload>
+        <a>{{ file || "No file uploaded yet."}}</a>
+    </div>
+    <div class="kflex ">
+        <button mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()"
+            onchange="console.log(event.target.files)" accept=".png,.jpg">
+            <mat-icon>attach_file</mat-icon>
+        </button>
+        <button mat-mini-fab color="primary" class="upload-btn" [(ngModel)]="file" (click)="upload($event)">
+            <mat-icon>upload</mat-icon>
+        </button>
+    </div>
+</div>
 
-<br><br>
 
-<mat-card>
-    <h2>File View</h2>
-    <mat-card class="fileSelectContainer">
+<div class="kcard">
+    <div class="fileSelectContainer">
         <div class="fbImageContainer">
+            <div *ngIf="loading!=true">File View</div>
             <img id="input" class="fbImage" />
+            <img id="input2" class="fbImage" />
+
         </div>
 
-        <mat-card class="fbStoreDirContainer">
-            <mat-radio-group  aria-labelledby="example-radio-group-label" class="fbStoreDirContainer" aria-label="Select an option">
-                <mat-radio-button class="kbutton" value="{{i}}" id="{{file.name}}" *ngFor="let file of childArray ,let i = index" (click)="select(file[0])">
-                    <p>{{file[0]}}</p>
-                </mat-radio-button>
-            </mat-radio-group>
-        </mat-card>
-    </mat-card>
-</mat-card>
+        <div class="kflexColumn">
+            <div class="kbar kclick" id="{{file.name}}" *ngFor="let file of childArray ,let i = index"
+                (click)="select(file[0])">
+                <div>{{file[0]}}</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="kblock kflexColumn">
+<div class="kbar ktable" *ngFor=" let x of fileMetadata| keyvalue">
+    <div class="kbar"> {{x.key}}</div>
+    <div class="kbar">{{x.value}}</div>
+</div>
+</div>

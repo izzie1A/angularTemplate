@@ -1,165 +1,165 @@
-<div >
-<mat-vertical-stepper [linear]="false" #stepper [animationDuration]="'1000'">
+<div>
+    <mat-vertical-stepper [linear]="false" #stepper [animationDuration]="'1000'">
 
-    <mat-step [stepControl]="firstFormGroup">
-        <form [formGroup]="firstFormGroup">
-            <ng-template matStepLabel>
-                <div class="ktitle">What you need to storage</div>
-            </ng-template>
-            <mat-form-field appearance="fill" [style.width]="'50vw'">
-                <mat-label>Select Upload Type</mat-label>
-                <mat-select #type>
-                    <mat-option>None</mat-option>
-                    <mat-option value="Item">Item</mat-option>
-                    <mat-option value="Page">Page</mat-option>
-                    <mat-option value="Block">Block</mat-option>
-                </mat-select>
-            </mat-form-field>
-
-            <p>You selected: {{type.value}}</p>
-
-            <div>
-                <button mat-button matStepperNext (click)="packageSet(0,type.value)">Next</button>
-            </div>
-        </form>
-    </mat-step>
-
-
-
-    <mat-step [stepControl]="secondFormGroup">
-        <form [formGroup]="secondFormGroup">
-            <ng-template matStepLabel>What is it called?</ng-template>
-            <p>Name: {{box.value}}</p>
-            <input #box (keyup)="0" [style.width]="'30vw'">
-            <div>
-                <button mat-button matStepperPrevious (click)="packagePop()">Back</button>
-                <button mat-button matStepperNext (click)="packageSet(1,box.value)">Next</button>
-            </div>
-        </form>
-    </mat-step>
-
-    <!--  -->
-
-    <!--  -->
-    <mat-step [stepControl]="secondFormGroup">
-        <form [formGroup]="secondFormGroup">
-            <ng-template matStepLabel>Enter Your Contact Detail</ng-template>
-            <div class="kvflex" [style.width]="'40vw'">
-                <!-- contact  -->
-                <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>Name</mat-label>
-                    <input matInput placeholder="Ex. Lee mud mud" value="" #name>
+        <mat-step [stepControl]="firstFormGroup">
+            <form [formGroup]="firstFormGroup">
+                <ng-template matStepLabel>
+                    <div class="ktitle">What you need to storage</div>
+                </ng-template>
+                <mat-form-field appearance="fill" [style.width]="'50vw'">
+                    <mat-label>Select Upload Type</mat-label>
+                    <mat-select #type>
+                        <mat-option>None</mat-option>
+                        <mat-option value="Item">Item</mat-option>
+                        <mat-option value="Page">Page</mat-option>
+                        <mat-option value="Block">Block</mat-option>
+                    </mat-select>
                 </mat-form-field>
-                <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>Email</mat-label>
-                    <input matInput placeholder="Ex. xxx@xxx.com" value="" #email>
-                </mat-form-field>
-                <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>Phone number</mat-label>
-                    <input matInput placeholder="Ex. xxx-xxx" value="" #pnum>
-                </mat-form-field>
-            </div>
 
-            <div>
-                <button mat-button matStepperPrevious>Back</button>
-                <button mat-button matStepperNext
-                    (click)="packageSet(2,[name.value,email.value,pnum.value])">Next</button>
-            </div>
+                <p>You selected: {{type.value}}</p>
 
-        </form>
-    </mat-step>
-    <!--  -->
-    <!--  -->
-    <!--  -->
-    <mat-step [stepControl]="secondFormGroup">
-        <button mat-mini-fab color="primary" class="upload-btn" (click)="addHero('nullHero')">
-            <mat-icon>add</mat-icon>
-        </button>
-        <form [formGroup]="secondFormGroup">
-            <ul>
-                <li *ngFor="let hero of heroes, index as j">
-                    {{hero}}
-                    <input #newHero id="heroChild'{{j}}'" (keyup.enter)="setHero(j,newHero.value)"
-                        (blur)="setHero(j,newHero.value); newHero.value='' ">
-                </li>
-            </ul>
-        </form>
-        <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext (click)="packageSet(3,heroes)">Next</button>
-        </div>
-
-    </mat-step>
-    <!--  -->
-    <!--  -->
+                <div>
+                    <button mat-button matStepperNext (click)="packageSet(0,type.value)">Next</button>
+                </div>
+            </form>
+        </mat-step>
 
 
-    <mat-step [stepControl]="secondFormGroup">
-        <form [formGroup]="secondFormGroup">
-            <ng-template matStepLabel>What does it store?</ng-template>
-            <!-- for input box -->
-            <div *ngFor="let x of content; index as i" id="'content-'{{x}}" [style]="'display:flex;'">
-                <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>Optional Deatil</mat-label>
-                    <input matInput placeholder="Ex. Lee mud mud" value="">
-                </mat-form-field>
-                <button mat-mini-fab color="primary" (click)="packageContentRemove(i)">
-                    <mat-icon>delete</mat-icon>
-                </button>
-            </div>
 
-            <button mat-mini-fab color="primary" class="upload-btn" (click)="packageContentPush()">
+        <mat-step [stepControl]="secondFormGroup">
+            <form [formGroup]="secondFormGroup">
+                <ng-template matStepLabel>What is it called?</ng-template>
+                <p>Name: {{box.value}}</p>
+                <input #box (keyup)="0" [style.width]="'30vw'">
+                <div>
+                    <button mat-button matStepperPrevious (click)="packagePop()">Back</button>
+                    <button mat-button matStepperNext (click)="packageSet(1,box.value)">Next</button>
+                </div>
+            </form>
+        </mat-step>
+
+        <!--  -->
+
+        <!--  -->
+        <mat-step [stepControl]="secondFormGroup">
+            <form [formGroup]="secondFormGroup">
+                <ng-template matStepLabel>Enter Your Contact Detail</ng-template>
+                <div class="kvflex" [style.width]="'40vw'">
+                    <!-- contact  -->
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Name</mat-label>
+                        <input matInput placeholder="Ex. Lee mud mud" value="" #name>
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Email</mat-label>
+                        <input matInput placeholder="Ex. xxx@xxx.com" value="" #email>
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Phone number</mat-label>
+                        <input matInput placeholder="Ex. xxx-xxx" value="" #pnum>
+                    </mat-form-field>
+                </div>
+
+                <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button matStepperNext
+                        (click)="packageSet(2,[name.value,email.value,pnum.value])">Next</button>
+                </div>
+
+            </form>
+        </mat-step>
+        <!--  -->
+        <!--  -->
+        <!--  -->
+        <mat-step [stepControl]="secondFormGroup">
+            <button mat-mini-fab color="primary" class="upload-btn" (click)="addHero('nullHero')">
                 <mat-icon>add</mat-icon>
             </button>
-            <!--  -->
-
-
+            <form [formGroup]="secondFormGroup">
+                <ul>
+                    <li *ngFor="let hero of heroes, index as j">
+                        {{hero}}
+                        <input #newHero id="heroChild'{{j}}'" (keyup.enter)="setHero(j,newHero.value)"
+                            (blur)="setHero(j,newHero.value); newHero.value='' ">
+                    </li>
+                </ul>
+            </form>
             <div>
                 <button mat-button matStepperPrevious>Back</button>
-                <button mat-button matStepperNext (click)="packageSet(4,this.content)">Next</button>
+                <button mat-button matStepperNext (click)="packageSet(3,heroes)">Next</button>
             </div>
 
-        </form>
-    </mat-step>
+        </mat-step>
+        <!--  -->
+        <!--  -->
 
 
-    <mat-step [stepControl]="secondFormGroup">
-        <form [formGroup]="secondFormGroup">
-            <ng-template matStepLabel>Summary</ng-template>
-            <div *ngFor="let list of package">
-                <li>{{list}}</li>
-                <input value="{{list}}">
-            </div>
+        <mat-step [stepControl]="secondFormGroup">
+            <form [formGroup]="secondFormGroup">
+                <ng-template matStepLabel>What does it store?</ng-template>
+                <!-- for input box -->
+                <div *ngFor="let x of content; index as i" id="'content-'{{x}}" [style]="'display:flex;'">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Optional Deatil</mat-label>
+                        <input matInput placeholder="Ex. Lee mud mud" value="">
+                    </mat-form-field>
+                    <button mat-mini-fab color="primary" (click)="packageContentRemove(i)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
+
+                <button mat-mini-fab color="primary" class="upload-btn" (click)="packageContentPush()">
+                    <mat-icon>add</mat-icon>
+                </button>
+                <!--  -->
+
+
+                <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button matStepperNext (click)="packageSet(4,this.content)">Next</button>
+                </div>
+
+            </form>
+        </mat-step>
+
+
+        <mat-step [stepControl]="secondFormGroup">
+            <form [formGroup]="secondFormGroup">
+                <ng-template matStepLabel>Summary</ng-template>
+                <div *ngFor="let list of package">
+                    <li>{{list}}</li>
+                    <input value="{{list}}">
+                </div>
+                <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button matStepperNext>Next</button>
+                </div>
+            </form>
+        </mat-step>
+
+
+        <mat-step>
+            <ng-template matStepLabel>Done</ng-template>
+            You are now done. Please click upload to save.
             <div>
+                <button mat-button (click)="uploadStepper()">Upload</button>
                 <button mat-button matStepperPrevious>Back</button>
-                <button mat-button matStepperNext>Next</button>
+                <button mat-button (click)="stepper.reset()">Reset</button>
             </div>
-        </form>
-    </mat-step>
+        </mat-step>
 
 
-    <mat-step>
-        <ng-template matStepLabel>Done</ng-template>
-        You are now done. Please click upload to save.
-        <div>
-            <button mat-button (click)="uploadStepper()">Upload</button>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button (click)="stepper.reset()">Reset</button>
+    </mat-vertical-stepper>
+
+
+    <div class=" package kcard kround kblock" [style.z-index]="2">
+        <div *ngFor="let contents of package">
+            <div >{{contents}}</div>
+            <div *ngIf="contents[0]!=0">
+                <div *ngFor="let contentItem of contents">{{contentItem}}</div>
+            </div>
         </div>
-    </mat-step>
-
-
-</mat-vertical-stepper>
-
-
-<div class=" package kcard kround kblock" [style.z-index]="2">
-    <li *ngFor="let contents of package">
-    <div>{{contents}}</div>
-        <div *ngIf="contents[0]!=0">
-            <div *ngFor="let contentItem of contents">{{contentItem}}</div>
-        </div>
-    </li>
-</div>
+    </div>
 </div>
 <!-- 
 <div class="btnContainer">
