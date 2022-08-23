@@ -66,7 +66,7 @@ import { ImgSlideshowComponent } from './components/img-slideshow/img-slideshow.
 import { TaskGridComponent } from './components/fb-cloudstorare-ui/task-grid/task-grid.component';
 import { TaskDetailComponent } from './components/fb-cloudstorare-ui/task-detail/task-detail.component';
 import { FbStorageUiComponent } from './components/fb-storage-ui/fb-storage-ui.component';
-import { CartComponent } from './component/cart/cart.component';
+import { CartComponent } from './components/cart/cart.component';
 // component
 
 
