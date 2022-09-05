@@ -3,6 +3,8 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { FirebaseCloudstoreService } from '../../services/firebase-cloudstore.service';
+
 
 
 interface Food {
@@ -17,11 +19,19 @@ interface Food {
   styleUrls: ['menu.component.css'],
 })
 export class MenuComponent {
+  t:any
+  test:any[]
   foods: Food[] = [
     {value: 'rtdb-0', viewValue: 'realtime Database'},
     {value: 'pizza-1', viewValue: 'firebase cloudtore'},
   ];
-  constructor(private dialog: MatDialog, private store: AngularFirestore) {
+  constructor(private dialog: MatDialog, private store: FirebaseCloudstoreService) {
+    this.test = [1,2,3,4,5];
+    this.test = store.holder;
+  }
+
+  write(){
+    
   }
 
 

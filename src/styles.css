@@ -75,8 +75,6 @@ menu {
 
 /* custom */
 .kround {
-  height: 100%;
-  width: 100%;
   border-radius: 1vmin                 ;
 }
 .kcard{
@@ -112,6 +110,11 @@ menu {
   display: flex;
   font-size: 40%;
   justify-content: space-around;
+}
+.kcenterDeatil{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 .kbutton {
   font-size: 2vmin;
@@ -155,8 +158,8 @@ menu {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  padding:0.25%;
-  margin:0.25%;
+  padding:0.5%;
+  margin:0.5%;
   box-shadow:var(--shadowMin);
 
 }

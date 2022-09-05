@@ -1,5 +1,31 @@
-<div class="kcard">
-    <p>Shopping Cart</p>
-    <div *ngFor="let x of cartHolder">{{x}}</div>
-    <div class="kbutton kround ">checkout</div>
+<div class="kround">
+    <div class="ktitle">Shopping Cart</div>
+    <div class="kround kcard">
+        <div class="kbar ktable" *ngFor="let x of cartHolder">
+            <div class="kbar">{{x}}</div>
+            <div class="ktable">
+                <div class="kclick kround">edit</div>
+                <div class="kclick kround">delete</div>
+            </div>
+        </div>
+    </div>
+    <div class="  kcenterDeatil ktitle kclick kround">Checkout</div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
