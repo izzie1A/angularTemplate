@@ -74,8 +74,11 @@ menu {
 
 
 /* custom */
+.kfullRound{
+  border-radius: 60px;
+}
 .kround {
-  border-radius: 1vmin                 ;
+  border-radius: 1vmin;
 }
 .kcard{
   overflow: hidden;
@@ -100,7 +103,7 @@ menu {
   box-shadow:var(--shadow2);
 }
 
-.kratioh{aspect-ratio: 1.61/1;}
+.kratioh{aspect-ratio: 1.61/1; overflow-x:scroll;}
 .kratiov{aspect-ratio: 1/1.61;}
 
 
@@ -145,7 +148,7 @@ menu {
   -webkit-appearance: button;
   appearance: button;
   background-color: transparent;
-  background-image: linear-gradient(to bottom, var(--bg-primary), var(--white));
+  /* background-image: linear-gradient(to bottom, var(--bg-primary), var(--white)); */
   border: 0 solid #e5e7eb;
   box-sizing: border-box;
   color: #482307;
@@ -160,7 +163,7 @@ menu {
   touch-action: manipulation;
   padding:0.5%;
   margin:0.5%;
-  box-shadow:var(--shadowMin);
+  box-shadow:var(--shadow2);
 
 }
 .kclick:active {
@@ -213,7 +216,7 @@ menu {
 }
 .kgrid{
   display: grid;
-  grid-template-columns: 25% 25% 25%;
+  grid-template-columns: 30% 30% 30%;
   justify-content: space-evenly;
   overflow: hidden;
 }

@@ -38,7 +38,35 @@
             </form>
         </mat-step>
 
-        <!--  -->
+
+
+
+
+        <mat-step [stepControl]="secondFormGroup">
+            <form [formGroup]="secondFormGroup">
+                <ng-template matStepLabel>What does it store?</ng-template>
+                <!-- for input box -->
+            <div class="kcard">
+
+                <div class="kbar ktable" *ngFor="let x of content; index as i" id="'content-'{{x}}" >
+                    <input matInput placeholder="Ex. Lee mud mud" value="">
+                    <button mat-fab color="primary" (click)="packageContentRemove(i)"><mat-icon>delete</mat-icon></button>
+                </div>
+            </div>
+
+                <button mat-mini-fab color="primary" class="kcenterDeatil" (click)="packageContentPush()">
+                    <mat-icon>add</mat-icon>
+                </button>
+                <!--  -->
+
+
+                <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button matStepperNext (click)="packageSet(4,this.content)">Next</button>
+                </div>
+
+            </form>
+        </mat-step>
 
         <!--  -->
         <mat-step [stepControl]="secondFormGroup">
@@ -69,59 +97,6 @@
             </form>
         </mat-step>
         <!--  -->
-        <!--  -->
-        <!--  -->
-        <mat-step [stepControl]="secondFormGroup">
-            <button mat-mini-fab color="primary" class="upload-btn" (click)="addHero('nullHero')">
-                <mat-icon>add</mat-icon>
-            </button>
-            <form [formGroup]="secondFormGroup">
-                <ul>
-                    <li *ngFor="let hero of heroes, index as j">
-                        {{hero}}
-                        <input #newHero id="heroChild'{{j}}'" (keyup.enter)="setHero(j,newHero.value)"
-                            (blur)="setHero(j,newHero.value); newHero.value='' ">
-                    </li>
-                </ul>
-            </form>
-            <div>
-                <button mat-button matStepperPrevious>Back</button>
-                <button mat-button matStepperNext (click)="packageSet(3,heroes)">Next</button>
-            </div>
-
-        </mat-step>
-        <!--  -->
-        <!--  -->
-
-
-        <mat-step [stepControl]="secondFormGroup">
-            <form [formGroup]="secondFormGroup">
-                <ng-template matStepLabel>What does it store?</ng-template>
-                <!-- for input box -->
-                <div *ngFor="let x of content; index as i" id="'content-'{{x}}" [style]="'display:flex;'">
-                    <mat-form-field class="example-full-width" appearance="fill">
-                        <mat-label>Optional Deatil</mat-label>
-                        <input matInput placeholder="Ex. Lee mud mud" value="">
-                    </mat-form-field>
-                    <button mat-mini-fab color="primary" (click)="packageContentRemove(i)">
-                        <mat-icon>delete</mat-icon>
-                    </button>
-                </div>
-
-                <button mat-mini-fab color="primary" class="upload-btn" (click)="packageContentPush()">
-                    <mat-icon>add</mat-icon>
-                </button>
-                <!--  -->
-
-
-                <div>
-                    <button mat-button matStepperPrevious>Back</button>
-                    <button mat-button matStepperNext (click)="packageSet(4,this.content)">Next</button>
-                </div>
-
-            </form>
-        </mat-step>
-
 
         <mat-step [stepControl]="secondFormGroup">
             <form [formGroup]="secondFormGroup">
@@ -136,6 +111,8 @@
                 </div>
             </form>
         </mat-step>
+
+        
 
 
         <mat-step>
@@ -152,14 +129,7 @@
     </mat-vertical-stepper>
 
 
-    <div class=" package kcard kround kblock" [style.z-index]="2">
-        <div *ngFor="let contents of package">
-            <div >{{contents}}</div>
-            <div *ngIf="contents[0]!=0">
-                <div *ngFor="let contentItem of contents">{{contentItem}}</div>
-            </div>
-        </div>
-    </div>
+
 </div>
 <!-- 
 <div class="btnContainer">

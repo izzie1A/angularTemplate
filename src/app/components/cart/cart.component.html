@@ -1,31 +1,18 @@
 <div class="kround">
     <div class="ktitle">Shopping Cart</div>
-    <div class="kround kcard">
+    <div class="kround kcard"  *ngIf="cartHolder.length > 0">
         <div class="kbar ktable" *ngFor="let x of cartHolder">
-            <div class="kbar">{{x}}</div>
+            <div class="">{{x}}</div>
             <div class="ktable">
-                <div class="kclick kround">edit</div>
-                <div class="kclick kround">delete</div>
+                <div class="kclick kround kcenterDeatil">
+                    <span class="material-icons">edit</span>
+                </div>
+                <div class="kclick kround kcenterDeatil">
+                    <span class="material-icons">delete</span>
+                </div>
             </div>
         </div>
     </div>
-    <div class="  kcenterDeatil ktitle kclick kround ">Checkout</div>
+    <div *ngIf="cartHolder.length > 0" class=" kcenterDeatil ktitle kclick kfullRound ">Checkout</div>
+    <div *ngIf="cartHolder.length == 0" class=" kcenterDeatil ktitle- ">Empty cart</div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
