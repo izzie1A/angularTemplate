@@ -1,6 +1,18 @@
 import { Component, OnInit , Output} from '@angular/core';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import {FormBuilder, Validators} from '@angular/forms';
+import { BehaviorSubject, Observable } from 'rxjs';
 import {UploadForm} from '../../interface/uploadForm.model'
+
+const getObservable = (collection: AngularFirestoreCollection<Task>) => {
+  const subject = new BehaviorSubject<Task[]>([]);
+  collection.valueChanges({ idField: 'id' }).subscribe((val: Task[]) => {
+    subject.next(val);
+  });
+  return subject;
+};
+
+
 
 @Component({
   selector: 'app-main-component',
@@ -22,20 +34,10 @@ export class MainComponentComponent implements OnInit {
   t:any = 'none';
   oo:any;
 
-  constructor(private _formBuilder: FormBuilder) {
+  constructor(private _formBuilder: FormBuilder, private store: AngularFirestore) {
   }
 
-  heroes = [''];
-  addHero(newHero: string) {
-    if (newHero) {
-      this.heroes.push(newHero);
-    }
-  }
-  setHero(dir:any,newHero: string) {
-    if (newHero.length!=0) {
-      this.heroes[dir] = newHero;
-    }
-  }
+  todo = getObservable(this.store.collection('todo')) as Observable<Task[]>;
 
   ngOnInit(): void {
   }
@@ -43,9 +45,6 @@ export class MainComponentComponent implements OnInit {
     this.package.push(input);
   }
   packageSet(dir:number, input:any){
-    if (this.heroes[dir]!=null) {
-      this.heroes[dir] = input;
-    }
     this.package.push(input);
   }
   packagePop(){
@@ -59,23 +58,30 @@ export class MainComponentComponent implements OnInit {
     this.content[dir] = input;
     console.log(this.content);
   }
+
+  
   packageContentRemove(input:number){
-    console.log(input);
     if (input > -1) {
       this.content.splice(input, 1);
     }
-    console.log(this.content[input]);
-    console.log(this.content);
   }
+
+  packageContentEdit(input:number){
+  }
+
+
+
   packagePushContent(input:any){
     this.package.push(input);
   }
 
   uploadStepper(){
     alert(this.package)
-  }
+      this.store.collection('TestList').add(this.package);
+    }
 
   myCallbackFunction = (args: any): void => {
     //callback code here
     }
 }
+  

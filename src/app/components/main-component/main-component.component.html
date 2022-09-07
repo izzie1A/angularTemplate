@@ -25,7 +25,6 @@
         </mat-step>
 
 
-
         <mat-step [stepControl]="secondFormGroup">
             <form [formGroup]="secondFormGroup">
                 <ng-template matStepLabel>What is it called?</ng-template>
@@ -39,25 +38,28 @@
         </mat-step>
 
 
-
-
-
         <mat-step [stepControl]="secondFormGroup">
             <form [formGroup]="secondFormGroup">
                 <ng-template matStepLabel>What does it store?</ng-template>
                 <!-- for input box -->
-            <div class="kcard">
-
-                <div class="kbar ktable" *ngFor="let x of content; index as i" id="'content-'{{x}}" >
-                    <input matInput placeholder="Ex. Lee mud mud" value="">
-                    <button mat-fab color="primary" (click)="packageContentRemove(i)"><mat-icon>delete</mat-icon></button>
+                <div class="kcard kround">
+                    <div class=" ktable" *ngFor="let x of content; index as i" id="'content-'{{x}}">
+                        <input placeholder="data..." value="">
+                        <div >
+                            <button class=" kbar" mat-raised-button (click)="packageContentEdit(i)">
+                                <mat-icon>edit</mat-icon>
+                            </button>
+                            <button mat-raised-button color="warn" (click)="packageContentRemove(i)">
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                    <div class=" kblock kcenterDeatil kclick" (click)="packageContentPush()">
+                        <div class="kfullRound">
+                            <mat-icon>add</mat-icon>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-                <button mat-mini-fab color="primary" class="kcenterDeatil" (click)="packageContentPush()">
-                    <mat-icon>add</mat-icon>
-                </button>
-                <!--  -->
 
 
                 <div>
@@ -69,23 +71,22 @@
         </mat-step>
 
         <!--  -->
-        <mat-step [stepControl]="secondFormGroup">
+        <!-- <mat-step [stepControl]="secondFormGroup">
             <form [formGroup]="secondFormGroup">
                 <ng-template matStepLabel>Enter Your Contact Detail</ng-template>
-                <div class="kvflex" [style.width]="'40vw'">
-                    <!-- contact  -->
-                    <mat-form-field class="example-full-width" appearance="fill">
-                        <mat-label>Name</mat-label>
-                        <input matInput placeholder="Ex. Lee mud mud" value="" #name>
-                    </mat-form-field>
-                    <mat-form-field class="example-full-width" appearance="fill">
-                        <mat-label>Email</mat-label>
-                        <input matInput placeholder="Ex. xxx@xxx.com" value="" #email>
-                    </mat-form-field>
-                    <mat-form-field class="example-full-width" appearance="fill">
-                        <mat-label>Phone number</mat-label>
-                        <input matInput placeholder="Ex. xxx-xxx" value="" #pnum>
-                    </mat-form-field>
+                <div class="kcard  kround " >
+                    <div  >
+                        <div class="kblock">Name: {{name.value}}</div>
+                        <input  placeholder="Ex. Lee mud mud" value="" #name (keyup)="0">
+                    </div>
+                    <div>
+                        <div class="kblock">Email: {{email.value}}</div>
+                        <input  placeholder="Ex. Lee mud mud" value="" #email (keyup)="0">
+                    </div>
+                    <div>
+                        <div class="kblock">Phone number: {{pnum.value}}</div>
+                        <input  placeholder="Ex. Lee mud mud" value="" #pnum (keyup)="0">
+                    </div>
                 </div>
 
                 <div>
@@ -95,15 +96,17 @@
                 </div>
 
             </form>
-        </mat-step>
+        </mat-step> -->
         <!--  -->
 
         <mat-step [stepControl]="secondFormGroup">
             <form [formGroup]="secondFormGroup">
                 <ng-template matStepLabel>Summary</ng-template>
-                <div *ngFor="let list of package">
-                    <li>{{list}}</li>
-                    <input value="{{list}}">
+                <div class="kgrid">
+                    <div *ngFor="let list of package">
+                        <li>{{list}}</li>
+                        <input value="{{list}}">
+                    </div>
                 </div>
                 <div>
                     <button mat-button matStepperPrevious>Back</button>
@@ -112,7 +115,7 @@
             </form>
         </mat-step>
 
-        
+
 
 
         <mat-step>
