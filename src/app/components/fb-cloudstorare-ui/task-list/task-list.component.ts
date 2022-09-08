@@ -93,8 +93,5 @@ export class TaskListComponent implements OnInit {
         this.store.collection('todo').add(result.task);
       });
   }
-
-  
-
 }
 
