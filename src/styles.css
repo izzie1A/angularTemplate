@@ -88,10 +88,15 @@ menu {
   padding: 2.5%;
   box-shadow:var(--shadow2);
 }
+.kframe{
+  overflow: hidden;
+  margin: 2.5%;
+  padding: 2.5%;
+}
 .kblock{ 
   min-height:2.5vh;
-  margin-top: 0.1vh;
-  overflow: hidden;
+  margin-top: 0.25vh;
+  overflow-x: scroll;
   background-color: var(--white);
   box-shadow:var(--shadowMin);
 
@@ -105,13 +110,14 @@ menu {
 
 .kratioh{aspect-ratio: 1.61/1; overflow-x:scroll;}
 .kratiov{aspect-ratio: 1/1.61;}
+.kratior{aspect-ratio: 1/1;}
 
 
 /* CSS */
 
 .kcardDeatil{
   display: flex;
-  font-size: 40%;
+  font-size: 3vw;
   justify-content: space-around;
 }
 .kcenterDeatil{
@@ -152,17 +158,18 @@ menu {
   border: 0 solid #e5e7eb;
   box-sizing: border-box;
   color: #482307;
-  column-gap: 1rem;
   cursor: pointer;
-  display: flex;
-  text-align: center;
   text-transform: none;
-  transition: all .1s cubic-bezier(.4, 0, .2, 1);
+  transition: all .2s cubic-bezier(.4, 0, .2, 1);
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  /* 
   padding:0.5%;
+  display: flex;
+  text-align: center;
   margin:0.5%;
+   */
   box-shadow:var(--shadow2);
 
 }
@@ -191,17 +198,7 @@ menu {
   overflow:scroll;
 
 }
-.kflexRow{
-  display: flex;
-  overflow: scroll;
-  padding:0.5%;
-}
-.kflexColumn{
-  display: flex;
-  flex-direction: column;
-  overflow: scroll;
-  padding:0.5%;
-}
+
 .ktable{
   display: grid;
   grid-template-columns: 60% 40%;
@@ -211,7 +208,7 @@ menu {
 .kvtable{
   display: grid;
   grid-template-rows: 20% 80%;
-  justify-content: space-evenly;
+  /* justify-content: space-evenly; */
   overflow-x: scroll;
 }
 .kgrid{
@@ -220,6 +217,14 @@ menu {
   justify-content: space-evenly;
   overflow: hidden;
 }
+.klist{
+  display: grid;
+  grid-template-columns: 40% 60%;
+  justify-content: space-evenly;
+  overflow: hidden;
+
+}
+
 .kimg{
   width: inherit;
 }
@@ -234,7 +239,7 @@ menu {
   width:30%;
 }
 .ktitle{
-  font-size: 3vw;
+  font-size: 4vw;
   font-weight: bold;
 }
 
@@ -267,8 +272,9 @@ html {
 
 /* css debug mode */
 
+/*
 
-/* 
+
 * {
     background-color: rgba(255, 0, 0, .1);
 }
@@ -304,4 +310,5 @@ html {
 * * * * * * * * * {
     background-color: rgba(0, 0, 255, .1);
 } 
+
 */

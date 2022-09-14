@@ -67,6 +67,7 @@ import { TaskGridComponent } from './components/fb-cloudstorare-ui/task-grid/tas
 import { TaskDetailComponent } from './components/fb-cloudstorare-ui/task-detail/task-detail.component';
 import { FbStorageUiComponent } from './components/fb-storage-ui/fb-storage-ui.component';
 import { CartComponent } from './components/cart/cart.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 // component
 
 
@@ -94,6 +95,7 @@ import { CartComponent } from './components/cart/cart.component';
     TaskDetailComponent,
     FbStorageUiComponent,
     CartComponent,
+    CheckoutComponent,
     
   ],
   imports: [

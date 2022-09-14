@@ -9,7 +9,6 @@
     display: flex;
     flex-direction:column;
     justify-content: end;
-    width: inherit;
     padding:0%;
     overflow: scroll;
     background-color: var(--bg-primary);
@@ -35,10 +34,9 @@
 .chatfooter {
     display: grid;
     grid-template-columns: 80% 20%;
-    width: inherit;
     box-shadow:var(--shadow1);
     justify-content:space-evenly;
-    
+    margin: 1%;
 
 }
 .messageBox{

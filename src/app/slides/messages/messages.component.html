@@ -14,9 +14,10 @@
             </mat-select>
         </mat-form-field>
     </mat-toolbar>
-    <div class="chatDeatil">
 
-        <div *ngFor="let chat of chatArray" class="chatMessage  kblock kround">
+    <div class="chatDeatil ">
+        <div *ngIf="chatArray.length < 1" class=" kcenterDeatil kround">empty</div>
+        <div *ngFor="let chat of chatArray" class="chatMessage kcard kround">
             <div *ngIf="chat.fromUsery!=clientId">
                 <div class="chatMessageHeader">
                     <div>From:{{chat.fromUser}}</div>
@@ -25,7 +26,8 @@
                 <div>To:{{chat.toUser}}</div>
                 <div>messages:{{chat.messages}}</div>
             </div>
-            <div *ngIf="chat.fromUsery===clientId">
+
+            <div *ngIf="chat.fromUsery==clientId">
                 <div class="chatMessageHeader">
                     <div>From:{{chat.fromUser}}</div>
                     <div>{{chat.time}}</div>
@@ -39,9 +41,9 @@
 
 
 
-    <div class="chatfooter kround">
+    <div class="chatfooter kfullRound kflex kblock">
         <input class="messageBox" matInput placeholder=" Type message here..." value="" [(ngModel)]="msgBoxInput">
-        <button class="kround" (click)="sendMessage('2', msgBoxInput)">
+        <button class="kfullRound" (click)="sendMessage('2', msgBoxInput)">
             <span class="material-icons">send</span>
         </button>
     </div>

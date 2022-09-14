@@ -1,0 +1,75 @@
+
+<div class="kcard kround">
+    <div class="ktitle"> Delivery Option</div>
+    <div class="kclick kcard kround ">
+        <div class=" kcenterDeatil ktable ktitle">
+            <div>Hong Kong local delivery</div>
+        </div>
+        <div class="kcardDeatil">
+            <div>Location xxx</div>
+            <div>+HKD $999</div>
+        </div>
+    </div>
+    <div class="kclick kcard kround">
+        <div class=" kcenterDeatil ktable ktitle">
+            <div>Hong Kong local delivery</div>
+        </div>
+        <div class="kcardDeatil">
+            <div>Location xxx</div>
+            <div>+HKD $999</div>
+        </div>
+    </div>
+</div>
+
+<div class="kcard kround kratioh kvtable ">
+    <div class="ktitle"> Contact Detail </div>
+    <div class="kvflex">
+        <div>Name</div>
+        <input>
+        <div>Email</div>
+        <input>
+        <div>Phone number</div>
+        <input>
+    </div>
+</div>
+
+<div class="kcard kround kratioh kvtable ">
+    <div class=" ktitle"> Deliver address </div>
+    <div class="kvflex">
+        <div>
+            <div>Address: {{address.value}}</div>
+            <input #address (keyup)="0">
+        </div>
+        <div>
+            <div>Remark: {{remark.value}}</div>
+            <input #remark (keyup)="0">
+        </div>
+    </div>
+</div>
+
+
+<div class="kcard kround kratioh kvflex">
+    <div class=" kframe ktable">
+        <div>Subtotal</div>
+        <div>xxx</div>
+        <div>Delivery fee</div>
+        <div>xxx</div>
+        <div>Total </div>
+        <div>xxx</div>
+    </div>
+    <div class="">
+        <div (click)="checkoutSummitOrder('Cart',69)" class="kframe kcenterDeatil kfullRound kclick ktitle">
+            <div>Payment</div>
+        </div>
+    </div>
+</div>
+
+<div class="kcard kround kratioh">
+    <div class="ktitle">Please select payment method</div>
+    <div class="kcard kround kclick">PayMe</div>
+    <div class="kclick kcard kround ">Bank Transfer</div>
+</div>
+
+<div class="kcard kround kratioh">
+    <div class="ktitle">Summary</div>
+</div>

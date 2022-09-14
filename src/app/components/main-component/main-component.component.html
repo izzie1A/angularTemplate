@@ -43,10 +43,10 @@
                 <ng-template matStepLabel>What does it store?</ng-template>
                 <!-- for input box -->
                 <div class="kcard kround">
-                    <div class=" ktable" *ngFor="let x of content; index as i" id="'content-'{{x}}">
+                    <div class=" kblock ktable kround" *ngFor="let x of content; index as i" id="'content-'{{x}}">
                         <input placeholder="data..." value="">
-                        <div >
-                            <button class=" kbar" mat-raised-button (click)="packageContentEdit(i)">
+                        <div class="ktable">
+                            <button class="kbar" mat-raised-button (click)="packageContentEdit(i)">
                                 <mat-icon>edit</mat-icon>
                             </button>
                             <button mat-raised-button color="warn" (click)="packageContentRemove(i)">
@@ -54,17 +54,17 @@
                             </button>
                         </div>
                     </div>
-                    <div class=" kblock kcenterDeatil kclick" (click)="packageContentPush()">
-                        <div class="kfullRound">
+                    <div class=" kcard kcenterDeatil kclick kfullRound" (click)="packageContentPush()">
+                        <div class="">
                             <mat-icon>add</mat-icon>
                         </div>
                     </div>
-                </div>
+                 </div>
 
 
                 <div>
                     <button mat-button matStepperPrevious>Back</button>
-                    <button mat-button matStepperNext (click)="packageSet(4,this.content)">Next</button>
+                    <button mat-button matStepperNext (click)="packageSet(2,this.content)">Next</button>
                 </div>
 
             </form>
@@ -102,7 +102,7 @@
         <mat-step [stepControl]="secondFormGroup">
             <form [formGroup]="secondFormGroup">
                 <ng-template matStepLabel>Summary</ng-template>
-                <div class="kgrid">
+                <div class="kvflex">
                     <div *ngFor="let list of package">
                         <li>{{list}}</li>
                         <input value="{{list}}">
@@ -123,6 +123,7 @@
             You are now done. Please click upload to save.
             <div>
                 <button mat-button (click)="uploadStepper()">Upload</button>
+                <button mat-button (click)="uploadStepper(69)">69</button>
                 <button mat-button matStepperPrevious>Back</button>
                 <button mat-button (click)="stepper.reset()">Reset</button>
             </div>

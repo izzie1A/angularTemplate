@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 import { MainComponentComponent } from './components/main-component/main-component.component';
 import { HomeComponent } from './slides/home/home.component';
 import { ProfileComponent } from './slides/profile/profile.component';
@@ -9,7 +10,9 @@ import { SettingComponent } from './slides/setting/setting.component';
 
 
 const routes: Routes = [
-  { path: '', component: MainComponentComponent },
+  { path: '', component: CheckoutComponent },
+  { path: 'checkout', component: CheckoutComponent },
+  { path: 'summitForm', component: MainComponentComponent },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: ProfileComponent },
   { path: 'messages', component: MessagesComponent },

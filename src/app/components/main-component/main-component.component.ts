@@ -3,6 +3,8 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/comp
 import {FormBuilder, Validators} from '@angular/forms';
 import { BehaviorSubject, Observable } from 'rxjs';
 import {UploadForm} from '../../interface/uploadForm.model'
+import { FirebaseCloudstoreService } from '../../services/firebase-cloudstore.service';
+
 
 const getObservable = (collection: AngularFirestoreCollection<Task>) => {
   const subject = new BehaviorSubject<Task[]>([]);
@@ -34,10 +36,9 @@ export class MainComponentComponent implements OnInit {
   t:any = 'none';
   oo:any;
 
-  constructor(private _formBuilder: FormBuilder, private store: AngularFirestore) {
+  constructor(private _formBuilder: FormBuilder, private store: FirebaseCloudstoreService) {
   }
 
-  todo = getObservable(this.store.collection('todo')) as Observable<Task[]>;
 
   ngOnInit(): void {
   }
@@ -69,16 +70,15 @@ export class MainComponentComponent implements OnInit {
   packageContentEdit(input:number){
   }
 
-
-
   packagePushContent(input:any){
     this.package.push(input);
   }
-
-  uploadStepper(){
-    alert(this.package)
-      this.store.collection('TestList').add(this.package);
-    }
+  
+  uploadStepper(input?:any){
+    // alert(this.package);
+    // this.store.collection('TestList').add(this.package);
+    this.store.write('/uploadStorage','testname', input);
+  }
 
   myCallbackFunction = (args: any): void => {
     //callback code here
