@@ -1,18 +1,24 @@
-<div class="kround">
+<div *ngIf="auth.user$!!" class="kround kcard">
     <div class="ktitle">Shopping Cart</div>
-    <div class="kround kcard"  *ngIf="cartHolder.length > 0">
-        <div class="kbar ktable" *ngFor="let x of cartHolder">
-            <div class="">{{x}}</div>
+    <button class="" (click)="test()">demoAdd</button>
+    <div class="kround kcard">
+        <div class="kcard ktable" *ngFor="let x of items | async">
+            <div class="">
+                {{x.item}}
+                <div class="">{{x.id}}</div>
+            </div>
             <div class="ktable">
-                <div class="kclick kround kcenterDeatil">
+                <div class="kclick kcenterDeatil">
                     <span class="material-icons">edit</span>
                 </div>
-                <div class="kclick kround kcenterDeatil">
+                <div (click)="delete(x.id)" class="kclick kcenterDeatil">
                     <span class="material-icons">delete</span>
                 </div>
             </div>
         </div>
     </div>
-    <div *ngIf="cartHolder.length > 0" class=" kcenterDeatil ktitle kclick kfullRound ">Checkout</div>
-    <div *ngIf="cartHolder.length == 0" class=" kcenterDeatil ktitle- ">Empty cart</div>
+    <div *ngIf="items == null" class=" kcenterDeatil ktitle ">Empty cart</div>
+    <div *ngIf="auth.user$!!" routerLink="/checkout" class="kframe kcenterDeatil kfullRound kclick ktitle">
+        <div>Checkout</div>
+    </div>
 </div>

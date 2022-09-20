@@ -1,24 +1,32 @@
 import { Injectable } from '@angular/core';
 import { getDatabase } from 'firebase/database';
-import { collection, doc, setDoc, Firestore, onSnapshot } from "firebase/firestore";
+import { collection, doc, setDoc, Firestore, onSnapshot, getDocs } from "firebase/firestore";
 import { Observable } from 'rxjs/internal/Observable';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { BehaviorSubject } from 'rxjs';
+import { ContentObserver } from '@angular/cdk/observers';
 
 interface Item {
   name: string,
-  content:any,
+  content: any,
 };
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirebaseCloudstoreService {
+  collection(arg0: string): AngularFirestoreCollection<Task> {
+    throw new Error('Method not implemented.');
+  }
   holder: any;
+  todo = getObservable(this.store.collection('todo')) as Observable<Task[]>;
 
   constructor(private store: AngularFirestore) {
-    this.store.collection("storage/public/cities").doc("LA").set({
-      name: "Los Angele2s",
+  }
+
+  async write(dir: string, name: string, input: any) {
+    this.store.collection(dir).doc(name).set({
+      name: "LoSSs ",
       state: "CA",
       country: "USA"
     })
@@ -30,33 +38,46 @@ export class FirebaseCloudstoreService {
       });
   }
 
-  write(dir: string, name: string, input: any) {
-    this.store.collection(dir).doc(name).set({
-      name: "Los Angele2s",
-      state: "CA",
-      country: "USA"
+  async update(dir: string, name: string, input: any) {
+    return this.store.collection(dir).doc(name).update({
+      capital: true
     })
       .then(() => {
-        console.log("Document successfully written!");
+        console.log("Document successfully updated!");
       })
       .catch((error) => {
-        console.error("Error writing document: ", error);
+        // The document probably doesn't exist.
+        console.error("Error updating document: ", error);
       });
-  }
+  };
+
+  async add(dir: string, input: any) {
+    return this.store.collection(dir).add(input)
+      .then(() => {
+        console.log("Document successfully updated!");
+      })
+      .catch((error) => {
+        // The document probably doesn't exist.
+        console.error("Error updating document: ", error);
+      });
+  };
 
   read(dir: string, input: any) {
-    this.store.collection(dir).doc(input).set(input.value).catch((error) => {
-      console.error(error);
-    })
-  }
-
+    return getObservable(this.store.collection(dir)) as Observable<Task[]>;
+  };
 
   read2(dir: string, input: any) {
-    let todo = getObservable(this.store.collection('todo')) as Observable<Task[]>;
+    return getObservable(this.store.collection('items', ref => ref.where('size', '==', 'large'))) as Observable<Task[]>;
+  };
+
+  delete(dir:string,item:string){
+    this.store.collection(dir).doc(item).delete().then((x) => {
+        console.log("Document successfully deleted!",x);
+    }).catch((error) => {
+        console.error("Error removing document: ", error);
+    });
+    return  
   }
-
-
-
 
 }
 

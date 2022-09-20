@@ -1,41 +1,51 @@
-<div>File Upload</div>
-<div class="kflex kblock" (change)="selectUploadFile($event)" [(ngModel)]="file">
-    <div>
-        <input type="file" class="file-input" style="display:none" [(ngModel)]="file" #fileUpload>
-        <a>{{ file || "No file uploaded yet."}}</a>
-    </div>
-    <div class="kflex ">
-        <button mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()"
-            onchange="console.log(event.target.files)" accept=".png,.jpg">
-            <mat-icon>attach_file</mat-icon>
-        </button>
-        <button mat-mini-fab color="primary" class="upload-btn" [(ngModel)]="file" (click)="upload($event)">
-            <mat-icon>upload</mat-icon>
-        </button>
-    </div>
-</div>
+<div class="kcard kround ">
+    <div class="kflex ktable " (change)="selectUploadFile($event)" [(ngModel)]="file">
+        <div class="ktitle kindent">File Upload</div>
+        <div class="ktable">
 
-
-<div class="kcard">
-    <div class="fileSelectContainer">
-        <div class="fbImageContainer">
-            <div *ngIf="loading!=true">File View</div>
-            <img id="input" class="fbImage" />
-            <img id="input2" class="fbImage" />
-
-        </div>
-
-        <div class="kflexColumn">
-            <div class="kbar kclick" id="{{file.name}}" *ngFor="let file of childArray ,let i = index"
-                (click)="select(file[0])">
-                <div>{{file[0]}}</div>
+            <input type="file" class="file-input" style="display:none" [(ngModel)]="file" #fileUpload>
+            <div class="kbar kcenterDeatil">{{ file || "No file uploaded yet."}}</div>
+            <div class="kvflex ">
+                <button mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()"
+                    onchange="console.log(event.target.files)" accept=".png,.jpg">
+                    <mat-icon>attach_file</mat-icon>
+                </button>
+                <button *ngIf="fileHolder == undefined" mat-mini-fab disabled class="upload-btn" [(ngModel)]="file" (click)="upload($event)">
+                    <mat-icon>upload</mat-icon>
+                </button>
+                <button *ngIf="fileHolder" mat-mini-fab color="primary" class="upload-btn" [(ngModel)]="file" (click)="upload($event)">
+                    <mat-icon>upload</mat-icon>
+                </button>
             </div>
         </div>
     </div>
 </div>
-<div class="kblock kflexColumn">
-<div class="kbar ktable" *ngFor=" let x of fileMetadata| keyvalue">
-    <div class="kbar"> {{x.key}}</div>
-    <div class="kbar">{{x.value}}</div>
-</div>
+
+
+<div class="kcard kround kratiov">
+    <div class=" kcard ktable kratioh">
+
+        <div class="kblock kround kcenterDeatil">
+            <img id="input" class="fbImage" />
+            <img id="input2" class="fbImage" />
+        </div>
+
+        <div class="  ">
+            <div class="kbar ktable " id="{{file.name}}" *ngFor="let file of childArray ,let i = index" >
+                <div class="kbar kclick kindent " (click)="select(file[0])">{{file[0]}}</div>
+                <div class="kclick kcenterDeatil" (click)="deleteFile(file[0])">
+                    <span class="material-icons">delete</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="kcard kratiov">
+        <div class="ktitle">File detail:</div>
+        <div class="klist" *ngFor=" let x of fileMetadata| keyvalue">
+            <div class="kbar kindent"> {{x.key}}</div>
+            <div class="kbar kindent">{{x.value}}</div>
+        </div>
+    </div>
+
 </div>
