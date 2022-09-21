@@ -253,6 +253,10 @@ menu {
 .kround {
   border-radius: 1vmin;
 }
+.kfixSize {
+  min-width: 50px;
+  width: 10vw;
+}
 
 
 

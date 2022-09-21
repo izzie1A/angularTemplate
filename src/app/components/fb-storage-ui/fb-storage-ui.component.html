@@ -25,18 +25,18 @@
 <div class="kcard kround kratiov">
     <div class=" kcard ktable kratioh">
 
-        <div class="kblock kround kcenterDeatil">
-            <img id="input" class="fbImage" />
-            <img id="input2" class="fbImage" />
-        </div>
-
-        <div class="  ">
+        <div class=" kblock ">
             <div class="kbar ktable " id="{{file.name}}" *ngFor="let file of childArray ,let i = index" >
                 <div class="kbar kclick kindent " (click)="select(file[0])">{{file[0]}}</div>
                 <div class="kclick kcenterDeatil" (click)="deleteFile(file[0])">
                     <span class="material-icons">delete</span>
                 </div>
             </div>
+        </div>
+
+        <div class="kblock kround kcenterDeatil">
+            <img id="input" class="fbImage" />
+            <img id="input2" class="fbImage" />
         </div>
     </div>
 
