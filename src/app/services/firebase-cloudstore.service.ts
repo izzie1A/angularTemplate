@@ -38,6 +38,16 @@ export class FirebaseCloudstoreService {
       });
   }
 
+  async write2(refDir: string, input: any) {
+    return await this.store.collection(refDir).doc(input.name).set(input)
+      .then(() => {
+        console.log("Document successfully written!");
+      })
+      .catch((error) => {
+        console.error("Error writing document: ", error);
+      });
+  }
+
   async update(dir: string, name: string, input: any) {
     return this.store.collection(dir).doc(name).update({
       capital: true

@@ -30,7 +30,7 @@ export class FbStorageUiComponent implements OnInit {
   percentage?: Observable<number>;
   snapshot?: Observable<any>;
   downloadURL?: string;
-  fileMetadata?: any; 
+  fileMetadata?: any;
 
   // Variable to store shortLink from api response
   shortLink: string = "";
@@ -39,44 +39,54 @@ export class FbStorageUiComponent implements OnInit {
   file: File | undefined; // Variable to store file
   fileHolder: File | undefined; // Variable to store file
 
-  constructor(private firebaseStorageService: FirebaseStorageService,private firebasecloudService: FirebaseCloudstoreService) {
-    this.readRoot('');  
+  constructor(private firebaseStorageService: FirebaseStorageService, private firebasecloudService: FirebaseCloudstoreService) {
+    this.readRoot('');
     this.childArray = [];
     this.fileHolder = undefined;
   }
 
 
   ngOnInit(): void {
-    
+
   }
 
-  async upload(input:any){
+  async upload(input: any) {
     this.loading = true;
-    await this.firebaseStorageService.uploadFile('root/user/test/image/'+this.file,this.fileHolder).then((snapshot)=>{
+    await this.firebaseStorageService.uploadFile('root/user/test/image/', this.fileHolder).then((snapshot) => {
       console.log(snapshot);
-      this.childArray=[];
+      this.childArray = [];
       this.readRoot('');
-      this.firebasecloudService.write('root/user/test/image','name','');
     });
     this.loading = false;
-    
+
   }
-  selectUploadFile(input:any){
-    this.select(input.target.files[0].name);
-    this.fileHolder=input.target.files[0];
+  async selectUploadFile(input: any) {
+    this.fileHolder = input.target.files[0];
   }
 
-  async deleteFile(dir:any){
+  async select(input: any) {
+    console.log(input);
+    let x = await this.firebaseStorageService.readFile('root/user/test/image/' + input);
+    const img = document.getElementById('input');
+    img!.setAttribute('src', x);
+    await this.firebaseStorageService.readFileMetadata('root/user/test/image/' + input).then((output) => {
+        this.fileMetadata = output;
+        console.log(this.fileMetadata)
+        this.readRoot('');
+      }
+    )
+  };
+
+  async deleteFile(dir: any) {
     console.log(dir);
-    console.log('root/user/test/image/'+dir);
-    await this.firebaseStorageService.delete('root/user/test/image/'+dir).then(()=>{
-      this.childArray=[];
+    console.log('root/user/test/image/' + dir);
+    await this.firebaseStorageService.delete('root/user/test/image/' + dir).then(() => {
+      this.childArray = [];
       this.readRoot('');
     });
+  };
 
-  }
-
-  async readRoot(input:string){
+  async readRoot(input: string) {
     const storage = getStorage();
     const rootRef = ref(storage, 'root/user/test/image/');
     // Find all the prefixes and items.
@@ -93,15 +103,5 @@ export class FbStorageUiComponent implements OnInit {
     //     // Uh-oh, an error occurred!
     //   });
     console.log(this.childArray);
-  }
-
-  async select(input:any){
-    console.log(input);
-    let x = await this.firebaseStorageService.readFile('root/user/test/image/'+input);
-    const img = document.getElementById('input');
-    img!.setAttribute('src', x);
-    let y = await this.firebaseStorageService.readFileMetadata('root/user/test/image/'+input);
-    this.fileMetadata=y;
-  }
-
- }
+  };
+}

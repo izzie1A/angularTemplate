@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { deleteObject, getDownloadURL, getMetadata, getStorage, listAll, ref, uploadBytes, uploadBytesResumable } from "firebase/storage";
+import { FirebaseCloudstoreService } from "src/app/services/firebase-cloudstore.service";
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ import { deleteObject, getDownloadURL, getMetadata, getStorage, listAll, ref, up
 export class FirebaseStorageService {
   storage: any;
   childArray: any;
-  constructor() {
+  constructor(private fcloud: FirebaseCloudstoreService) {
 
   };
 
@@ -39,9 +40,9 @@ export class FirebaseStorageService {
   }
 
   async uploadFile(refDir: any, input: any) {
-    let uploadTask = uploadBytesResumable(this.getRef(refDir), input);
-    let x;
-    await uploadTask.on('state_changed', (snapshot) => {
+    alert(refDir)
+    let uploadTask = uploadBytesResumable(this.getRef(refDir+input.name), input);
+    return await uploadTask.on('state_changed', (snapshot) => {
       // Observe state change events such as progress, pause, and resume
       // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
       const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
@@ -54,17 +55,29 @@ export class FirebaseStorageService {
           console.log('Upload is running');
           break;
       }
-    },
-      (error) => {
-        alert(error.message);
-      },
-      () => {
-        // Handle successful uploads on complete
-        // For instance, get the download URL: https://firebasestorage.googleapis.com/...
-        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+    }, (error) => {
+      alert(error.message);
+    }, () => {
+      // Handle successful uploads on complete
+      // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+       getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+        alert(refDir + downloadURL);
+        console.log(uploadTask.snapshot.ref);
+        console.log(input.name);
+        return this.updateCloudstore(refDir+input.name, {
+          url: downloadURL,
+          name: input.name
         });
+      });
       }
     );
+  }
+
+  async updateCloudstore(refDir: string, input: any) {
+    console.log('target '+refDir+' already exists')
+    console.log(input)
+    console.log('input '+input+' already exists')
+    return await this.fcloud.write2(refDir, input);
   }
 
   async readFile(refDir: any) {
@@ -102,10 +115,12 @@ export class FirebaseStorageService {
     const desertRef = ref(storage, refDir);
 
     // Delete the file
-    deleteObject(desertRef).then(() => {
+    return await deleteObject(desertRef).then((output) => {
+      return output
       // File deleted successfully
     }).catch((error) => {
       // Uh-oh, an error occurred!
+      alert(error)
     });
 
   }
