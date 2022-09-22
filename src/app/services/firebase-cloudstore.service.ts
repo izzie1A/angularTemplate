@@ -28,7 +28,7 @@ export class FirebaseCloudstoreService {
     this.store.collection(dir).doc(name).set({
       name: "LoSSs ",
       state: "CA",
-      country: input
+      country: "USA"
     })
       .then(() => {
         console.log("Document successfully written!");
@@ -38,11 +38,10 @@ export class FirebaseCloudstoreService {
       });
   }
 
-  async twrite(dir: string, name: string, input: any) {
-    await this.store.collection(dir).doc(name).set(input)
-      .then((result) => {
+  async write2(refDir: string, input: any) {
+    return await this.store.collection(refDir).doc(input.name).set(input)
+      .then(() => {
         console.log("Document successfully written!");
-        console.log(result);
       })
       .catch((error) => {
         console.error("Error writing document: ", error);
