@@ -74,7 +74,7 @@ export class MainComponentComponent implements OnInit {
     this.package.push(input);
   }
   
-  uploadStepper(input?:any){
+  uploadStepper(input:any){
     // alert(this.package);
     // this.store.collection('TestList').add(this.package);
     this.store.write('/uploadStorage','testname', input);
@@ -82,6 +82,6 @@ export class MainComponentComponent implements OnInit {
 
   myCallbackFunction = (args: any): void => {
     //callback code here
-    }
+  }
 }
   

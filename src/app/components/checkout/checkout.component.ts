@@ -17,7 +17,7 @@ export class CheckoutComponent implements OnInit {
 
   checkoutSummitOrder(dir:string, input:any){
     alert(input);
-    this.store.write(dir,input);
+    this.store.write(dir,dir,input);
   }
 
 }

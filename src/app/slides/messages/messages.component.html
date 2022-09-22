@@ -15,8 +15,8 @@
         </mat-form-field>
     </mat-toolbar>
 
-    <div class="chatDeatil ">
-        <div *ngIf="chatArray.length < 1" class=" kcenterDeatil kround">empty</div>
+    <div *ngIf="chatArray.length < 1" class=" kcenterDeatil kround">Empty</div>
+    <div *ngIf="chatArray.length > 1" class="chatDeatil ">
         <div *ngFor="let chat of chatArray" class="chatMessage kcard kround">
             <div *ngIf="chat.fromUsery!=clientId">
                 <div class="chatMessageHeader">
@@ -43,7 +43,7 @@
 
     <div class="chatfooter kfullRound kflex kblock">
         <input class="messageBox" matInput placeholder=" Type message here..." value="" [(ngModel)]="msgBoxInput">
-        <button class="kfullRound" (click)="sendMessage('2', msgBoxInput)">
+        <button class="kfullRound kclick" (click)="sendMessage('2', msgBoxInput)">
             <span class="material-icons">send</span>
         </button>
     </div>

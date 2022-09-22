@@ -17,10 +17,24 @@ export class FirebaseCloudstoreService {
   holder: any;
 
   constructor(private store: AngularFirestore) {
-    this.store.collection("storage/public/cities").doc("LA").set({
+    // this.store.collection("storage/public/cities").doc("LA").set({
+    //   name: "Los Angele2s",
+    //   state: "CA",
+    //   country: "USA"
+    // })
+    //   .then(() => {
+    //     console.log("Document successfully written!");
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error writing document: ", error);
+    //   });
+  }
+
+  write(dir: string, name: string, input: any) {
+    this.store.collection(dir).doc(name).set({
       name: "Los Angele2s",
       state: "CA",
-      country: "USA"
+      country: input
     })
       .then(() => {
         console.log("Document successfully written!");
@@ -30,14 +44,11 @@ export class FirebaseCloudstoreService {
       });
   }
 
-  write(dir: string, name: string, input: any) {
-    this.store.collection(dir).doc(name).set({
-      name: "Los Angele2s",
-      state: "CA",
-      country: "USA"
-    })
-      .then(() => {
+  async twrite(dir: string, name: string, input: any) {
+    await this.store.collection(dir).doc(name).set(input)
+      .then((result) => {
         console.log("Document successfully written!");
+        console.log(result);
       })
       .catch((error) => {
         console.error("Error writing document: ", error);
@@ -54,9 +65,6 @@ export class FirebaseCloudstoreService {
   read2(dir: string, input: any) {
     let todo = getObservable(this.store.collection('todo')) as Observable<Task[]>;
   }
-
-
-
 
 }
 
