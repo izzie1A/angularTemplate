@@ -7,11 +7,9 @@
     </button>
 </mat-toolbar>
 
-<div class="kflex">
-
-    <div class="kgrid">
-        <div class="kcard">
-            <div>In progress</div>
+<div class="kgrid">
+        <div class=" kblock ">
+            <div>Ready</div>
             <div cdkDropList id="todo" #todoList="cdkDropList" [cdkDropListData]="todo | async"
                 [cdkDropListConnectedTo]="[doneList, inProgressList]" (cdkDropListDropped)="drop($event)" class="list">
 
@@ -23,7 +21,7 @@
         </div>
 
 
-        <div class="kcard">
+        <div class=" kblock">
             <div>In progress</div>
             <div cdkDropList id="inProgress" #inProgressList="cdkDropList" [cdkDropListData]="inProgress | async"
                 [cdkDropListConnectedTo]="[todoList, doneList]" (cdkDropListDropped)="drop($event)" class="list">
@@ -36,7 +34,7 @@
         </div>
 
 
-        <div class="kcard">
+        <div class=" kblock">
             <div>Done</div>
 
             <mat-card cdkDropList id="done" #doneList="cdkDropList" [cdkDropListData]="done | async"
@@ -48,5 +46,4 @@
 
             </mat-card>
         </div>
-    </div>
 </div>

@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
     this.auth.gSignin();
   }
   signout(){
-    console.log("wtf?")
+    console.log("signout")
     this.auth.gSignout();
   }
 

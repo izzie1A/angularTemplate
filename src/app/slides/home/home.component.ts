@@ -27,7 +27,6 @@ export class HomeComponent implements OnInit {
   watchh:any
   todo = getObservable(this.store.collection('todo')) as Observable<Task[]>;
   constructor(private fbrtdbService: FirebaseRtdbService, private store: AngularFirestore) { 
-    this.watch();
   }
 
   ngOnInit(): void {
@@ -49,12 +48,6 @@ export class HomeComponent implements OnInit {
     this.imageSrc="https://picsum.photos/id/"+ipnutInt+"/320/200";
   }
 
-  async watch(){
-    let x = {header:false , type:'header1' }
-    this.fbrtdbService.set('root/page/homepageHeader',x);
-    this.watchh = await this.fbrtdbService.readChildList('root/page');
-    console.log(this.watchh)
-  }
 }
 
 

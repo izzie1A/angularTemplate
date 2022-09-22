@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, RendererFactory2 } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { FirebaseCloudstoreService } from '../../services/firebase-cloudstore.service';
 
@@ -8,6 +8,7 @@ import { FirebaseCloudstoreService } from '../../services/firebase-cloudstore.se
   styleUrls: ['./checkout.component.css']
 })
 export class CheckoutComponent implements OnInit {
+  x:any;
 
   constructor(private store: FirebaseCloudstoreService) {
    }

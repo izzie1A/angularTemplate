@@ -102,7 +102,7 @@
         <mat-step [stepControl]="secondFormGroup">
             <form [formGroup]="secondFormGroup">
                 <ng-template matStepLabel>Summary</ng-template>
-                <div class="kvflex">
+                <div class="kvflex kcard kround">
                     <div *ngFor="let list of package">
                         <li>{{list}}</li>
                         <input value="{{list}}">

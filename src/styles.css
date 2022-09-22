@@ -74,15 +74,9 @@ menu {
 
 
 /* custom */
-.kfullRound{
-  border-radius: 60px;
-}
-.kround {
-  border-radius: 1vmin;
-}
+
 .kcard{
   overflow: hidden;
-  font-size: 3vmin;
   background-color: var(--white);
   margin: 2.5%;
   padding: 2.5%;
@@ -102,10 +96,12 @@ menu {
 
 }
 .kbar{ 
-  min-height:2vh;
+  min-height: 3vw;
+  font-size: 2vh;
   overflow: hidden;
   background-color: var(--white);
   box-shadow:var(--shadow2);
+  margin:0.25%;
 }
 
 .kratioh{aspect-ratio: 1.61/1; overflow-x:scroll;}
@@ -116,8 +112,7 @@ menu {
 /* CSS */
 
 .kcardDeatil{
-  display: flex;
-  font-size: 3vw;
+  font-size: 3vh;
   justify-content: space-around;
 }
 .kcenterDeatil{
@@ -140,12 +135,16 @@ menu {
   -webkit-user-select: none;
   touch-action: manipulation;
   overflow: hidden;
+  top: -5px;
+  left: -5px;
+  transition: all 0.2s cubic-bezier(.4, 0, .2, 1);
   
 }
 .kbutton:active {
+  top: 0px;
+  left: 0px;
   box-shadow: 0px 0px 0px 0px;
-  top: 5px;
-  left: 5px;
+  transition: all 0.2s cubic-bezier(.4, 0, .2, 1);
 }
 .kbutton:focus{
   background-color:var(--white);
@@ -207,7 +206,7 @@ menu {
 }
 .kvtable{
   display: grid;
-  grid-template-rows: 20% 80%;
+  grid-template-rows: 30% 70%;
   /* justify-content: space-evenly; */
   overflow-x: scroll;
 }
@@ -219,9 +218,8 @@ menu {
 }
 .klist{
   display: grid;
-  grid-template-columns: 40% 60%;
-  justify-content: space-evenly;
-  overflow: hidden;
+  grid-template-columns: 30% 70%;
+  overflow-y: scroll;
 
 }
 
@@ -238,11 +236,27 @@ menu {
   border-radius: 50%;
   width:30%;
 }
+.kfonts{
+  font-size: 1vh;
+}
 .ktitle{
-  font-size: 4vw;
+  font-size: 2vh;
   font-weight: bold;
 }
-
+.kindent{
+  padding-left: 1%;
+  padding-top: 0.5%;
+}
+.kfullRound{
+  border-radius: 60px;
+}
+.kround {
+  border-radius: 1vmin;
+}
+.kfixSize {
+  min-width: 50px;
+  width: 10vw;
+}
 
 
 
