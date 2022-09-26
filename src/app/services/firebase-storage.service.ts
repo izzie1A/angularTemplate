@@ -21,7 +21,7 @@ export class FirebaseStorageService {
   }
   async readRoot(input: string) {
     const storage = getStorage();
-    const rootRef = ref(storage, 'root/user/test/image/');
+    const rootRef = ref(storage, 'root/user/public/image/');
     let output: any[] = new Array();
     // Find all the prefixes and items.
     await listAll(rootRef)
@@ -42,6 +42,7 @@ export class FirebaseStorageService {
   async uploadFile(refDir: any, input: any) {
     alert(refDir)
     let uploadTask = uploadBytesResumable(this.getRef(refDir+input.name), input);
+    let url = '';
     return await uploadTask.on('state_changed', (snapshot) => {
       // Observe state change events such as progress, pause, and resume
       // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
@@ -60,14 +61,15 @@ export class FirebaseStorageService {
     }, () => {
       // Handle successful uploads on complete
       // For instance, get the download URL: https://firebasestorage.googleapis.com/...
-       getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-        alert(refDir + downloadURL);
+      return getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+        alert(downloadURL);
         console.log(uploadTask.snapshot.ref);
         console.log(input.name);
-        return this.updateCloudstore(refDir+input.name, {
+        this.updateCloudstore(refDir+input.name, {
+          input: input.name,
           url: downloadURL,
-          name: input.name
         });
+        return downloadURL
       });
       }
     );

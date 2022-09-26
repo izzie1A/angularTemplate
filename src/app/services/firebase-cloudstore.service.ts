@@ -34,11 +34,12 @@ export class FirebaseCloudstoreService {
         console.log("Document successfully written!");
       })
       .catch((error) => {
-        console.error("Error writing document: ", error);
+        console.error("Error writ0ing document: ", error);
       });
   }
 
   async write2(refDir: string, input: any) {
+    // return await this.store.collection(refDir).doc(input.name).set(input)
     return await this.store.collection(refDir).doc(input.name).set(input)
       .then(() => {
         console.log("Document successfully written!");
@@ -62,8 +63,9 @@ export class FirebaseCloudstoreService {
   };
 
   async add(dir: string, input: any) {
-    return this.store.collection(dir).add(input)
-      .then(() => {
+    return await this.store.collection(dir).add(input)
+      .then((snapshot) => {
+        console.log(snapshot);
         console.log("Document successfully updated!");
       })
       .catch((error) => {

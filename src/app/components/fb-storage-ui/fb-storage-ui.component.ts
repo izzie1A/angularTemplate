@@ -4,7 +4,7 @@ import { getApp } from "firebase/app";
 import { FirebaseStorageService } from 'src/app/services/firebase-storage.service';
 import { FirebaseCloudstoreService } from 'src/app/services/firebase-cloudstore.service';
 import { Observable } from 'rxjs';
-
+import { AuthGuard } from '../../services/auth.service';
 export class FileUpload {
   key!: string;
   name!: string;
@@ -39,7 +39,7 @@ export class FbStorageUiComponent implements OnInit {
   file: File | undefined; // Variable to store file
   fileHolder: File | undefined; // Variable to store file
 
-  constructor(private firebaseStorageService: FirebaseStorageService, private firebasecloudService: FirebaseCloudstoreService) {
+  constructor(private auth: AuthGuard, private firebaseStorageService: FirebaseStorageService, private firebasecloudService: FirebaseCloudstoreService) {
     this.readRoot('');
     this.childArray = [];
     this.fileHolder = undefined;
@@ -52,7 +52,8 @@ export class FbStorageUiComponent implements OnInit {
 
   async upload(input: any) {
     this.loading = true;
-    await this.firebaseStorageService.uploadFile('root/user/test/image/', this.fileHolder).then((snapshot) => {
+    // await this.firebaseStorageService.uploadFile('root/user/'+this.auth.user$.uid.toString()+'/image/', this.fileHolder).then((snapshot) => {
+    await this.firebaseStorageService.uploadFile('root/user/public/image/', this.fileHolder).then((snapshot) => {
       console.log(snapshot);
       this.childArray = [];
       this.readRoot('');
@@ -66,10 +67,10 @@ export class FbStorageUiComponent implements OnInit {
 
   async select(input: any) {
     console.log(input);
-    let x = await this.firebaseStorageService.readFile('root/user/test/image/' + input);
+    let x = await this.firebaseStorageService.readFile('root/user/public/image/' + input);
     const img = document.getElementById('input');
     img!.setAttribute('src', x);
-    await this.firebaseStorageService.readFileMetadata('root/user/test/image/' + input).then((output) => {
+    await this.firebaseStorageService.readFileMetadata('root/user/public/image/' + input).then((output) => {
         this.fileMetadata = output;
         console.log(this.fileMetadata)
         this.readRoot('');
@@ -80,28 +81,14 @@ export class FbStorageUiComponent implements OnInit {
   async deleteFile(dir: any) {
     console.log(dir);
     console.log('root/user/test/image/' + dir);
-    await this.firebaseStorageService.delete('root/user/test/image/' + dir).then(() => {
+    await this.firebaseStorageService.delete('root/user/public/image/' + dir).then(() => {
       this.childArray = [];
       this.readRoot('');
     });
   };
 
   async readRoot(input: string) {
-    const storage = getStorage();
-    const rootRef = ref(storage, 'root/user/test/image/');
-    // Find all the prefixes and items.
     this.childArray = await this.firebaseStorageService.readRoot(input);
-    // await listAll(rootRef)
-    //   .then((res) => {
-    //     res.prefixes.forEach((folderRef) => {
-    //       console.log(folderRef.fullPath);
-    //     });
-    //     res.items.forEach(async (itemRef) => {
-    //       this.childArray.push([itemRef.name]);
-    //     });
-    //   }).catch((error) => {
-    //     // Uh-oh, an error occurred!
-    //   });
     console.log(this.childArray);
   };
 }

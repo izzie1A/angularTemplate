@@ -13,11 +13,11 @@
 }
 
 * {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-  -webkit-user-select: none; /* Safari */
-  -ms-user-select: none; /* IE 10 and IE 11 */
-  user-select: none; /* Standard syntax */
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
+  -webkit-user-select: none; 
+  -ms-user-select: none;
+  user-select: none; 
 }
 
 :root {
@@ -76,7 +76,6 @@ menu {
 /* custom */
 
 .kcard{
-  overflow: hidden;
   background-color: var(--white);
   margin: 2.5%;
   padding: 2.5%;
@@ -182,7 +181,11 @@ menu {
 }
 
 /*  */
-
+.kscroll{
+  overflow:scroll;
+  max-width: 100vw;
+  max-height: 100vh;
+}
 .kflex{
   display: flex;
   justify-content: space-evenly;
@@ -192,12 +195,11 @@ menu {
 .kvflex{
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: space-evenly;
   padding:0.5%;
   overflow:scroll;
-
 }
-
 .ktable{
   display: grid;
   grid-template-columns: 60% 40%;
@@ -220,11 +222,12 @@ menu {
   display: grid;
   grid-template-columns: 30% 70%;
   overflow-y: scroll;
-
+  max-height: inherit;
 }
 
 .kimg{
-  width: inherit;
+  width: -webkit-fill-available;
+  border-radius: 1vmin;
 }
 .kiconImg{
   background-image: url("https://scontent-lhr8-1.xx.fbcdn.net/v/t1.6435-9/55944989_850122328671568_426981811499827200_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=lbpb_syRAPIAX8KPNcP&_nc_ht=scontent-lhr8-1.xx&oh=00_AT-lkC-mMlgWyYpze0Wuc3yH8Oewk2QsQr6pKhb5749peg&oe=6324F0E2");
@@ -251,7 +254,7 @@ menu {
   border-radius: 60px;
 }
 .kround {
-  border-radius: 1vmin;
+  border-radius: 2vmin;
 }
 .kfixSize {
   min-width: 50px;

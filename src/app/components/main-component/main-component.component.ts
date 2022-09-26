@@ -1,10 +1,10 @@
-import { Component, OnInit , Output} from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
-import {FormBuilder, Validators} from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { BehaviorSubject, Observable } from 'rxjs';
-import {UploadForm} from '../../interface/uploadForm.model'
-import { FirebaseCloudstoreService } from '../../services/firebase-cloudstore.service';
-
+import { UploadForm } from '../../interface/uploadForm.model'
+import { FirebaseStorageService } from 'src/app/services/firebase-storage.service';
+import { FirebaseCloudstoreService } from 'src/app/services/firebase-cloudstore.service';
 
 const getObservable = (collection: AngularFirestoreCollection<Task>) => {
   const subject = new BehaviorSubject<Task[]>([]);
@@ -13,7 +13,11 @@ const getObservable = (collection: AngularFirestoreCollection<Task>) => {
   });
   return subject;
 };
-
+interface uploadPackage {
+  uid: string,
+  name: string,
+  content: any
+}
 
 
 @Component({
@@ -23,7 +27,7 @@ const getObservable = (collection: AngularFirestoreCollection<Task>) => {
 })
 export class MainComponentComponent implements OnInit {
   @Output() outputFunction: ((args: any) => void) | undefined;
-  @Output() x:any;
+  @Output() x: any;
   firstFormGroup = this._formBuilder.group({
     firstCtrl: ['', Validators.required],
   });
@@ -31,57 +35,91 @@ export class MainComponentComponent implements OnInit {
     secondCtrl: ['', Validators.required],
   });
   isLinear = false;
-  package:any = [];
-  content:any = ['',];
-  t:any = 'none';
-  oo:any;
+  package: uploadPackage;
+  content: any = [[' ', ' ']];
 
-  constructor(private _formBuilder: FormBuilder, private store: FirebaseCloudstoreService) {
+  constructor(private _formBuilder: FormBuilder, private store: FirebaseCloudstoreService, private firebaseStorageService: FirebaseStorageService) {
+    this.package = {
+      uid: "null",
+      name: "null",
+      content: []
+    };
   }
 
 
   ngOnInit(): void {
   }
-  packagePush(input:any){
-    this.package.push(input);
+  onKey(dir: number, event: any, type: string) {
+    if (event.target.value!!) {
+      if (type == 'contentName') {
+        this.content[dir][0] = event.target.value;
+      }  else if (type == 'contentContent' && this.content[dir][0]=='image') {
+        if (event.target.files && event.target.files[0]) {
+          var reader = new FileReader();
+          reader.onload = (event: any) => {
+            this.content[dir][1] = event.target.result;
+          }
+          reader.readAsDataURL(event.target.files[0]);
+        }
+      } else if (type == 'contentContent') {
+        if (event.target.value!!) {
+          this.content[dir][1] = event.target.value;
+        } 
+      }
+    }
   }
-  packageSet(dir:number, input:any){
-    this.package.push(input);
+
+
+
+  packageSet(dir: string, input: any) {
+    switch (dir) {
+      case "uid":
+        this.package.uid = input;
+        break;
+      case "name":
+        this.package.name = input;
+        break;
+      case "content":
+        this.package.content = input;
+        break;
+      default:
+        // 
+        break;
+    }
   }
-  packagePop(){
+  packagePop() {
   }
-  packageContentPush(){
+  packageContentPush() {
     console.log(this.content);
-    this.content.push('nullInput');
+    this.content.push(['', '']);
     console.log(this.content);
   }
-  packageContentSet(dir:number, input:any){
+  packageContentSet(dir: number, input: any) {
     this.content[dir] = input;
     console.log(this.content);
   }
 
-  
-  packageContentRemove(input:number){
+  packageContentRemove(input: number) {
     if (input > -1) {
       this.content.splice(input, 1);
     }
   }
 
-  packageContentEdit(input:number){
+  packageContentEdit(dir: number, input: any) {
+    this.content[dir] = input;
   }
 
-  packagePushContent(input:any){
-    this.package.push(input);
-  }
-  
-  uploadStepper(input:any){
-    // alert(this.package);
-    // this.store.collection('TestList').add(this.package);
-    this.store.write('/uploadStorage','testname', input);
+  async uploadStepper(input: any) {
+    console.log(this.package);
+    for(let x of this.content){
+      if(x[0]=='image'){
+        await this.firebaseStorageService.uploadFile('root/user/public/image/', this.package);
+      }
+    }
+      this.store.add('root/admin/items', this.package);
   }
 
   myCallbackFunction = (args: any): void => {
     //callback code here
   }
 }
-  

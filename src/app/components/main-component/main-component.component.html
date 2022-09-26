@@ -1,6 +1,6 @@
 <div>
     <mat-vertical-stepper [linear]="false" #stepper [animationDuration]="'1000'">
-
+        <!-- select obj type -->
         <mat-step [stepControl]="firstFormGroup">
             <form [formGroup]="firstFormGroup">
                 <ng-template matStepLabel>
@@ -16,37 +16,62 @@
                     </mat-select>
                 </mat-form-field>
 
-                <p>You selected: {{type.value}}</p>
+                <div>You selected: {{type.value}}</div>
 
                 <div>
-                    <button mat-button matStepperNext (click)="packageSet(0,type.value)">Next</button>
+                    <button mat-button matStepperNext (click)="packageSet('name',type.value)">Next</button>
                 </div>
             </form>
         </mat-step>
 
-
+        <!-- select obj name -->
         <mat-step [stepControl]="secondFormGroup">
             <form [formGroup]="secondFormGroup">
                 <ng-template matStepLabel>What is it called?</ng-template>
-                <p>Name: {{box.value}}</p>
-                <input #box (keyup)="0" [style.width]="'30vw'">
+                <div>Name: {{packageName.value}}</div>
+                <input #packageName (keyup)="0" [style.width]="'30vw'">
                 <div>
                     <button mat-button matStepperPrevious (click)="packagePop()">Back</button>
-                    <button mat-button matStepperNext (click)="packageSet(1,box.value)">Next</button>
+                    <button mat-button matStepperNext (click)="packageSet('name',packageName.value)">Next</button>
                 </div>
             </form>
         </mat-step>
 
-
+        <!-- upload obj content -->
         <mat-step [stepControl]="secondFormGroup">
             <form [formGroup]="secondFormGroup">
                 <ng-template matStepLabel>What does it store?</ng-template>
                 <!-- for input box -->
                 <div class="kcard kround">
                     <div class=" kblock ktable kround" *ngFor="let x of content; index as i" id="'content-'{{x}}">
-                        <input placeholder="data..." value="">
+                        <div class="klist">
+                            <mat-select [(value)]="this.content[i][0]">
+                                <mat-option>None</mat-option>
+                                <mat-option value="image">Image</mat-option>
+                                <mat-option value="name">Name</mat-option>
+                                <mat-option value="detail">Detail</mat-option>
+                                <mat-option value="price">Price</mat-option>
+                            </mat-select>
+                            <input (blur)="onKey(i,$event,'contentName')" (keyup.enter)="onKey(i,$event,'contentName')" value="{{this.content[i][0]}}">
+                            <div>{{i}}# :</div>
+                            
+                            <div *ngIf="this.content[i][0]=='image'">
+                                <div class="kflex klist " (change)="onKey(i,$event,'contentContent')">
+                                    <input type="file" style="display: none" #file (change)="onKey(i,$event,'contentContent')"/>
+                                    <button type="button" class="btn" (click)="file.click()"> Browse </button>
+                                </div>
+                                <div class=" kblock kcenterDeatil">
+                                    <img  class="kimg"  [src]="this.content[i][1]" height="">
+                                </div>
+                            </div>
+                            <div *ngIf="this.content[i][0]!='image'">
+                                <input (blur)="onKey(i,$event,'contentContent')" (keyup.enter)="onKey(i,$event,'contentContent')" value="{{this.content[i][1]}}">
+                                <div *ngIf="this.content[i][0]!='image'">{{this.content[i][1]}}</div>
+                            </div>
+                        </div>
+
                         <div class="ktable">
-                            <button class="kbar" mat-raised-button (click)="packageContentEdit(i)">
+                            <button class="kbar" mat-raised-button (click)="0">
                                 <mat-icon>edit</mat-icon>
                             </button>
                             <button mat-raised-button color="warn" (click)="packageContentRemove(i)">
@@ -54,58 +79,37 @@
                             </button>
                         </div>
                     </div>
+
                     <div class=" kcard kcenterDeatil kclick kfullRound" (click)="packageContentPush()">
                         <div class="">
                             <mat-icon>add</mat-icon>
                         </div>
                     </div>
-                 </div>
-
+                </div>
 
                 <div>
                     <button mat-button matStepperPrevious>Back</button>
-                    <button mat-button matStepperNext (click)="packageSet(2,this.content)">Next</button>
+                    <button mat-button matStepperNext (click)="packageSet('content',this.content)">Next</button>
                 </div>
 
             </form>
         </mat-step>
 
-        <!--  -->
-        <!-- <mat-step [stepControl]="secondFormGroup">
-            <form [formGroup]="secondFormGroup">
-                <ng-template matStepLabel>Enter Your Contact Detail</ng-template>
-                <div class="kcard  kround " >
-                    <div  >
-                        <div class="kblock">Name: {{name.value}}</div>
-                        <input  placeholder="Ex. Lee mud mud" value="" #name (keyup)="0">
-                    </div>
-                    <div>
-                        <div class="kblock">Email: {{email.value}}</div>
-                        <input  placeholder="Ex. Lee mud mud" value="" #email (keyup)="0">
-                    </div>
-                    <div>
-                        <div class="kblock">Phone number: {{pnum.value}}</div>
-                        <input  placeholder="Ex. Lee mud mud" value="" #pnum (keyup)="0">
-                    </div>
-                </div>
-
-                <div>
-                    <button mat-button matStepperPrevious>Back</button>
-                    <button mat-button matStepperNext
-                        (click)="packageSet(2,[name.value,email.value,pnum.value])">Next</button>
-                </div>
-
-            </form>
-        </mat-step> -->
-        <!--  -->
-
+        <!-- Summary -->
         <mat-step [stepControl]="secondFormGroup">
             <form [formGroup]="secondFormGroup">
                 <ng-template matStepLabel>Summary</ng-template>
+                <div class="ktitle">{{type.value}}:{{packageName.value}}</div>
                 <div class="kvflex kcard kround">
-                    <div *ngFor="let list of package">
-                        <li>{{list}}</li>
-                        <input value="{{list}}">
+                    <div *ngFor="let contentItem of content">
+                        <div *ngFor="let contentItemData of contentItem">
+                            <div *ngIf="contentItem[0]!='image' && contentItemData!='image'">
+                                {{contentItemData}}
+                            </div>
+                            <div *ngIf="contentItem[0]=='image' && contentItemData=='image'">
+                                <img  [src]="contentItem[1]" height="200">
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div>
@@ -123,7 +127,6 @@
             You are now done. Please click upload to save.
             <div>
                 <button mat-button (click)="uploadStepper('')">Upload</button>
-                <button mat-button (click)="uploadStepper(69)">69</button>
                 <button mat-button matStepperPrevious>Back</button>
                 <button mat-button (click)="stepper.reset()">Reset</button>
             </div>
