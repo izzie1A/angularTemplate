@@ -63,7 +63,7 @@ export class FirebaseCloudstoreService {
   };
 
   async add(dir: string, input: any) {
-    return await this.store.collection(dir).add(input)
+    await this.store.collection(dir).add(input)
       .then((snapshot) => {
         console.log(snapshot);
         console.log("Document successfully updated!");

@@ -12,7 +12,7 @@ import { FbStorageUiComponent } from './components/fb-storage-ui/fb-storage-ui.c
 import { TaskListComponent } from './components/fb-cloudstorare-ui/task-list/task-list.component';
 import { FbRtdbNavUiComponent } from './components/fb-rtdb-nav-ui/fb-rtdb-nav-ui.component';
 const routes: Routes = [
-  // { path: '', component: CheckoutComponent },
+  { path: '', component: HomeComponent },
   { path: 'checkout', component: CheckoutComponent },
   { path: 'summitForm', component: MainComponentComponent },
 

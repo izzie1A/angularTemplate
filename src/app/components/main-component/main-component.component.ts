@@ -111,12 +111,19 @@ export class MainComponentComponent implements OnInit {
 
   async uploadStepper(input: any) {
     console.log(this.package);
+    alert(this.package);
+    this.store.add('root/admin/items', this.package);
     for(let x of this.content){
       if(x[0]=='image'){
-        await this.firebaseStorageService.uploadFile('root/user/public/image/', this.package);
+        try{
+          let test = await this.firebaseStorageService.uploadFile('root/user/public/item/',  x[1]);
+          alert('test'+test);
+        }catch(error){
+          alert(error);
+        }
       }
     }
-      this.store.add('root/admin/items', this.package);
+      
   }
 
   myCallbackFunction = (args: any): void => {

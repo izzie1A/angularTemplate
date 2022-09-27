@@ -15,6 +15,7 @@ export class TaskDetailComponent implements OnInit {
   }
 
   addToCart(input:any){
+    alert('added to cart: '+input);
     this.cartS.addToCart(input);
    }
 
