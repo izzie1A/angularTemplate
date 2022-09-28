@@ -42,7 +42,7 @@ export class FirebaseStorageService {
   async uploadFile(refDir: any, input: any) {
     let uploadTask = uploadBytesResumable(this.getRef(refDir + input.name), input);
     let url = '';
-    +3/                                          0000000000000000000000000000000000000000000000000000000000000000000000000000000000ploadTask.on('state_changed', (snapshot) => {
+    uploadTask.on('state_changed', (snapshot) => {
         const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         console.log(snapshot.bytesTransferred + '/ ' + snapshot.totalBytes + 'Upload is ' + progress + '% done');
         switch (snapshot.state) {
