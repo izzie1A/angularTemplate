@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { deleteObject, getDownloadURL, getMetadata, getStorage, listAll, ref, uploadBytes, uploadBytesResumable } from "firebase/storage";
 import { FirebaseCloudstoreService } from "src/app/services/firebase-cloudstore.service";
 
@@ -10,7 +9,6 @@ export class FirebaseStorageService {
   storage: any;
   childArray: any;
   constructor(private fcloud: FirebaseCloudstoreService) {
-
   };
 
 
@@ -43,35 +41,60 @@ export class FirebaseStorageService {
     let uploadTask = uploadBytesResumable(this.getRef(refDir + input.name), input);
     let url = '';
     uploadTask.on('state_changed', (snapshot) => {
-        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        console.log(snapshot.bytesTransferred + '/ ' + snapshot.totalBytes + 'Upload is ' + progress + '% done');
-        switch (snapshot.state) {
-          case 'paused':
-            console.log('Upload is paused');
-            break;
-          case 'running':
-            console.log('Upload is running');
-            break;
-        }
-      }, (error) => {
-        alert(error.message);
-      }, () => {
-        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-          this.updateCloudstore(refDir + input.name, {
-            input: input.name,
-            url: downloadURL,
-          });
-          url = downloadURL;
-        });
+      const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      console.log(snapshot.bytesTransferred + '/ ' + snapshot.totalBytes + 'Upload is ' + progress + '% done');
+      switch (snapshot.state) {
+        case 'paused':
+          console.log('Upload is paused');
+          break;
+        case 'running':
+          console.log('Upload is running');
+          break;
       }
+    }, (error) => {
+      alert(error.message);
+    }, () => {
+      getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+        this.updateCloudstore(refDir + input.name, {
+          input: input.name,
+          url: downloadURL,
+        });
+        url = downloadURL;
+        console.log(downloadURL)
+      });
+      console.log(url);
+    }
     );
+    return [url]
 
   }
 
+  async uploadFile2(refDir: any, input: any) {
+
+    let uploadTask = uploadBytesResumable(this.getRef(refDir + input.name), input);
+    let url = '';
+    console.log('return ;a');
+    getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+      this.updateCloudstore(refDir + input.name, {
+        input: input.name,
+        url: downloadURL,
+      });
+      url = downloadURL;
+      console.log(downloadURL)
+    });
+    return Promise.resolve(getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+      this.updateCloudstore(refDir + input.name, {
+        input: input.name,
+        url: downloadURL,
+      });
+      url = downloadURL;
+      console.log(downloadURL)
+    }));
+    
+}
+
   async updateCloudstore(refDir: string, input: any) {
-    console.log('target ' + refDir)
-    console.log(input)
-    console.log('input ' + input + ' already exists')
+    console.log('input ' + input + ' already updateCloudstore at '+ refDir)
     return await this.fcloud.write2(refDir, input);
   }
 

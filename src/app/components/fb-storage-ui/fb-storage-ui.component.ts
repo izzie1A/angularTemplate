@@ -53,8 +53,9 @@ export class FbStorageUiComponent implements OnInit {
   async upload(input: any) {
     this.loading = true;
     // await this.firebaseStorageService.uploadFile('root/user/'+this.auth.user$.uid.toString()+'/image/', this.fileHolder).then((snapshot) => {
-    await this.firebaseStorageService.uploadFile('root/user/public/image/', this.fileHolder).then((snapshot) => {
-      console.log(snapshot);
+      await this.firebaseStorageService.uploadFile('root/user/public/image/'+ this.fileHolder?.name, this.fileHolder).then((snapshot) => {
+        console.log(snapshot);
+        console.log(this.fileHolder);
       this.childArray = [];
       this.readRoot('');
     });

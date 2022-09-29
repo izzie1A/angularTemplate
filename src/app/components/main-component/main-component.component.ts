@@ -36,7 +36,7 @@ export class MainComponentComponent implements OnInit {
   });
   isLinear = false;
   package: uploadPackage;
-  content: any = [[' ', ' ']];
+  content: any = [];
 
   constructor(private _formBuilder: FormBuilder, private store: FirebaseCloudstoreService, private firebaseStorageService: FirebaseStorageService) {
     this.package = {
@@ -50,10 +50,12 @@ export class MainComponentComponent implements OnInit {
   ngOnInit(): void {
   }
   onKey(dir: number, event: any, type: string) {
+    this.content[dir][2] = event.target.files[0];
+    console.log(this.content[dir][1]);
     if (event.target.value!!) {
       if (type == 'contentName') {
         this.content[dir][0] = event.target.value;
-      }  else if (type == 'contentContent' && this.content[dir][0]=='image') {
+      } else if (type == 'contentContent' && this.content[dir][0] == 'image') {
         if (event.target.files && event.target.files[0]) {
           var reader = new FileReader();
           reader.onload = (event: any) => {
@@ -61,12 +63,11 @@ export class MainComponentComponent implements OnInit {
           }
           reader.readAsDataURL(event.target.files[0]);
         }
-      } else if (type == 'contentContent') {
-        if (event.target.value!!) {
-          this.content[dir][1] = event.target.value;
-        } 
       }
     }
+    console.log('watch');
+    console.log(this.content);
+    console.log(this.content[dir][2]);
   }
 
 
@@ -91,7 +92,7 @@ export class MainComponentComponent implements OnInit {
   }
   packageContentPush() {
     console.log(this.content);
-    this.content.push(['', '']);
+    this.content.push([,]);
     console.log(this.content);
   }
   packageContentSet(dir: number, input: any) {
@@ -110,20 +111,16 @@ export class MainComponentComponent implements OnInit {
   }
 
   async uploadStepper(input: any) {
-    console.log(this.package);
-    alert(this.package);
-    this.store.add('root/admin/items', this.package);
-    for(let x of this.content){
-      if(x[0]=='image'){
-        try{
-          let test = await this.firebaseStorageService.uploadFile('root/user/public/item/',  x[1]);
-          alert('test'+test);
-        }catch(error){
-          alert(error);
-        }
+    console.log(this.content);
+    console.log(this.content[0][2]);
+    for (let x of this.content) {
+      if (x[0] == 'image') {
+        let returnUrl = await this.firebaseStorageService.uploadFile2('root/user/public/item/', x[2])
       }
     }
-      
+    this.package.content = this.content;
+    let returnUrl2 = await this.store.add('root/user/public/item', this.package);
+    console.log(returnUrl2)
   }
 
   myCallbackFunction = (args: any): void => {
