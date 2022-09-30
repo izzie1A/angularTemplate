@@ -16,7 +16,7 @@ const getObservable = (collection: AngularFirestoreCollection<Task>) => {
 interface uploadPackage {
   uid: string,
   name: string,
-  content: any
+  content: any| undefined;
 }
 
 
@@ -111,19 +111,45 @@ export class MainComponentComponent implements OnInit {
   }
 
   async uploadStepper(input: any) {
-    console.log(this.content);
-    console.log(this.content[0][2]);
+    console.log('start upload');
     for (let x of this.content) {
       if (x[0] == 'image') {
-        let returnUrl = await this.firebaseStorageService.uploadFile2('root/user/public/item/', x[2])
+        await this.firebaseStorageService.uploadFile2('root/user/public/item/', x[2]);
+        console.log('upload imgae')
+        // let returnUrl = await this.firebaseStorageService.uploadFile2('root/user/public/item/', x[2])
       }
     }
     this.package.content = this.content;
-    let returnUrl2 = await this.store.add('root/user/public/item', this.package);
-    console.log(returnUrl2)
+    // console.log(returnUrl2)
+    console.log(this.package);
+    await this.store.addFile('root/user/public/item/t', 'this.package');
+    console.log('stepper upload end');
+  }
+
+  async uploadTest(input?: any) {
+    console.log('start testing');
+    for (let x of this.content) {
+      if (x[0] == 'image') {
+        console.log(x[2])
+        let returnUrl = this.firebaseStorageService.uploadFile2('root/user/public/item/', x[2]);
+        console.log(returnUrl)
+        console.log(x[2].name)
+        await this.store.addFile('root/user/public/item/t', 
+        {
+          name : x[2].name,
+          url : returnUrl,
+        });
+        console.log('upload imgae')
+        // let returnUrl = await this.firebaseStorageService.uploadFile2('root/user/public/item/', x[2])
+      }
+      this.package.content = null;
+      await this.store.addFile('root/user/public/item/t', this.package);
+    }
+    console.log();
   }
 
   myCallbackFunction = (args: any): void => {
     //callback code here
   }
 }
+ 

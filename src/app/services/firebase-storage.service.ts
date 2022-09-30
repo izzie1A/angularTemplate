@@ -69,33 +69,13 @@ export class FirebaseStorageService {
 
   }
 
-  async uploadFile2(refDir: any, input: any) {
-
-    let uploadTask = uploadBytesResumable(this.getRef(refDir + input.name), input);
-    let url = '';
-    console.log('return ;a');
-    getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-      this.updateCloudstore(refDir + input.name, {
-        input: input.name,
-        url: downloadURL,
-      });
-      url = downloadURL;
-      console.log(downloadURL)
-    });
-    return Promise.resolve(getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-      this.updateCloudstore(refDir + input.name, {
-        input: input.name,
-        url: downloadURL,
-      });
-      url = downloadURL;
-      console.log(downloadURL)
-    }));
-    
-}
+  uploadFile2(refDir: any, input: any) {
+   
+  }
 
   async updateCloudstore(refDir: string, input: any) {
-    console.log('input ' + input + ' already updateCloudstore at '+ refDir)
-    return await this.fcloud.write2(refDir, input);
+    console.log('input ' + input + ' already updateCloudstore at ' + refDir)
+    return await this.fcloud.write3(refDir, input);
   }
 
   async readFile(refDir: any) {
@@ -128,10 +108,8 @@ export class FirebaseStorageService {
 
   async delete(refDir: any) {
     const storage = getStorage();
-
     // Create a reference to the file to delete
     const desertRef = ref(storage, refDir);
-
     // Delete the file
     return await deleteObject(desertRef).then((output) => {
       return output

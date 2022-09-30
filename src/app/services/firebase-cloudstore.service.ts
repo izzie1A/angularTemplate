@@ -38,15 +38,31 @@ export class FirebaseCloudstoreService {
       });
   }
 
-  async write2(refDir: string, input: any) {
+  async write3(refDir: string, input: any) {
     // return await this.store.collection(refDir).doc(input.name).set(input)
-    return await this.store.collection(refDir).doc(input.name).set(input)
+    await this.store.collection(refDir).doc(input.name).set(input)
       .then(() => {
         console.log("Document successfully written!");
+        console.log(input);
+        console.log(input.name);
+        console.log(refDir);
       })
       .catch((error) => {
         console.error("Error writing document: ", error);
       });
+    return 'test'
+  }
+
+  addFile(refDir: string, input: any) {
+    var washingtonRef = this.store.collection("uploadStorage");
+    return washingtonRef.add(input)
+    .then((docRef) => {
+        console.log("Document written with ID: ", docRef.id);
+        return docRef.collection;
+    })
+    .catch((error) => {
+        console.error("Error adding document: ", error);
+    });
   }
 
   async update(dir: string, name: string, input: any) {
@@ -82,13 +98,13 @@ export class FirebaseCloudstoreService {
     return getObservable(this.store.collection('items', ref => ref.where('size', '==', 'large'))) as Observable<Task[]>;
   };
 
-  delete(dir:string,item:string){
+  delete(dir: string, item: string) {
     this.store.collection(dir).doc(item).delete().then((x) => {
-        console.log("Document successfully deleted!",x);
+      console.log("Document successfully deleted!", x);
     }).catch((error) => {
-        console.error("Error removing document: ", error);
+      console.error("Error removing document: ", error);
     });
-    return  
+    return
   }
 
 }
