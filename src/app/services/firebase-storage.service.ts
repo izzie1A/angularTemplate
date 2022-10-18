@@ -5,6 +5,7 @@ import { FirebaseCloudstoreService } from "src/app/services/firebase-cloudstore.
 @Injectable({
   providedIn: 'root'
 })
+
 export class FirebaseStorageService {
   storage: any;
   childArray: any;
@@ -17,6 +18,7 @@ export class FirebaseStorageService {
     const mountainsRef = ref(this.storage, dir);
     return mountainsRef;
   }
+
   async readRoot(input: string) {
     const storage = getStorage();
     const rootRef = ref(storage, 'root/user/public/image/');
@@ -40,6 +42,7 @@ export class FirebaseStorageService {
   async uploadFile(refDir: any, input: any) {
     let uploadTask = uploadBytesResumable(this.getRef(refDir + input.name), input);
     let url = '';
+
     uploadTask.on('state_changed', (snapshot) => {
       const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
       console.log(snapshot.bytesTransferred + '/ ' + snapshot.totalBytes + 'Upload is ' + progress + '% done');
@@ -55,17 +58,17 @@ export class FirebaseStorageService {
       alert(error.message);
     }, () => {
       getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-        this.updateCloudstore(refDir + input.name, {
-          input: input.name,
-          url: downloadURL,
-        });
+        this.updateCloudstore(refDir + input.name, {input: input.name, url: downloadURL,});
         url = downloadURL;
         console.log(downloadURL)
       });
+      console.log('url checkpoint 1');
       console.log(url);
     }
     );
-    return [url]
+    console.log('url checkpoint 2');
+    console.log(url);
+    return url
 
   }
 

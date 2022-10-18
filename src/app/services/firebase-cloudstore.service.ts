@@ -40,17 +40,8 @@ export class FirebaseCloudstoreService {
 
   async write3(refDir: string, input: any) {
     // return await this.store.collection(refDir).doc(input.name).set(input)
-    await this.store.collection(refDir).doc(input.name).set(input)
-      .then(() => {
-        console.log("Document successfully written!");
-        console.log(input);
-        console.log(input.name);
-        console.log(refDir);
-      })
-      .catch((error) => {
-        console.error("Error writing document: ", error);
-      });
-    return 'test'
+    let x = await this.store.collection(refDir).doc(input.name).set(input)
+    return x
   }
 
   addFile(refDir: string, input: any) {

@@ -1,12 +1,10 @@
 <div class="chatContainer">
-    <mat-toolbar color="primary" d class="chatHeader">
-        <mat-form-field appearance="fill">
-            <mat-label>{{clientId}}</mat-label>
-            <mat-select [(value)]="selected" value="{{clientId}}">
-                <mat-option value="{{clientId}}"> {{clientId}} </mat-option>
-            </mat-select>
-        </mat-form-field>
+    <mat-toolbar color="primary">
         message
+    </mat-toolbar>
+
+    <mat-toolbar color="primary" d class="kcenterDeatil">
+        <div>{{clientId}}</div>
         <mat-form-field appearance="fill">
             <mat-label>to</mat-label>
             <mat-select [(value)]="selected2">
@@ -14,6 +12,7 @@
             </mat-select>
         </mat-form-field>
     </mat-toolbar>
+
 
     <div *ngIf="chatArray.length < 1" class=" kcenterDeatil kround">Empty</div>
     <div *ngIf="chatArray.length > 1" class="chatDeatil ">
