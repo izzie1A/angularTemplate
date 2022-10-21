@@ -94,10 +94,6 @@ export class FirebaseCloudstoreService {
     return getObservable(this.store.collection(dir)) as Observable<Task[]>;
   };
 
-  read2(dir: string, input: any) {
-    return getObservable(this.store.collection('items', ref => ref.where('size', '==', 'large'))) as Observable<Task[]>;
-  };
-
   delete(dir: string, item: string) {
     this.store.collection(dir).doc(item).delete().then((x) => {
       console.log("Document successfully deleted!", x);

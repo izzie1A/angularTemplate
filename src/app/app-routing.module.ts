@@ -11,6 +11,7 @@ import { SettingComponent } from './slides/setting/setting.component';
 import { FbStorageUiComponent } from './components/fb-storage-ui/fb-storage-ui.component';
 import { TaskListComponent } from './components/fb-cloudstorare-ui/task-list/task-list.component';
 import { FbRtdbNavUiComponent } from './components/fb-rtdb-nav-ui/fb-rtdb-nav-ui.component';
+import { FbCloudstoreUiComponent } from './components/fb-cloudstore-ui/fb-cloudstore-ui.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'checkout', component: CheckoutComponent },
@@ -22,8 +23,9 @@ const routes: Routes = [
   { path: 'menu', component: MenuComponent },
   { path: 'setting', component: SettingComponent },
 
+  { path: 'fcloud', component: FbCloudstoreUiComponent },
   { path: 'fstorage', component: FbStorageUiComponent },
-  { path: 'fcloud', component: TaskListComponent },
+  { path: 'fcloudTask', component: TaskListComponent },
   { path: 'frtdb', component: FbRtdbNavUiComponent },
 ];
 

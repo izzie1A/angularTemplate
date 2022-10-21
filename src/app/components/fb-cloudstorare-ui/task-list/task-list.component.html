@@ -1,49 +1,49 @@
 <mat-toolbar color="primary" class="collectionHeader">
     <span>Collection Viewer</span>
 
-    <button  (click)="newTask()" mat-raised-button>
+    <button (click)="newTask()" mat-raised-button>
         <mat-icon>add</mat-icon>
         <a>Add Task</a>
     </button>
 </mat-toolbar>
 
 <div class="kgrid">
-        <div class=" kblock ">
-            <div>Ready</div>
-            <div cdkDropList id="todo" #todoList="cdkDropList" [cdkDropListData]="todo | async"
-                [cdkDropListConnectedTo]="[doneList, inProgressList]" (cdkDropListDropped)="drop($event)" class="list">
+    <div class=" kblock ">
+        <div>Ready</div>
+        <div cdkDropList id="todo" #todoList="cdkDropList" [cdkDropListData]="todo | async"
+            [cdkDropListConnectedTo]="[doneList, inProgressList]" (cdkDropListDropped)="drop($event)" class="list">
 
-                <p class="empty-label" *ngIf="(todo | async)?.length === 0">Empty list</p>
-                <app-task (edit)="editTask('todo', $event)" *ngFor="let task of todo | async" cdkDrag [task]="task">
+            <p class="empty-label" *ngIf="(todo | async)?.length === 0">Empty list</p>
+            <app-task (edit)="editTask('todo', $event)" *ngFor="let task of todo | async" cdkDrag [task]="task">
 
-                </app-task>
-            </div>
+            </app-task>
         </div>
+    </div>
 
 
-        <div class=" kblock">
-            <div>In progress</div>
-            <div cdkDropList id="inProgress" #inProgressList="cdkDropList" [cdkDropListData]="inProgress | async"
-                [cdkDropListConnectedTo]="[todoList, doneList]" (cdkDropListDropped)="drop($event)" class="list">
+    <div class=" kblock">
+        <div>In progress</div>
+        <div cdkDropList id="inProgress" #inProgressList="cdkDropList" [cdkDropListData]="inProgress | async"
+            [cdkDropListConnectedTo]="[todoList, doneList]" (cdkDropListDropped)="drop($event)" class="list">
 
-                <p class="empty-label" *ngIf="(inProgress | async)?.length === 0">Empty list</p>
-                <app-task (edit)="editTask('inProgress', $event)" *ngFor="let task of inProgress | async" cdkDrag
-                    [task]="task"></app-task>
+            <p class="empty-label" *ngIf="(inProgress | async)?.length === 0">Empty list</p>
+            <app-task (edit)="editTask('inProgress', $event)" *ngFor="let task of inProgress | async" cdkDrag
+                [task]="task"></app-task>
 
-            </div>
         </div>
+    </div>
 
 
-        <div class=" kblock">
-            <div>Done</div>
+    <div class=" kblock">
+        <div>Done</div>
 
-            <mat-card cdkDropList id="done" #doneList="cdkDropList" [cdkDropListData]="done | async"
-                [cdkDropListConnectedTo]="[todoList, inProgressList]" (cdkDropListDropped)="drop($event)" class="list">
+        <mat-card cdkDropList id="done" #doneList="cdkDropList" [cdkDropListData]="done | async"
+            [cdkDropListConnectedTo]="[todoList, inProgressList]" (cdkDropListDropped)="drop($event)" class="list">
 
-                <p class="empty-label" *ngIf="(done | async)?.length === 0">Empty list</p>
-                <app-task (edit)="editTask('done', $event)" *ngFor="let task of done | async" cdkDrag [task]="task">
-                </app-task>
+            <p class="empty-label" *ngIf="(done | async)?.length === 0">Empty list</p>
+            <app-task (edit)="editTask('done', $event)" *ngFor="let task of done | async" cdkDrag [task]="task">
+            </app-task>
 
-            </mat-card>
-        </div>
+        </mat-card>
+    </div>
 </div>
