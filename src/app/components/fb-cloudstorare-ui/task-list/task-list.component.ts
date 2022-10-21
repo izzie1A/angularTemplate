@@ -50,9 +50,7 @@ export class TaskListComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<Task[]|any>): void {
-    if (event.previousContainer === event.container) {
-      return;
-    }
+    if (event.previousContainer === event.container) {return;}
     const item = event.previousContainer.data[event.previousIndex];
     this.store.firestore.runTransaction(() => {
       const promise = Promise.all([
@@ -84,9 +82,7 @@ export class TaskListComponent implements OnInit {
         task: {},
       },
     });
-    dialogRef
-      .afterClosed()
-      .subscribe((result: TaskDialogResult) => {
+    dialogRef.afterClosed().subscribe((result: TaskDialogResult) => {
         if (!result) {
           return;
         }

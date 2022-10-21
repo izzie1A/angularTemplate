@@ -36,7 +36,6 @@ export class AuthGuard {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential?.accessToken;
         this.user$ = result.user;
-        console.log(result.user);
         this.firebase.writeUserData(result.user);
         return this.user$
       }).catch((error) => {
@@ -51,7 +50,6 @@ export class AuthGuard {
 
   gSignout(){
     signOut(this.auth).then(() => {
-      console.log("logout");
       this.user$ = null;
       // Sign-out successful.
     }).catch((error) => {
