@@ -23,20 +23,18 @@ export class FbCloudstoreUiComponent {
   fileHolder: Item;
 
   constructor(public firecloudService: FirebaseCloudService) {
-
     this.collectionDir = 'root';
     this.selectCollection(this.collectionDir);
-    this.fileHolder = {uid:'undefined',};
+    this.fileHolder = {uid:'',};
   }
 
   selectCollection(input: any) {
+    console.log(input)
     this.getCollection(input).subscribe(res => console.log(res));
     this.curCollection = this.getCollection(input);
   }
   selectDocuemnt(input: any) {
     this.docSelector = this.firecloudService.getDoc(input).ref;
-    console.log(this.collectionDir)
-    console.log(input.uid)
     this.fileHolder = this.docSelector;
   }
   getCollection(input?: any) {
@@ -50,7 +48,7 @@ export class FbCloudstoreUiComponent {
       this.firecloudService.writeDoc(this.collectionDir, input);
     } else {
       this.firecloudService.addDoc(this.collectionDir, {
-        uid: 'undefind',
+        uid: 'undefined',
         name: 'undefind',
         title: 'undefind',
         content: 'undefind',
@@ -75,12 +73,13 @@ export class FbCloudstoreUiComponent {
       });
     }
   }
-  deleteDoc() {
-
+  deleteDoc(dir: string, itemId: string) {
+    this.firecloudService.delete(dir,itemId);
+    console.log(dir)
   }
 
-  test(){
-    console.log(this.fileHolder);
+  test(dir?:any){
+    console.log(dir)
   }
 
   editFileHolder(selector:string, input:any){

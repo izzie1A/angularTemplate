@@ -85,8 +85,8 @@ export class FirebaseCloudstoreService {
     return getObservable(this.store.collection(dir)) as Observable<Task[]>;
   };
 
-  delete(dir: string, item: string) {
-    this.store.collection(dir).doc(item).delete().then((x) => {
+  delete(dir: string, itemId: string) {
+    this.store.collection(dir).doc(itemId).delete().then((x) => {
       console.log("Document successfully deleted!", x);
     }).catch((error) => {
       console.error("Error removing document: ", error);

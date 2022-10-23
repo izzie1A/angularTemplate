@@ -242,6 +242,10 @@ div {
 .kbado {
   margin: 2.5%;
 }
+.kmax {
+  height: -webkit-fill-available;
+  width: -webkit-fill-available;
+}
 
 .kimg {
   width: -webkit-fill-available;
@@ -268,8 +272,11 @@ div {
   padding-left: 3%;
   padding-top: 2%;
 }
+.kcapRound {
+  border-radius:500px;
+}
 .kfullRound {
-  border-radius: 60px;
+  border-radius: 50%;
 }
 .kround {
   border-radius: 2vmin;

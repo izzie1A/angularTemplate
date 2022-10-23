@@ -1,55 +1,50 @@
 <div class="kcard kround kvtable priColor kratioh">
-    <div class="secColor klist">
-        <div class=" kcenterDeatil ">{{collectionDirInput.value}}</div>
-        <div class=" ktable">
-            <input value="{{collectionDir}}/{{fileHolder.uid}}" #collectionDirInput>
-            <button type="button" class="kclick kfullRound kbado "
+    <div class="secColor klist ">
+        <div class=" kindent ">
+            <div class="  ">{{collectionDir}}</div>
+            <div class="  ">{{fileHolder.uid}}</div>
+        </div>
+        <div class="ktable">
+            <input class="kcapRound kbado" value="{{fileHolder.uid}}" #collectionDirInput>
+            <button type="button" class="kclick kround kbado "
                 (click)="selectCollection(collectionDirInput.value)">Search</button>
         </div>
     </div>
 
     <div class="klist">
         <div class="kblock">
-            <div class="kbar kindent" (click)="selectDocuemnt(item)" *ngFor="let item of curCollection | async; let i = index">
+            <div class="kbar kindent kmax" (click)="selectDocuemnt(item)" *ngFor="let item of curCollection | async; let i = index">
                 <div *ngIf="item.flag!='collection'">
                     <div *ngIf="item.name">{{i}}- {{item.name}}</div>
                     <div *ngIf="item.name==null">{{i}}- {{item.uid}}</div>
                 </div>
-                <div (click)="selectDocuemnt(collectionDirInput.value+item)" *ngIf="item.flag=='collection'">
-                    <div>>{{item.collection}}</div>
+                <div (click)="selectDocuemnt(item)" *ngIf="item.flag=='collection'">
+                    <div>>{{item.uid}}</div>
                 </div>
             </div>
         </div>
+        <!--  -->
         <div class="kcard kround kvtable kbado">
             <div class="secColor kindent" *ngIf="docSelector.name!!">
                 <div>{{docSelector.title}}:{{docSelector.timeStamp}}</div>
             </div>
-            <div class="priColor kindent kvflex">
-                <div class="klist" *ngFor="let item of docSelector | keyvalue">
+            <div class="priColor kindent ">
+                <div class="kblock klist kindent" *ngFor="let item of docSelector | keyvalue">
                     <div>{{item.key}}</div>
                     <div> :<input value="{{item.value}}"></div>
+                    <div (click)="selectCollection(this.collectionDir+'/'+fileHolder.uid)" class="kblock kcenterDeatil kclick kround kbado" *ngIf="item.key=='collection'">
+                        <div>Enter File -></div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+<!--  -->
 
-
-
-
-<div class="kcard kround kvtable kratioh">
-    <div class=" klist">
-        <button (click)="deleteDoc()">delete</button>
-        <div class=" klist">
-            <button (click)="writeDoc(collectionDir+'/'+fileHolder.uid,fileHolder)">Save</button>
-            <div class=" klist">
-                <button (click)="test()">save</button>
-                <button (click)="test()">test</button>
-            </div>
-        </div>
-    </div>
-    <div class="kvtable">
+<div class="kcard kround kratioh secColor">
+    <div class=" kvtable kmax">
         <div class=" klist">
             <div class="kcenterDeatil">Title:{{fileHolder.title}}</div>
             <div *ngIf="fileHolder!=undefined">
@@ -57,37 +52,37 @@
                 <div>Name:{{fileHolder.name}}</div>
             </div>
         </div>
-        <div class="kcard kround kvflex">
+        <div class="kcard kvflex">
             <div class="klist">
-                <div>uid</div>
+                <div>uid:</div>
                 <input (keyup.enter)="editFileHolder('uid',uid.value)"
                 (blur)="editFileHolder('uid',uid.value);  " value="{{fileHolder.uid.toString()}}" #uid>
             </div>
             <div class="klist">
-                <div>name</div>
+                <div>name:</div>
                 <input (keyup.enter)="editFileHolder('name',name.value)"
                 (blur)="editFileHolder('name',name.value);  " value="{{fileHolder.name}}" #name>
             </div>
             <div class="klist">
-                <div>Date</div>
+                <div>Date:</div>
                 <input (keyup.enter)="editFileHolder('uid',Date.value)"
                 (blur)="editFileHolder('Date',Date.value);  " value="{{fileHolder.timeStamp}}" #Date>
             </div>
             <div class="klist">
-                <div>title</div>
+                <div>title:</div>
                 <input (keyup.enter)="editFileHolder('title',title.value)"
                 (blur)="editFileHolder('title',uid.value);  " value="{{fileHolder.title}}" #title>
             </div>
             <div class="klist">
-                <div>content</div>
+                <div>content:</div>
                 <input (keyup.enter)="editFileHolder('content',content.value)"
                 (blur)="editFileHolder('content',uid.value);  " value="{{fileHolder.content}}" #content>
             </div>
-            <div class="kcard kflex">
-                <button class="kbutton kround" (click)="writeDoc('root')">create</button>
-                <button class="kbutton kround" (click)="deleteDoc()">delete</button>
+            <div class="kblock kflex kmax">
+                <button class="kbutton kratior kround" (click)="test((collectionDir+'/'+fileHolder.uid))">Create</button>
+                <button class="kbutton kratior kround" (click)="deleteDoc(collectionDir,fileHolder.uid)">Delete</button>
+                <button class="kbutton kratior kround" (click)="test((collectionDir+'/'+fileHolder.uid))">Save</button>
             </div>
         </div>
-        <div class="kcard kround kvflex">Content</div>
     </div>
 </div>

@@ -30,6 +30,13 @@ export class FirebaseCloudService {
   }
   query(){
   }
-  delete(){
+  delete(dir: string, itemId: string) {
+    this.firestore.collection(dir).doc(itemId).delete().then((x) => {
+      console.log("Document successfully deleted!", x);
+      alert( x);
+    }).catch((error) => {
+      console.error("Error removing document: ", error);
+    });
+    return
   }
 }
