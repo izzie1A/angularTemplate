@@ -1,8 +1,14 @@
 <div class="kcard kround kvtable priColor kratioh">
     <div class="secColor klist ">
         <div class=" kindent ">
+            <div class="klist ">
+                <div (click)="test('testa/testb/testc')" class=" kclick kcenterDeatil">home</div>
+                <div class="kflex">
+                    <div class=" kclick kcenterDeatil">prev</div>
+                    <div class=" kclick kcenterDeatil">next</div>
+                </div>
+            </div>
             <div class="  ">{{collectionDir}}</div>
-            <div class="  ">{{fileHolder.uid}}</div>
         </div>
         <div class="ktable">
             <input class="kcapRound kbado" value="{{fileHolder.uid}}" #collectionDirInput>
@@ -25,14 +31,14 @@
         </div>
         <!--  -->
         <div class="kcard kround kvtable kbado">
-            <div class="secColor kindent" *ngIf="docSelector.name!!">
+            <div class="secColor kindent" *ngIf="docSelector.name && docSelector">
                 <div>{{docSelector.title}}:{{docSelector.timeStamp}}</div>
             </div>
-            <div class="priColor kindent ">
+            <div class="kindent ">
                 <div class="kblock klist kindent" *ngFor="let item of docSelector | keyvalue">
                     <div>{{item.key}}</div>
                     <div> :<input value="{{item.value}}"></div>
-                    <div (click)="selectCollection(this.collectionDir+'/'+fileHolder.uid)" class="kblock kcenterDeatil kclick kround kbado" *ngIf="item.key=='collection'">
+                    <div *ngIf="item.key=='childCollection'" (click)="selectCollection(this.collectionDir+'/'+fileHolder.uid+'/'+item.value)" class="kblock kcenterDeatil kclick kround kbado" >
                         <div>Enter File -></div>
                     </div>
                 </div>
@@ -47,16 +53,15 @@
     <div class=" kvtable kmax">
         <div class=" klist">
             <div class="kcenterDeatil">Title:{{fileHolder.title}}</div>
-            <div *ngIf="fileHolder!=undefined">
+            <div class="priColor" *ngIf="fileHolder!=undefined">
                 <div>Dir: {{collectionDir}}/{{fileHolder.uid}}</div>
                 <div>Name:{{fileHolder.name}}</div>
             </div>
         </div>
-        <div class="kcard kvflex">
+        <div class="kblock kindent kround kvflex">
             <div class="klist">
                 <div>uid:</div>
-                <input (keyup.enter)="editFileHolder('uid',uid.value)"
-                (blur)="editFileHolder('uid',uid.value);  " value="{{fileHolder.uid.toString()}}" #uid>
+                <div>{{fileHolder.uid}}</div>
             </div>
             <div class="klist">
                 <div>name:</div>
@@ -71,12 +76,12 @@
             <div class="klist">
                 <div>title:</div>
                 <input (keyup.enter)="editFileHolder('title',title.value)"
-                (blur)="editFileHolder('title',uid.value);  " value="{{fileHolder.title}}" #title>
+                (blur)="editFileHolder('title',title.value);  " value="{{fileHolder.title}}" #title>
             </div>
             <div class="klist">
                 <div>content:</div>
                 <input (keyup.enter)="editFileHolder('content',content.value)"
-                (blur)="editFileHolder('content',uid.value);  " value="{{fileHolder.content}}" #content>
+                (blur)="editFileHolder('content',content.value);  " value="{{fileHolder.content}}" #content>
             </div>
             <div class="kblock kflex kmax">
                 <button class="kbutton kratior kround" (click)="test((collectionDir+'/'+fileHolder.uid))">Create</button>

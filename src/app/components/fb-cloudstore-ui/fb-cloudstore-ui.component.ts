@@ -3,12 +3,12 @@ import { Observable } from 'rxjs/internal/Observable';
 import { FirebaseCloudService } from 'src/app/services/firebase-cloud.service';
 
 
-export interface Item { 
+export interface Item {
   uid: string,
   name?: string;
   title?: string;
   timeStamp?: string;
-  content?:any;
+  content?: any;
 }
 
 @Component({
@@ -25,7 +25,7 @@ export class FbCloudstoreUiComponent {
   constructor(public firecloudService: FirebaseCloudService) {
     this.collectionDir = 'root';
     this.selectCollection(this.collectionDir);
-    this.fileHolder = {uid:'',};
+    this.fileHolder = { uid: '', };
   }
 
   selectCollection(input: any) {
@@ -38,8 +38,8 @@ export class FbCloudstoreUiComponent {
     this.fileHolder = this.docSelector;
   }
   getCollection(input?: any) {
-    if(input!!){
-      this.collectionDir=input;
+    if (input!!) {
+      this.collectionDir = input;
     };
     return this.firecloudService.getCollection(input);
   }
@@ -55,14 +55,14 @@ export class FbCloudstoreUiComponent {
       });
     }
   }
-  editFile(inputKey:string, inputValue:any){
-    if(this.fileHolder){
+  editFile(inputKey: string, inputValue: any) {
+    if (this.fileHolder) {
       this.fileHolder = Object.create(this.fileHolder)
     }
   }
-  writeDoc(dir:string, inputFile?:Item) {
+  writeDoc(dir: string, inputFile?: Item) {
     if (this.fileHolder != null) {
-      let result = this.firecloudService.writeDoc(dir,this.fileHolder);
+      let result = this.firecloudService.writeDoc(dir, this.fileHolder);
       console.log(result);
     } else {
       this.firecloudService.addDoc(this.collectionDir, {
@@ -74,31 +74,47 @@ export class FbCloudstoreUiComponent {
     }
   }
   deleteDoc(dir: string, itemId: string) {
-    this.firecloudService.delete(dir,itemId);
+    this.firecloudService.delete(dir, itemId);
     console.log(dir)
   }
 
-  test(dir?:any){
-    console.log(dir)
+  test(dir?: any) {
+    console.log(dir);
+    let x = dir.split('/');
+    let stopPt = x.length-1
+    console.log(x[0]);
+    for (let count=0;count<stopPt;count++) {
+      console.log(x[count]);
+    }
+  }
+  testp(dir?: any) {
+    console.log(dir);
+    let x = dir.split('/')
+    console.log(x);
+  }
+  testn(dir?: any) {
+    console.log(dir);
+    let x = dir.split('/')
+    console.log(x);
   }
 
-  editFileHolder(selector:string, input:any){
-    switch(selector){
-      case('uid'):{
+  editFileHolder(selector: string, input: any) {
+    switch (selector) {
+      case ('uid'): {
         this.fileHolder!! ? this.fileHolder.uid = input : console.log('no')
         console.log(this.fileHolder);
         return
       }
-      case('name'):{
+      case ('name'): {
         this.fileHolder!! ? this.fileHolder.name = input : console.log('no')
         console.log(this.fileHolder);
         return
       }
-      case('title'):{
+      case ('title'): {
         console.log(input);
         return
       }
-      case('content'):{
+      case ('content'): {
         console.log(input);
         return
       }
