@@ -32,10 +32,13 @@ export class FbCloudstoreUiComponent {
     console.log(input)
     this.getCollection(input).subscribe(res => console.log(res));
     this.curCollection = this.getCollection(input);
+    this.docSelector = {}
+    this.fileHolder = {uid:'undefined'}
   }
   selectDocuemnt(input: any) {
     this.docSelector = this.firecloudService.getDoc(input).ref;
     this.fileHolder = this.docSelector;
+    console.log(this.docSelector);
   }
   getCollection(input?: any) {
     if (input!!) {
@@ -79,23 +82,23 @@ export class FbCloudstoreUiComponent {
   }
 
   test(dir?: any) {
+    let x = dir.split('/')
+    this.selectCollection(dir);
+  }
+
+  testp(dir?: any) {
     console.log(dir);
     let x = dir.split('/');
     let stopPt = x.length-1
-    console.log(x[0]);
-    for (let count=0;count<stopPt;count++) {
-      console.log(x[count]);
-    }
+    const t = x.split('/')[0]
+    console.log(t)
+    // for (let count=0;count<stopPt;count++) {
+    //   console.log(x[count]);
+    // }
   }
-  testp(dir?: any) {
-    console.log(dir);
-    let x = dir.split('/')
-    console.log(x);
-  }
+
   testn(dir?: any) {
-    console.log(dir);
     let x = dir.split('/')
-    console.log(x);
   }
 
   editFileHolder(selector: string, input: any) {
