@@ -87,14 +87,19 @@ export class FbCloudstoreUiComponent {
   }
 
   testp(dir?: any) {
-    console.log(dir);
+    let url = ''
     let x = dir.split('/');
-    let stopPt = x.length-1
-    const t = x.split('/')[0]
-    console.log(t)
-    // for (let count=0;count<stopPt;count++) {
-    //   console.log(x[count]);
+    x.length%2 == 0 ? console.log('yes') : console.log('no');
+    x.pop();
+    x.pop();
+    let ans = x.join('/');
+    
+    // for (let count=0;count<x.length-2;count++) {
+    //   url += x[count]+'/'
     // }
+    console.log(ans)
+    this.selectCollection(ans);
+
   }
 
   testn(dir?: any) {
