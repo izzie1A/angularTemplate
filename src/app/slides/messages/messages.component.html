@@ -1,46 +1,49 @@
-<div class="chatContainer">
+<!-- message Header -->
+<div class="chatContainer kvflex kmax secColor">
     <mat-toolbar color="primary">
-        message
-    </mat-toolbar>
-
-    <mat-toolbar color="primary" d class="kcenterDeatil">
-        <div>{{clientId}}</div>
-        <mat-form-field appearance="fill">
-            <mat-label>to</mat-label>
-            <mat-select [(value)]="selected2">
-                <mat-option *ngFor="let user of userArray" value="{{user.uid}}"> {{user.displayName}} </mat-option>
-            </mat-select>
-        </mat-form-field>
-    </mat-toolbar>
-
-
-    <div *ngIf="chatArray.length < 1" class=" kcenterDeatil kround">Empty</div>
-    <div *ngIf="chatArray.length > 1" class="chatDeatil ">
-        <div *ngFor="let chat of chatArray" class="chatMessage kcard kround">
-            <div *ngIf="chat.fromUsery!=clientId">
-                <div class="chatMessageHeader">
-                    <div>From:{{chat.fromUser}}</div>
-                    <div>{{chat.time}}</div>
-                </div>
-                <div>To:{{chat.toUser}}</div>
-                <div>messages:{{chat.messages}}</div>
-            </div>
-
-            <div *ngIf="chat.fromUsery==clientId">
-                <div class="chatMessageHeader">
-                    <div>From:{{chat.fromUser}}</div>
-                    <div>{{chat.time}}</div>
-                </div>
-                <div>To:{{chat.toUser}}</div>
-                <div>messages:{{chat.messages}}</div>
-            </div>
+        <div>message</div>
+        <div color="primary" d class="kcenterDeatil">
+            <div>{{clientId}}</div>
+            <mat-form-field appearance="fill">
+                <mat-label>to</mat-label>
+                <mat-select [(value)]="selected2">
+                    <mat-option *ngFor="let user of userArray" value="{{user.uid}}"> {{user.displayName}} </mat-option>
+                </mat-select>
+            </mat-form-field>
         </div>
+    </mat-toolbar>
 
+<!-- message -->
+    <div class="kindent kblock kratioh"> 
+        <div *ngIf="chatArray.length < 1" class=" kcenterDeatil kround kflex">Empty</div>
+        <div *ngIf="chatArray.length > 1" class="chatDeatil ">
+            <div *ngFor="let chat of chatArray" class="kindent chatMessage kcard kround kmax pricolor">
+                <!-- other -->
+                <div *ngIf="chat.fromUsery!=clientId">
+                    <div class="chatMessageHeader">
+                        <div>From:{{chat.fromUser}}</div>
+                        <div>{{chat.time}}</div>
+                    </div>
+                    <div>To:{{chat.toUser}}</div>
+                    <div>messages:{{chat.messages}}</div>
+                </div>
+                <!-- self -->
+                <div *ngIf="chat.fromUsery==clientId">
+                    <div class="chatMessageHeader">
+                        <div>From:{{chat.fromUser}}</div>
+                        <div>{{chat.time}}</div>
+                    </div>
+                    <div>To:{{chat.toUser}}</div>
+                    <div>messages:{{chat.messages}}</div>
+                </div>
+            </div>
+
+        </div>
     </div>
 
 
-
-    <div class="chatfooter kfullRound kflex kblock">
+<!-- Message text box -->
+    <div class="chatfooter kruond kflex kblock">
         <input class="messageBox" matInput placeholder=" Type message here..." value="" [(ngModel)]="msgBoxInput">
         <button class="kfullRound kclick" (click)="sendMessage('2', msgBoxInput)">
             <span class="material-icons">send</span>
