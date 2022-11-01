@@ -104,6 +104,7 @@ export class FbCloudstoreUiComponent {
 
   testn(dir?: any) {
     let x = dir.split('/')
+    console.log('test')
   }
 
   editFileHolder(selector: string, input: any) {
