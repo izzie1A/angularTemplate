@@ -1,10 +1,11 @@
 <div *ngIf="auth.user$!!" class="kround kcard">
     <div class="ktitle">Shopping Cart</div>
     <button class="" (click)="test()">demoAdd</button>
+    <!-- item -->
     <div class=" ">
         <div class="kcard ktable " *ngFor="let x of items | async">
             <div class="kindent">
-                {{x.item}}
+                <div class="">{{x.item}}</div>
                 <div class="">{{x.id}}</div>
             </div>
             <div class="ktable">
@@ -17,6 +18,7 @@
             </div>
         </div>
     </div>
+    <!-- item -->
     <div *ngIf="items == null" class=" kcenterDeatil ktitle ">Empty cart</div>
     <div *ngIf="auth.user$!!" routerLink="/checkout" class="kframe kcenterDeatil kround kclick ktitle">
         <div>Checkout</div>

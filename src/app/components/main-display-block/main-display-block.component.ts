@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FirebaseCloudService } from 'src/app/services/firebase-cloud.service';
 
 @Component({
   selector: 'app-main-display-block',
@@ -6,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main-display-block.component.css']
 })
 export class MainDisplayBlockComponent implements OnInit {
+  @Input() item = '';
   content: any = [];
+  objHolder: any = [];
 
-  constructor() { }
+  constructor(private firestoreService:FirebaseCloudService) { }
 
   ngOnInit(): void {
   }
@@ -41,5 +44,9 @@ export class MainDisplayBlockComponent implements OnInit {
     console.log(this.content);
     this.content.push([,]);
     console.log(this.content);
+  }
+
+  uploadPackage(dir: string, input: string){
+    this.firestoreService.writeDoc(dir,input);
   }
 }

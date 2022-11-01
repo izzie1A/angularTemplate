@@ -18,6 +18,8 @@ export class FirebaseCloudService {
   getDoc(dir:string) {
     return  this.firestore.doc(dir);
   }
+  query(){
+  }
   addDoc(dir:string,item: any) {
     item.uid = this.firestore.createId();
     item.timeStamp = Date.now().toString();
@@ -28,7 +30,8 @@ export class FirebaseCloudService {
     const doc = this.firestore.doc(dir.toString());
     console.log(doc.update(item));
   }
-  query(){
+  queryUpload(){
+    
   }
   delete(dir: string, itemId: string) {
     this.firestore.collection(dir).doc(itemId).delete().then((x) => {
