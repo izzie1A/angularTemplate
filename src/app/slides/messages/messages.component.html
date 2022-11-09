@@ -1,7 +1,7 @@
 <!-- message Header -->
 <div class="chatContainer kvflex kmax secColor">
     <mat-toolbar color="primary">
-        <div>message</div>
+        <div>Message :</div>
         <div color="primary" d class="kcenterDeatil">
             <div>{{clientId}}</div>
             <mat-form-field appearance="fill">
@@ -13,7 +13,7 @@
         </div>
     </mat-toolbar>
 
-<!-- message -->
+    <!-- message -->
     <div class="kindent kblock kratioh"> 
         <div *ngIf="chatArray.length < 1" class=" kcenterDeatil kround kflex">Empty</div>
         <div *ngIf="chatArray.length > 1" class="chatDeatil ">
@@ -42,7 +42,7 @@
     </div>
 
 
-<!-- Message text box -->
+    <!-- Message text box -->
     <div class="chatfooter kruond kflex kblock">
         <input class="messageBox" matInput placeholder=" Type message here..." value="" [(ngModel)]="msgBoxInput">
         <button class="kfullRound kclick" (click)="sendMessage('2', msgBoxInput)">
