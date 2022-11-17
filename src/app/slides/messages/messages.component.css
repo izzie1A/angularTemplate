@@ -1,1 +1,15 @@
-/*  */
+ #messageContainer{
+    height: -webkit-fill-available;
+    width: -webkit-fill-available;
+    display:grid;
+    grid-template-rows: 10% 75% 15%;
+}
+#chatRecordContainer{
+    overflow-x: scroll;
+}
+#chatfooter{
+    height:100%;
+    display:flex;
+}
+
+

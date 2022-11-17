@@ -1,36 +1,36 @@
+<!-- wapper -->
 <div>
   <mat-toolbar color="primary">
     <span>rt-DataBase Viewer</span>
   </mat-toolbar>
-
-
-
-  <div class="kflexColumn kcard kround" >
-
-    <div class="klist  kcard kfullRound" >
+  <!-- header -->
+  <div class="kflexColumn kcard kround">
+    <div class="klist kblock kround">
       <div class=" ktable ">
-        <div class="kclick" (click)="goNode('root')">home</div>
-        <div class="kclick" (click)="NavNode(-1)">back</div>
+        <div class="kclick kcenterDeatil" (click)="goNode('root')">home</div>
+        <div class="kclick kcenterDeatil" (click)="NavNode(-1)">back</div>
       </div>
-      <div class="">{{this.dir}}</div>
+      <div class="kindent">{{this.dir}}</div>
     </div>
-
-      <div class="kflexColumn kblock ">
-        <div class="ktable kblock" *ngFor="let item of container; index as i;">
-          <div class="kclick" (click)="getNode(item)" ><div>{{item.toString()}}</div></div>
-          <div class="kclick" (click)="peekChild(item)">
-            <div mat-button *ngIf="containerChild[i].toString()=='[object Object]'">Peek...</div>
-            <div *ngIf="containerChild[i].toString()!='[object Object]'">{{containerChild[i]}}</div>
-          </div>
+    <!-- content -->
+    <div class="kflexColumn kcard ">
+      <!-- item loop -->
+      <div class="ktable kblock  " *ngFor="let item of container; index as i;">
+        <div class="kclick" (click)="peekChild(item)">
+          <div class="kpadding">{{item.toString()}}</div>
         </div>
-
-      <div class=" kblock kcard kround">
+        <div class="kclick " (click)="getNode(item)">
+          <div mat-button *ngIf="containerChild[i].toString()=='[object Object]'">Peek...</div>
+          <div *ngIf="containerChild[i].toString()!='[object Object]'">{{containerChild[i]}}</div>
+        </div>
+      </div>
+      <!-- loop ends -->
+      <!-- detail -->
+      <div class=" kcard kround kpadding">
         <div>Detail:</div>
         <div class=" kbar " *ngFor="let item2 of containerChildDetail; index as i;">{{item2}}</div>
       </div>
 
-    </div>               
-
-  </div>               
-
+    </div>
+  </div>
 </div>

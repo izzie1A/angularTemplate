@@ -1,13 +1,17 @@
+<!-- info block -->
 <div class="kcard kround kvtable priColor kratioh">
+    <!-- header -->
     <div class="secColor klist ">
+        <!-- nav header -->
         <div class="  ">
             <div class="klist ">
                 <div (click)="test('root')" class=" kclick kcenterDeatil kratior">home</div>
                 <div (click)="testp(collectionDir)" class=" kclick kcenterDeatil ">prev</div>
-                <!-- <div (click)="testn('testa/testb/testc')" class=" kclick kcenterDeatil kratioh kbado kround">next</div> -->
             </div>
+            <!-- current dir -->
             <div class="  ">{{collectionDir}}</div>
         </div>
+        <!-- dir input box-->
         <div class="ktable">
             <input class="kcapRound kbado" value="{{fileHolder.uid}}" #collectionDirInput>
             <button type="button" class="kclick kround kbado "
@@ -15,8 +19,10 @@
         </div>
     </div>
 
+    <!-- content -->
     <div class="klist">
         <div class="kblock">
+            <!-- slide bar item loop -->
             <div class="kbar kindent kmax" (click)="selectDocuemnt(item)"
                 *ngFor="let item of curCollection | async; let i = index">
                 <div *ngIf="item.flag!='collection'">
@@ -28,7 +34,7 @@
                 </div>
             </div>
         </div>
-        <!--  -->
+        <!-- item info -->
         <div class="kcard kround kvtable kbado">
             <div class="secColor kindent" *ngIf="docSelector.name && docSelector">
                 <div>{{docSelector.title}}:{{docSelector.timeStamp}}</div>
@@ -59,70 +65,45 @@
                         (blur)="editFileHolder('content',content.value);  " value="{{fileHolder.content}}" #content>
                 </div>
             </div>
-            <div class="kblock kflex kmax">
-                <button class="kbutton kratior kround kblock" (click)="test((collectionDir+'/'+fileHolder.uid))">Create</button>
-                <button class="kbutton kratior kround kblock" (click)="deleteDoc(collectionDir,fileHolder.uid)">Delete</button>
-                <button class="kbutton kratior kround kblock" (click)="test((collectionDir+'/'+fileHolder.uid))"> Save </button>
-            </div>
         </div>
     </div>
 </div>
 
-<!-- f -->
 
-<div class="kcard kround kratioh secColor">
-    <div class=" kvtable kmax">
-        <div class=" klist">
+<!-- detail block -->
+<div class="secColor kcard">
+    <div class=" ">
+        <div class="klist kpadding">
             <div class="kcenterDeatil">Title:{{fileHolder.title}}</div>
-            <div class="priColor" *ngIf="fileHolder!=undefined">
-                <div>Dir: {{collectionDir}}/{{fileHolder.uid}}</div>
+            <div class="klist " *ngIf="fileHolder!=undefined">
                 <div>Name:{{fileHolder.name}}</div>
+                <div>Dir: {{collectionDir}}/{{fileHolder.uid}}</div>
             </div>
         </div>
-        <div class="kblock kindent kround kvflex">
-            <div class="klist">
-                <div>uid:</div>
-                <div>{{fileHolder.uid}}</div>
-            </div>
-            <div class="klist">
-                <div>name:</div>
-                <input (keyup.enter)="editFileHolder('name',name.value)" (blur)="editFileHolder('name',name.value);  "
-                    value="{{fileHolder.name}}" #name>
-            </div>
-            <div class="klist">
-                <div>Date:</div>
-                <input (keyup.enter)="editFileHolder('uid',Date.value)" (blur)="editFileHolder('Date',Date.value);  "
-                    value="{{fileHolder.timeStamp}}" #Date>
-            </div>
-            <div class="klist">
-                <div>title:</div>
-                <input (keyup.enter)="editFileHolder('title',title.value)"
-                    (blur)="editFileHolder('title',title.value);  " value="{{fileHolder.title}}" #title>
-            </div>
-            <div class="klist">
-                <div>content:</div>
-                <input (keyup.enter)="editFileHolder('content',content.value)"
-                    (blur)="editFileHolder('content',content.value);  " value="{{fileHolder.content}}" #content>
-            </div>
-            <div class="kblock kflex kmax">
-                <button class="kbutton kratior kround"
-                    (click)="test((collectionDir+'/'+fileHolder.uid))">Create</button>
-                <button class="kbutton kratior kround" (click)="deleteDoc(collectionDir,fileHolder.uid)">Delete</button>
-                <button class="kbutton kratior kround" (click)="test((collectionDir+'/'+fileHolder.uid))">Save</button>
-            </div>
-        </div>
-        <div class="kindent ">
-            <div class="kblock ktable kindent kbado " *ngFor="let item of docSelector | keyvalue">
-                <div class="ktable" *ngIf="item.key!='childCollection'">
+        <!-- loop item value&key -->
+        <div class=" ">
+            <div class=" " *ngFor="let item of docSelector | keyvalue">
+                <div class="kindent klist" *ngIf="item.key!='childCollection'">
                     <div>{{item.key}}</div>
                     <div> : {{item.value}}</div>
                 </div>
                 <div *ngIf="item.key=='childCollection'">
-                    <div (click)="selectCollection(this.collectionDir+'/'+fileHolder.uid+'/'+childCollection)" *ngFor="let childCollection of docSelector.childCollection" class="kblock kcenterDeatil kclick ">
+                    <div class="kbutton" (click)="selectCollection(this.collectionDir+'/'+fileHolder.uid+'/'+childCollection)" *ngFor="let childCollection of docSelector.childCollection" class="kblock kcenterDeatil kclick ">
                         {{childCollection}}
                     </div>
                 </div>
             </div>
         </div>
+        <!-- end loop item value&key -->
+
+        <div class="kblock" *ngIf="docSelector.name!=''">
+            <div>{{docSelector}}</div>
+            <div class="kblock kflex kmax">
+                <button class="kbutton kratior kround kfixSize kcenterDeatil" (click)="deleteDoc(collectionDir,fileHolder.uid)">Delete</button>
+                <button class="kbutton kratior kround kfixSize kcenterDeatil" (click)="test((collectionDir+'/'+fileHolder.uid))">Save</button>
+                <button class="kbutton kratior kround kfixSize kcenterDeatil" (click)="test((collectionDir+'/'+fileHolder.uid))">Create</button>
+            </div>
+        </div>
+
     </div>
 </div>

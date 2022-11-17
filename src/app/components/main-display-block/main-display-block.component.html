@@ -1,8 +1,11 @@
 <div class="kcard kround">
     <!-- add item button -->
-    <div class=" kcard kcenterDeatil kclick kround" (click)="packageContentPush()">
-        <div class="">
-            <mat-icon>add</mat-icon>
+    <div class="klist">
+        <div class=" kcard kcenterDeatil kclick kround" (click)="packageContentPush()">
+            <div class=""><mat-icon>add</mat-icon></div>
+        </div>
+        <div class=" kcard kcenterDeatil kclick kround" (click)="packageContentPush()">
+            <div class=""><mat-icon>add</mat-icon></div>
         </div>
     </div>
     <!-- add item button end-->
@@ -10,7 +13,7 @@
         <div *ngFor="let item of this.content">{{item}}</div>
     </div>
     <!-- ITEM forloop-->
-    <div class=" kcard ktable kround kbado indent" *ngFor="let x of content; index as i" id="'content-'{{x}}">
+    <div class=" kcard ktable kbind indent" *ngFor="let x of content; index as i" id="'content-'{{x}}">
         <div class="klist">
             <!-- title -->
             <div class=" kbado indent klist">

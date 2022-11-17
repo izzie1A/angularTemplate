@@ -1,18 +1,18 @@
 .content{
-    /* height: 100vh;
-    background-color:var(--bg-primary); */
+    height: 100vh;
+    background-color:var(--bg-primary);
 }
 
 @media screen and (min-width: 1200px) {
     .content{
 
-
     }
   }
 
 #footerSaftyDiv{
-    height:15vh;
+    /* height:15vh; */
 }
 #priContent{
+    height: 85vh;
     overflow-x: scroll;
 }
