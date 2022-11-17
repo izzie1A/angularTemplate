@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input , Output } from '@angular/core';
 import { FirebaseCloudService } from 'src/app/services/firebase-cloud.service';
 
 @Component({
@@ -6,15 +6,12 @@ import { FirebaseCloudService } from 'src/app/services/firebase-cloud.service';
   templateUrl: './main-display-block.component.html',
   styleUrls: ['./main-display-block.component.css']
 })
-export class MainDisplayBlockComponent implements OnInit {
+export class MainDisplayBlockComponent {
   @Input() item = '';
-  content: any = [];
+  content: any = [{}];
   objHolder: any = [];
 
   constructor(private firestoreService:FirebaseCloudService) { }
-
-  ngOnInit(): void {
-  }
 
   onKey(dir: number, event: any, type: string) {
     this.content[dir][2] = event.target.files[0];
@@ -34,16 +31,16 @@ export class MainDisplayBlockComponent implements OnInit {
     }
   }
 
-  packageContentRemove(input: number) {
-    if (input > -1) {
-      this.content.splice(input, 1);
-    }
-  }
-
   packageContentPush() {
     console.log(this.content);
     this.content.push([,]);
     console.log(this.content);
+  }
+
+  packageContentRemove(input: number) {
+    if (input > -1) {
+      this.content.splice(input, 1);
+    }
   }
 
   uploadPackage(dir: string, input: string){

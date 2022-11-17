@@ -1,49 +1,63 @@
-<div id="messageContainer">
-    <mat-toolbar color="primary" class="kflex">
-        <div>message</div>
-        <div color="primary" d class="kcenterDeatil">
+<div *ngIf="chatRoomSelector == 'undefined'">
+    <mat-toolbar color="primary" class="">
+        <div class="ktable">
+            <div>Message</div>
+        </div>
+    </mat-toolbar>
+    <div *ngFor="let user of userArray">{{user.displayName}}</div>
+</div>
+
+
+<!-- message Header -->
+<div *ngIf="chatRoomSelector != 'undefined'" id="messageContainer" class="chatContainer kvflex kmax secColor">
+    <mat-toolbar color="primary" class="ktable">
+        <div class="ktable">
+            <div>Message :</div>
+            <div>{{chatRoomSelector}}</div>
+            <div>home</div>
+        </div>
+        <div color="primary" class="kcenterDeatil">
             <select>
                 <option *ngFor="let user of userArray" value="{{user.uid}}">{{user.displayName}}</option>
             </select>
         </div>
     </mat-toolbar>
 
-    <div id="chatRecordContainer">
-        <div class="kblock">
-            <div *ngIf="chatArray.length < 1" class=" kcenterDeatil kround kflex">Empty</div>
-            <div *ngIf="chatArray.length > 1" class="chatDeatil ">
-                <div *ngFor="let chat of chatArray" class=" chatMessage kcard kround kmax pricolor">
-                    <!-- other -->
-                    <div *ngIf="chat.fromUsery!=clientId">
-                        <div class="chatMessageHeader">
-                            <div>From:{{chat.fromUser}}</div>
-                            <div>{{chat.time}}</div>
-                        </div>
-                        <div>To:{{chat.toUser}}</div>
-                        <div>messages:{{chat.messages}}</div>
+    <!-- message -->
+    <div class="kblock">
+        <div *ngIf="chatArray.length < 1" class=" kcenterDeatil kround kflex">Empty</div>
+        <div *ngIf="chatArray.length > 1" class="chatDeatil ">
+            <div *ngFor="let chat of chatArray" class="kindent chatMessage kcard kround kmax pricolor">
+                <!-- other -->
+                <div *ngIf="chat.fromUsery!=clientId">
+                    <div class="chatMessageHeader">
+                        <div>From:{{chat.fromUser}}</div>
+                        <div>{{chat.time}}</div>
                     </div>
-                    <!-- self -->
-                    <div *ngIf="chat.fromUsery==clientId">
-                        <div class="chatMessageHeader">
-                            <div>From:{{chat.fromUser}}</div>
-                            <div>{{chat.time}}</div>
-                        </div>
-                        <div>To:{{chat.toUser}}</div>
-                        <div>messages:{{chat.messages}}</div>
+                    <div>To:{{chat.toUser}}</div>
+                    <div>messages:{{chat.messages}}</div>
+                </div>
+                <!-- self -->
+                <div *ngIf="chat.fromUsery==clientId">
+                    <div class="chatMessageHeader">
+                        <div>From:{{chat.fromUser}}</div>
+                        <div>{{chat.time}}</div>
                     </div>
+                    <div>To:{{chat.toUser}}</div>
+                    <div>messages:{{chat.messages}}</div>
                 </div>
 
             </div>
         </div>
     </div>
 
-    <div>
-        <div id="chatfooter" class=" kruond kflex kblock">
-            <input class="messageBox" matInput placeholder=" Type message here..." value="" [(ngModel)]="msgBoxInput">
-            <button class="kfullRound kclick" (click)="sendMessage('2', msgBoxInput)">
-                <span class="material-icons">send</span>
-            </button>
-        </div>
+
+    <!-- Message text box -->
+    <div id="chatfooter" class="">
+        <input class="messageBox" matInput placeholder=" Type message here..." value="" [(ngModel)]="msgBoxInput">
+        <button class="kfullRound kclick" (click)="sendMessage('2', msgBoxInput)">
+            <span class="material-icons">send</span>
+        </button>
     </div>
 
 </div>

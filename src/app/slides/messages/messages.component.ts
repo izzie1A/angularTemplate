@@ -17,12 +17,15 @@ export class MessagesComponent implements OnInit {
   selected = '';
   selected2 = '';
 
+  chatRoomSelector: string;
+
 
   constructor(private fbrtdbService: FirebaseRtdbService, private auth: AuthGuard) {
     // listener to user id == chat record userID
     this.clientId = this.auth.user$ == null? "null-ID" : this.auth.user$.uid;
     this.chatArray = new Array();
     this.userArray = new Array();
+    this.chatRoomSelector = 'undefined';
     
     // smarter 
     this.getChatRecord();
