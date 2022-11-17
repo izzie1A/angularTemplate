@@ -69,6 +69,7 @@ import { FbStorageUiComponent } from './components/fb-storage-ui/fb-storage-ui.c
 import { CartComponent } from './components/cart/cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { FbCloudstoreUiComponent } from './components/fb-cloudstore-ui/fb-cloudstore-ui.component';
+import { CardComponentComponent } from './components/card-component/card-component.component';
 // component
 
 
@@ -98,6 +99,7 @@ import { FbCloudstoreUiComponent } from './components/fb-cloudstore-ui/fb-clouds
     CartComponent,
     CheckoutComponent,
     FbCloudstoreUiComponent,
+    CardComponentComponent,
     
   ],
   imports: [

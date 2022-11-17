@@ -1,4 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
+l/* You can add global styles to this file, and also import other style files */
 /*hide scrollbar*/
 .page {
   height: 85vh;
@@ -332,7 +332,7 @@ html {
       background-color: rgba(255, 0, 255, .1);
   }
   
-  * * * * * {
+  * * * * * {a
       background-color: rgba(0, 255, 255, .1);
   }
   

@@ -1,11 +1,24 @@
 <div class="kcard kround">
     <!-- add item button -->
+<<<<<<< HEAD
     <div class="klist">
         <div class=" kcard kcenterDeatil kclick kround" (click)="packageContentPush()">
             <div class=""><mat-icon>add</mat-icon></div>
         </div>
         <div class=" kcard kcenterDeatil kclick kround" (click)="packageContentPush()">
             <div class=""><mat-icon>add</mat-icon></div>
+=======
+    <div class=" ktable">
+        <div class=" kcard kcenterDeatil kclick kround" (click)="packageContentPush()">
+            <div class="">
+                <mat-icon>add</mat-icon>
+            </div>
+        </div>
+        <div class=" kcard kcenterDeatil kclick kround" (click)="packageContentPush()">
+            <div class="">
+                <mat-icon>add</mat-icon>
+            </div>
+>>>>>>> 3f243c264b533a970d07b2b654c72c92a4a01a00
         </div>
     </div>
     <!-- add item button end-->
@@ -13,10 +26,14 @@
         <div *ngFor="let item of this.content">{{item}}</div>
     </div>
     <!-- ITEM forloop-->
+<<<<<<< HEAD
     <div class=" kcard ktable kbind indent" *ngFor="let x of content; index as i" id="'content-'{{x}}">
+=======
+    <div class="kblock ktable" *ngFor="let x of content; index as i" id="'content-'{{x}}">
+>>>>>>> 3f243c264b533a970d07b2b654c72c92a4a01a00
         <div class="klist">
             <!-- title -->
-            <div class=" kbado indent klist">
+            <div class=" kbado kindent klist">
                 <div>{{i+1}}:</div>
                 <mat-select [(value)]="this.content[i][0]">
                     <mat-option>None</mat-option>
@@ -37,20 +54,24 @@
                     <!-- content? == image -->
                     <div *ngIf="this.content[i][0]=='image'">
                         <div class="kflex klist " (change)="onKey(i,$event,'contentContent')">
-                            <input type="file" style="display: none" #file (change)="onKey(i,$event,'contentContent')" />
+                            <input type="file" style="display: none" #file
+                                (change)="onKey(i,$event,'contentContent')" />
                             <!-- <button type="button" class="btn" (click)="file.click()"> Browse </button> -->
-                            <button mat-mini-fab color="prima`ry" class="upload-btn" (click)="file.click()" onchange="console.log(event.target.files)" accept=".png,.jpg">
+                            <button mat-mini-fab color="prima`ry" class="upload-btn" (click)="file.click()"
+                                onchange="console.log(event.target.files)" accept=".png,.jpg">
                                 <mat-icon>attach_file</mat-icon>
                             </button>
                             <div>{{this.content[i][1]}}</div>
                         </div>
                         <div class=" kblock kcenterDeatil">
-                            <img *ngIf="this.content[i][1]" class="kimg kbado kcard" [src]="this.content[i][1]" (click)="file.click()" height="">
+                            <img *ngIf="this.content[i][1]" class="kimg kbado kcard" [src]="this.content[i][1]"
+                                (click)="file.click()" height="">
                         </div>
                     </div>
                     <!-- content? != image -->
                     <div *ngIf="this.content[i][0]!='image'">
-                        <input (blur)="onKey(i,$event,'contentContent')" (keyup.enter)="onKey(i,$event,'contentContent')" value="{{this.content[i][1]}}">
+                        <input (blur)="onKey(i,$event,'contentContent')"
+                            (keyup.enter)="onKey(i,$event,'contentContent')" value="{{this.content[i][1]}}">
                     </div>
                 </div>
             </div>
