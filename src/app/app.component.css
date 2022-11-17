@@ -1,12 +1,8 @@
 .content{
-<<<<<<< HEAD
     height: 100vh;
     background-color:var(--bg-primary);
-=======
-    height: 75vh;
     /*
     background-color:var(--bg-primary); */
->>>>>>> 3f243c264b533a970d07b2b654c72c92a4a01a00
 }
 
 @media screen and (min-width: 1200px) {

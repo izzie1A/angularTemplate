@@ -2,14 +2,17 @@
     height: -webkit-fill-available;
     width: -webkit-fill-available;
     display:grid;
-    grid-template-rows: 10% 75% 15%;
+    grid-template-rows: 10% 80% 10%;
 }
 #chatRecordContainer{
+    height: -webkit-fill-available;
+    width: -webkit-fill-available;
     overflow-x: scroll;
 }
 #chatfooter{
     height:100%;
-    display:flex;
+    display:grid;
+    grid-template-columns: 85% 15%;
 }
 
 
