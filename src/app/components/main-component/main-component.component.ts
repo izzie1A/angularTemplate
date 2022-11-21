@@ -49,6 +49,7 @@ export class MainComponentComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
   onKey(dir: number, event: any, type: string) {
     this.content[dir][2] = event.target.files[0];
     console.log(this.content[dir][1]);

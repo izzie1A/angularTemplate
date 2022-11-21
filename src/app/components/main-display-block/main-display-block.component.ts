@@ -8,6 +8,7 @@ import { FirebaseCloudService } from 'src/app/services/firebase-cloud.service';
 })
 export class MainDisplayBlockComponent {
   @Input() item = '';
+  @Output() test:any;
   content: any = [{}];
   objHolder: any = [];
 
