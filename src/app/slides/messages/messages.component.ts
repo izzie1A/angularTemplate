@@ -67,12 +67,13 @@ export class MessagesComponent implements OnInit {
     onValue(chatdbRef, (data) => {
       this.chatArray = [];
       data.forEach((childSnapshot) => {
+        console.log('look')
         console.log(childSnapshot.val())
         this.chatArray.push(childSnapshot.val());
       });
+      
     });
   }
-
 
   setMessage(key:any, value?:string){
     let time = new Date();
@@ -100,7 +101,14 @@ export class MessagesComponent implements OnInit {
       messages :  value
     }
     console.log(this.fbrtdbService.pushData('root/chat/'+clientId+this.selected2+'/',msg));
+  }
 
+  test(input: any){
+    this.chatRoomSelector = input;
+    this.getChatRecord2(input);
+  }
+
+  getChatRecord2(input:any){
   }
 
 }
