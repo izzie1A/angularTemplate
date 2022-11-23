@@ -14,7 +14,6 @@ export class MessagesComponent {
   userArray: any[] ;
   clientId?: string;
   selected = '';
-  selected2 = '';
 
   chatRoomSelector: string;
 
@@ -35,6 +34,7 @@ export class MessagesComponent {
     // this.getAllUser();
     // // 
 
+    this.test();
   }
 
   // myCallbackFunction = (args: any): void => {
@@ -98,7 +98,7 @@ export class MessagesComponent {
   //   console.log(this.fbrtdbService.pushData('root/chat/'+clientId+this.selected2+'/',msg));
   // }
 
-  test(input: any){
+  selectChatRoom(input: any){
     this.chatRoomSelector = input;
     this.getChatRecord(input);
 
@@ -106,11 +106,14 @@ export class MessagesComponent {
 
   getChatRecord(input:any){
     this.firestore.getCollection(input);
-    console.log()
   }
   
   sendMessage(){
-
   }
 
-}
+  test(){
+    let x = this.firestore.test()
+    // x.subscribe(x => console.log(x));
+    x.subscribe(x => this.chatArray = x);
+  }
+}                                                                         

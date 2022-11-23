@@ -4,14 +4,15 @@
             <div>Message</div>
         </div>
     </mat-toolbar>
-    <div class="kbar kindent" (click)="test(user.displayName.toString())" *ngFor="let user of userArray">{{user.displayName}}</div>
+    <button (click)="test()">test</button>
+    <div class="kbar kindent" (click)="selectChatRoom(user.displayName.toString())" *ngFor="let user of userArray">{{user.displayName}}</div>
 </div>
 
 <!-- message Header -->
 <div *ngIf="chatRoomSelector != 'undefined'" id="messageContainer" class="chatContainer kvflex kmax secColor">
     <mat-toolbar color="primary" class="kmax">
         <div class="ktable kmax">
-            <div (click)="test('undefined')">home</div>
+            <div (click)="selectChatRoom('undefined')">home</div>
             <div class="">
                 <div>Message :</div>
                 <div>{{chatRoomSelector}}</div>

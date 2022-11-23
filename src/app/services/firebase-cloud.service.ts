@@ -8,6 +8,11 @@ export class FirebaseCloudService {
 
   constructor(private firestore: AngularFirestore) { }
 
+  test(){
+    return this.getCollection();
+  }
+
+
   getCollection(dir?:string){
     if(dir!==undefined){
       return this.firestore.collection(dir).valueChanges();
