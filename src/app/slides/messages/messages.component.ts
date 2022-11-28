@@ -1,7 +1,6 @@
 import { Component, OnInit ,Output} from '@angular/core';
 import { FirebaseCloudService } from 'src/app/services/firebase-cloud.service';
 import { AuthGuard } from 'src/app/services/auth.service';
-import { UploadDoc} from 'src/app/interface/uploadDoc.model'
 
 
 @Component({
@@ -18,7 +17,6 @@ export class MessagesComponent {
 
   chatRoomSelector: string;
 
-
   constructor( private auth: AuthGuard, private firestore: FirebaseCloudService) {
     // listener to user id == chat record userID
     this.clientId = this.auth.user$ == null? "null-ID" : this.auth.user$.uid;
@@ -26,16 +24,14 @@ export class MessagesComponent {
     this.userArray = new Array();
     this.chatRoomSelector = 'undefined';
     
-    this.getChatRecord(" ");
-    // // smarter 
-    // this.getChatRecord();
-    // // 
+    this.getChatRecord("root");
 
-    // // get to everyUser
-    // this.getAllUser();
-    // // 
+    // this.test();
+  }
 
-    this.test();
+  test(input?:any){
+    let x = this.selectChatRoom('root');
+    console.log(x)
   }
 
   selectChatRoom(input: any){
@@ -50,16 +46,10 @@ export class MessagesComponent {
     return this.firestore.getCollection(input);
   }
   
-  testSendMessage(){
+  async testSendMessage(){
     let x = this.firestore.addDoc('root', {});
     console.log(x);
   }
-
-  test(input?:any){
-    this.selectChatRoom('root');
-    console.log('test')
-  }
-
 
   // myCallbackFunction = (args: any): void => {
   //   //callback code here
