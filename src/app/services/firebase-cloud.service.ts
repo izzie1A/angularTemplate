@@ -21,7 +21,7 @@ export class FirebaseCloudService {
     }
   }
   getDoc(dir:string) {
-    return  this.firestore.doc(dir);
+    return this.firestore.doc(dir);
   }
 
   query(){
@@ -37,8 +37,10 @@ export class FirebaseCloudService {
     const doc = this.firestore.doc(dir.toString());
     console.log(doc.update(item));
   }
+
   queryUpload(){
   }
+
   delete(dir: string, itemId: string) {
     this.firestore.collection(dir).doc(itemId).delete().then((x) => {
       console.log("Document successfully deleted!", x);

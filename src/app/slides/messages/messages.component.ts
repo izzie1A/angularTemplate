@@ -1,7 +1,9 @@
 import { Component, OnInit ,Output} from '@angular/core';
 import { FirebaseCloudService } from 'src/app/services/firebase-cloud.service';
 import { AuthGuard } from 'src/app/services/auth.service';
-import { getDatabase, ref,onValue, onChildChanged, onChildAdded, onChildRemoved, query, limitToLast, orderByChild, } from "firebase/database";
+import { UploadDoc} from 'src/app/interface/uploadDoc.model'
+
+
 @Component({
   selector: 'app-messages',
   templateUrl: './messages.component.html',
@@ -13,7 +15,6 @@ export class MessagesComponent {
   chatArray: any[] ;
   userArray: any[] ;
   clientId?: string;
-  selected = '';
 
   chatRoomSelector: string;
 
@@ -36,6 +37,29 @@ export class MessagesComponent {
 
     this.test();
   }
+
+  selectChatRoom(input: any){
+    this.chatRoomSelector = input;
+    let x = this.getChatRecord(input);
+    x.subscribe(x => this.chatArray = x);
+    x.subscribe(x => console.log(x));
+    this.chatRoomSelector = input.toString()
+  }
+
+  getChatRecord(input:any){
+    return this.firestore.getCollection(input);
+  }
+  
+  testSendMessage(){
+    let x = this.firestore.addDoc('root', {});
+    console.log(x);
+  }
+
+  test(input?:any){
+    this.selectChatRoom('root');
+    console.log('test')
+  }
+
 
   // myCallbackFunction = (args: any): void => {
   //   //callback code here
@@ -98,22 +122,5 @@ export class MessagesComponent {
   //   console.log(this.fbrtdbService.pushData('root/chat/'+clientId+this.selected2+'/',msg));
   // }
 
-  selectChatRoom(input: any){
-    this.chatRoomSelector = input;
-    this.getChatRecord(input);
 
-  }
-
-  getChatRecord(input:any){
-    this.firestore.getCollection(input);
-  }
-  
-  sendMessage(){
-  }
-
-  test(){
-    let x = this.firestore.test()
-    // x.subscribe(x => console.log(x));
-    x.subscribe(x => this.chatArray = x);
-  }
 }                                                                         

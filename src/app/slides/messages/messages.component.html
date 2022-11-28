@@ -4,14 +4,17 @@
             <div>Message</div>
         </div>
     </mat-toolbar>
-    <button (click)="test()">test</button>
+    <div>
+        <button (click)="test()">test</button>
+        <button (click)="testSendMessage()">testSendMessage</button>
+    </div>
     <div class="kbar kindent" (click)="selectChatRoom(user.displayName.toString())" *ngFor="let user of userArray">{{user.displayName}}</div>
 </div>
 
 <!-- message Header -->
 <div *ngIf="chatRoomSelector != 'undefined'" id="messageContainer" class="chatContainer kvflex kmax secColor">
-    <mat-toolbar color="primary" class="kmax">
-        <div class="ktable kmax">
+    <mat-toolbar color="primary" class=" kmax">
+        <div class="klist kmax">
             <div (click)="selectChatRoom('undefined')">home</div>
             <div class="">
                 <div>Message :</div>
@@ -57,7 +60,7 @@
     <!-- Message text box -->
     <div id="chatfooter" class="">
         <input class="messageBox" matInput placeholder=" Type message here..." value="" [(ngModel)]="msgBoxInput">
-        <button class="kfullRound kclick" (click)="sendMessage()">
+        <button class="kfullRound kclick" (click)="testSendMessage()">
             <span class="material-icons">send</span>
         </button>
     </div>
