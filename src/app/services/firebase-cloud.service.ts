@@ -16,10 +16,6 @@ export class FirebaseCloudService {
     this.item$ = new Observable<Item[]>;
   }
 
-  test(){
-    return this.getCollection();
-  }
-  
   test2(){
     const collection = this.firestore.collection('items');
     let x = this.firestore.collection('Users', ref => ref.where('item','==','whatever'));
@@ -33,11 +29,8 @@ export class FirebaseCloudService {
       return this.firestore.collection('root').valueChanges();
     }
   }
-  getDoc(dir:string) {
+  getDoc(dir:string) {  
     return this.firestore.doc(dir);
-  }
-
-  query(){
   }
 
   addDoc(dir:string,item: any) {
@@ -45,20 +38,15 @@ export class FirebaseCloudService {
     item.timeStamp = Date.now().toString();
     const itemsCollection = this.firestore.collection(dir.toString());
     return Promise.resolve(itemsCollection.doc(item.uid).set(item))
-
   }
   writeDoc(dir:string,item:any) {
     const doc = this.firestore.doc(dir.toString());
     console.log(doc.update(item));
   }
 
-  queryUpload(){
-  }
-
   delete(dir: string, itemId: string) {
     this.firestore.collection(dir).doc(itemId).delete().then((x) => {
       console.log("Document successfully deleted!", x);
-      alert( x);
     }).catch((error) => {
       console.error("Error removing document: ", error);
     });

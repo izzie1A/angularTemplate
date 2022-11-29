@@ -8,7 +8,9 @@
         <button (click)="test()">test</button>
         <button (click)="testSendMessage()">testSendMessage</button>
     </div>
-    <div class="kbar kindent" (click)="selectChatRoom(user.displayName.toString())" *ngFor="let user of userArray">{{user.displayName}}</div>
+    <div class="kbar kindent" (click)="selectChatRoom(user.displayName.toString())" *ngFor="let user of userArray">
+        {{user.displayName}}
+    </div>
 </div>
 
 <!-- message Header -->

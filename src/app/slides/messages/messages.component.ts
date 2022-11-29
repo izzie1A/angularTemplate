@@ -31,14 +31,12 @@ export class MessagesComponent {
 
   test(input?:any){
     let x = this.selectChatRoom('root');
-    console.log(x)
   }
 
   selectChatRoom(input: any){
     this.chatRoomSelector = input;
     let x = this.getChatRecord(input);
     x.subscribe(x => this.chatArray = x);
-    x.subscribe(x => console.log(x));
     this.chatRoomSelector = input.toString()
   }
 
@@ -46,9 +44,13 @@ export class MessagesComponent {
     return this.firestore.getCollection(input);
   }
   
-  async testSendMessage(){
+  testSendMessage(){
     let x = this.firestore.addDoc('root', {});
     console.log(x);
+  }
+
+  tdelete(itemId: string){
+    this.firestore.delete(this.chatRoomSelector,itemId);
   }
 
   // myCallbackFunction = (args: any): void => {
