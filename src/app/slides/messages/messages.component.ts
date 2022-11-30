@@ -18,14 +18,11 @@ export class MessagesComponent {
   chatRoomSelector: string;
 
   constructor( private authGuard: AuthGuard, private firestore: FirebaseCloudService) {
-    // listener to user id == chat record userID
     this.clientId = this.authGuard.user$ == null? "null-ID" : this.authGuard.user$.uid;
     this.chatArray = new Array();
     this.userArray = new Array();
     this.chatRoomSelector = 'undefined';
     
-
-    // this.test();
   }
 
   test(input?:any){
@@ -57,7 +54,6 @@ export class MessagesComponent {
   }
 
   tedit(){
-
   }
 
   // myCallbackFunction = (args: any): void => {
