@@ -8,17 +8,17 @@ import { AuthGuard } from '../../services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(public auth: AuthGuard) { }
+  constructor(public authGuard: AuthGuard) { }
 
   ngOnInit(): void {
   }
 
   signin(){
-    this.auth.gSignin();
+    this.authGuard.gSignin();
   }
   signout(){
     console.log("signout")
-    this.auth.gSignout();
+    this.authGuard.gSignout();
   }
 
 }

@@ -5,8 +5,8 @@
         </div>
     </mat-toolbar>
     <div>
-        <button (click)="test()">test</button>
-        <button (click)="testSendMessage()">testSendMessage</button>
+        <div (click)="test()">test root</div>
+        <div *ngFor="let user of userArray"(click)="test()">:{{user}}</div>
     </div>
     <div class="kbar kindent" (click)="selectChatRoom(user.displayName.toString())" *ngFor="let user of userArray">
         {{user.displayName}}
@@ -32,9 +32,12 @@
 
     <!-- message -->
     <div class="kblock">
-        <div *ngIf="chatArray.length < 1" class=" kcenterDeatil kround kflex">Empty</div>
-        <div *ngIf="chatArray.length > 1" class="chatDeatil ">
-            <div *ngFor="let chat of chatArray" class="kindent chatMessage kcard kround kmax pricolor">
+        <div *ngIf="chatArray.length < 0" class=" kcenterDeatil kround kflex">Empty</div>
+        <div *ngIf="chatArray.length > 0" >
+            <div *ngFor="let chat of chatArray" 
+                class="kindent chatMessage kcard kround pricolor"
+                (dblclick)="tdelete(chat.uid)"
+            >
                 <!-- other -->
                 <div *ngIf="chat.fromUsery!=clientId">
                     <div class="chatMessageHeader">
@@ -61,8 +64,8 @@
 
     <!-- Message text box -->
     <div id="chatfooter" class="">
-        <input class="messageBox" matInput placeholder=" Type message here..." value="" [(ngModel)]="msgBoxInput">
-        <button class="kfullRound kclick" (click)="testSendMessage()">
+        <input class="messageBox" matInput placeholder=" Type message here..." value="" [(ngModel)]="msgBoxInput" #test>
+        <button class="kfullRound kclick kratior" (click)="testSendMessage(test.value)">
             <span class="material-icons">send</span>
         </button>
     </div>

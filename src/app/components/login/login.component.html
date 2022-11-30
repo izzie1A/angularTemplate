@@ -1,24 +1,24 @@
 <div id="loginpageContainer" class="kratioh" >
     <div class="loginblock">    
         <div id="loginDetail">
-            <img src={{auth.user$.photoURL}} id="userImage" alt="img" *ngIf="auth.user$!!">
-            <div *ngIf="auth.user$==null"  class="kicon">
+            <img src={{authGuard.user$.photoURL}} id="userImage" alt="img" *ngIf="authGuard.user$!!">
+            <div *ngIf="authGuard.user$==null"  class="kicon">
                 <span class="kratior" >account_circle</span>
             </div>
         </div>
 
         <div >
-            <button class="kbutton kround kblock" *ngIf="auth.user$ === null" (click)="signin()">Sign-In with Google </button>
-            <button class="kbutton kround kblock" *ngIf="auth.user$!= null" (click)="signout()">Sign-Out</button>
+            <button class="kbutton kround kblock" *ngIf="authGuard.user$ === null" (click)="signin()">Sign-In with Google </button>
+            <button class="kbutton kround kblock" *ngIf="authGuard.user$!= null" (click)="signout()">Sign-Out</button>
         </div>
 </div>
 
 
 
-<div class="loginblock" *ngIf=" auth.user$!= null">
+<div class="loginblock" *ngIf=" authGuard.user$!= null">
     <div class="ktable">
-        <div>Welcome :</div> <div>{{auth.user$.displayName}}</div>
-        <div>uid :</div> <div>{{auth.user$.uid}}</div>
-        <div>email :</div> <div>{{auth.user$.email}}</div>
+        <div>Welcome :</div> <div>{{authGuard.user$.displayName}}</div>
+        <div>uid :</div> <div>{{authGuard.user$.uid}}</div>
+        <div>email :</div> <div>{{authGuard.user$.email}}</div>
     </div>
 </div>

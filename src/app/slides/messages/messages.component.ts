@@ -2,7 +2,6 @@ import { Component, OnInit ,Output} from '@angular/core';
 import { FirebaseCloudService } from 'src/app/services/firebase-cloud.service';
 import { AuthGuard } from 'src/app/services/auth.service';
 
-
 @Component({
   selector: 'app-messages',
   templateUrl: './messages.component.html',
@@ -14,17 +13,17 @@ export class MessagesComponent {
   chatArray: any[] ;
   userArray: any[] ;
   clientId?: string;
+  
 
   chatRoomSelector: string;
 
-  constructor( private auth: AuthGuard, private firestore: FirebaseCloudService) {
+  constructor( private authGuard: AuthGuard, private firestore: FirebaseCloudService) {
     // listener to user id == chat record userID
-    this.clientId = this.auth.user$ == null? "null-ID" : this.auth.user$.uid;
+    this.clientId = this.authGuard.user$ == null? "null-ID" : this.authGuard.user$.uid;
     this.chatArray = new Array();
     this.userArray = new Array();
     this.chatRoomSelector = 'undefined';
     
-    this.getChatRecord("root");
 
     // this.test();
   }
@@ -44,13 +43,21 @@ export class MessagesComponent {
     return this.firestore.getCollection(input);
   }
   
-  testSendMessage(){
-    let x = this.firestore.addDoc('root', {});
+  testSendMessage(input:any){
+    let x = this.firestore.addDoc('root', {
+      fromUser: this.authGuard.user$.uid,
+      toUser: this.chatRoomSelector,
+      messages: input,
+    });
     console.log(x);
   }
 
   tdelete(itemId: string){
-    this.firestore.delete(this.chatRoomSelector,itemId);
+    this.firestore.delete(this.chatRoomSelector,itemId);  
+  }
+
+  tedit(){
+
   }
 
   // myCallbackFunction = (args: any): void => {
