@@ -1,17 +1,20 @@
+<!-- message menu-->
 <div *ngIf="chatRoomSelector == 'undefined'">
     <mat-toolbar color="primary" class="">
-        <div class="ktable">
+        <div class="ktable ">
             <div>Message</div>
         </div>
     </mat-toolbar>
-    <div>
-        <div (click)="selectChatRoom('root')">test</div>
-        <div *ngFor="let user of userArray"(click)="test()">:{{user}}</div>
+    <div class="kcard kround kpadding">
+        <div (click)="selectChatRoom('root')">test : chatroom</div>
     </div>
     <div class="kbar kindent" (click)="selectChatRoom(user.displayName.toString())" *ngFor="let user of userArray">
         {{user.displayName}}
+        {{user.test}}
     </div>
 </div>
+<!-- message menu end-->
+
 
 <!-- message Header -->
 <div *ngIf="chatRoomSelector != 'undefined'" id="messageContainer" class="chatContainer kvflex kmax secColor">
@@ -65,5 +68,6 @@
             <span class="material-icons">send</span>
         </button>
     </div>
+    <!-- Message text box end-->
 
 </div>

@@ -22,23 +22,33 @@ export class MessagesComponent {
     this.chatArray = new Array();
     this.userArray = new Array();
     this.chatRoomSelector = 'undefined';
-    
+    this.userArray = [{test:'a'},{test:'b'}]
+    let x = this.getChatUser('users');
+    this.getChatUser('users').subscribe(
+      x => {this.userArray = x;
+        console.log(this.userArray)}
+      );
+  }
+
+  getChatRecord(input:any){
+    return this.firestore.getCollection(input);
+  }
+  getChatUser(input?:any){
+    return this.firestore.getCollection(input)
   }
 
   test(input?:any){
     let x = this.selectChatRoom('root');
   }
 
-  selectChatRoom(input: any){
+  selectChatRoom(input: any){   
     this.chatRoomSelector = input;
     let x = this.getChatRecord(input);
     x.subscribe(x => this.chatArray = x);
     this.chatRoomSelector = input.toString()
   }
 
-  getChatRecord(input:any){
-    return this.firestore.getCollection(input);
-  }
+
   
   testSendMessage(input:any){
     let x = this.firestore.addDoc('root', {
