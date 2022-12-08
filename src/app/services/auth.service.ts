@@ -3,6 +3,7 @@ import { first, Observable, of, switchMap } from 'rxjs';
 import { FirebaseRtdbService } from 'src/app/services/firebase-rtdb.service';
 import { User } from './../interface/user.model';
 import { getAuth, signInWithPopup,signOut, GoogleAuthProvider, onAuthStateChanged } from "firebase/auth";
+import { FirebaseCloudService } from 'src/app/services/firebase-cloud.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class AuthGuard {
   user$: Observable<User> | any;
   provider: any;
   auth : any;
-  constructor(private firebase: FirebaseRtdbService) {
+  constructor(private firebase: FirebaseRtdbService, private firestore: FirebaseCloudService) {
     this.user$ = null;
     this.auth = getAuth();
     this.provider = new GoogleAuthProvider();
@@ -30,6 +31,22 @@ export class AuthGuard {
     return this.user$.pipe(first()).toPromise();
   }
   
+  tgSignin(){
+    let x = signInWithPopup(this.auth, this.provider)
+      .then((result) => {
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential?.accessToken;
+        this.user$ = result.user;
+        this.firestore.writeUserData(result.user);
+        return this.user$
+      }).catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        const email = error.customData.email;
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        // ...
+      });
+  }
   gSignin(){
     let x = signInWithPopup(this.auth, this.provider)
       .then((result) => {
@@ -45,7 +62,6 @@ export class AuthGuard {
         const credential = GoogleAuthProvider.credentialFromError(error);
         // ...
       });
-
   }
 
   gSignout(){
