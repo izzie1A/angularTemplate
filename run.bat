@@ -1,2 +1,4 @@
+call npm install
 explorer "http://localhost:4200/"
-ng serve
+call ng serve
+
