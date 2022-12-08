@@ -37,10 +37,20 @@ export class FirebaseCloudService {
   uploadDoc(dir:string){
     this.firestore.doc('dir');
   }
+  testWriteDoc(dir:string, input:any){
+    let result = this.getDoc(input);
+    console.log(result); 
+    if(result!=undefined){
+      this.writeDoc(dir, input);
+    } else{
+      this.addDoc(dir, input);
+    }                                                                  
+  }
   addDoc(dir:string,item: any) {
     item.uid = this.firestore.createId();
     item.timeStamp = Date.now().toString();
     const itemsCollection = this.firestore.collection(dir.toString());
+    console.log(itemsCollection)
     return Promise.resolve(itemsCollection.doc(item.uid).set(item))
   }
   writeDoc(dir:string,item:any) {

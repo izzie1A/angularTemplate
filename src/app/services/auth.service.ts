@@ -37,7 +37,8 @@ export class AuthGuard {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential?.accessToken;
         this.user$ = result.user;
-        this.firestore.writeUserData(result.user);
+        this.firestore.testWriteDoc('root/user',result.user);
+        
         return this.user$
       }).catch((error) => {
         const errorCode = error.code;

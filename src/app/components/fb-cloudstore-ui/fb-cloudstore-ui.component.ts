@@ -46,7 +46,7 @@ export class FbCloudstoreUiComponent {
     };
     return this.firecloudService.getCollection(input);
   }
-  saveDoc(input?: any) {
+  saveFile(input?: any) {
     if (input != undefined) {
       this.firecloudService.writeDoc(this.collectionDir, input);
     } else {
