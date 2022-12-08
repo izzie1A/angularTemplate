@@ -12,9 +12,9 @@ interface Item {
 })
 
 export class FirebaseCloudService {
-  item$: Observable<Item[]>;
+  // item$: Observable<Item[]>;
   constructor(private firestore: AngularFirestore) {
-    this.item$ = new Observable<Item[]>;
+    // this.item$ = new Observable<Item[]>;
   }
 
   test2(){
@@ -34,6 +34,9 @@ export class FirebaseCloudService {
     return this.firestore.doc(dir);
   }
 
+  uploadDoc(dir:string){
+    this.firestore.doc('dir');
+  }
   addDoc(dir:string,item: any) {
     item.uid = this.firestore.createId();
     item.timeStamp = Date.now().toString();

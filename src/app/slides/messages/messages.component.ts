@@ -22,7 +22,6 @@ export class MessagesComponent {
     this.chatArray = new Array();
     this.userArray = new Array();
     this.chatRoomSelector = 'undefined';
-    this.userArray = [{test:'a'},{test:'b'}]
     let x = this.getChatUser('users');
     this.getChatUser('users').subscribe(
       x => {this.userArray = x;
@@ -37,21 +36,23 @@ export class MessagesComponent {
     return this.firestore.getCollection(input)
   }
 
-  test(input?:any){
-    let x = this.selectChatRoom('root');
+  getChatRoomUID(input1:string){
+    let input2 = this.authGuard.user$.uid.toString();
+    const answer = input1 > input2 ? input1+input2 : input1+input2;
+    return answer
   }
 
   selectChatRoom(input: any){   
     this.chatRoomSelector = input;
-    let x = this.getChatRecord(input);
+    let roomID = this.getChatRoomUID(this.chatRoomSelector);
+    let x = this.getChatRecord(roomID);
     x.subscribe(x => this.chatArray = x);
     this.chatRoomSelector = input.toString()
   }
-
-
   
   testSendMessage(input:any){
-    let x = this.firestore.addDoc('root', {
+    let roomID = this.getChatRoomUID(this.chatRoomSelector);
+    let x = this.firestore.addDoc(roomID, {
       fromUser: this.authGuard.user$.uid,
       toUser: this.chatRoomSelector,
       messages: input,
@@ -60,7 +61,8 @@ export class MessagesComponent {
   }
 
   tdelete(itemId: string){
-    this.firestore.delete(this.chatRoomSelector,itemId);  
+    this.firestore.delete(this.getChatRoomUID(this.chatRoomSelector),itemId);  
+    alert('test')
   }
 
   tedit(){

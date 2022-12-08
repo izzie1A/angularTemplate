@@ -8,25 +8,23 @@
     <div class="kcard kround kpadding">
         <div (click)="selectChatRoom('root')">test : chatroom</div>
     </div>
-    <div class="kbar kindent" (click)="selectChatRoom(user.displayName.toString())" *ngFor="let user of userArray">
+    <div class="kbar kindent" (click)="selectChatRoom(user.uid.toString())" *ngFor="let user of userArray">
         {{user.displayName}}
-        {{user.test}}
     </div>
 </div>
 <!-- message menu end-->
 
 
 <!-- message Header -->
-<div *ngIf="chatRoomSelector != 'undefined'" id="messageContainer" class="chatContainer kvflex kmax secColor">
+<div *ngIf="chatRoomSelector != 'undefined'" id="messageContainer" class="chatContainer  kmax secColor">
     <mat-toolbar color="primary" class=" kmax">
         <div class="klist kmax">
             <div (click)="selectChatRoom('undefined')">home</div>
             <div class="">
-                <div>Message :</div>
+                <div>Message to:</div>
                 <div>{{chatRoomSelector}}</div>
             </div>
         </div>
-
     </mat-toolbar>
 
     <!-- message -->
@@ -69,5 +67,4 @@
         </button>
     </div>
     <!-- Message text box end-->
-
 </div>
