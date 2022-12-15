@@ -38,7 +38,7 @@ export class MessagesComponent {
 
   getChatRoomUID(input1:string){
     let input2 = this.authGuard.user$.uid.toString();
-    const answer = input1 > input2 ? input1+input2 : input1+input2;
+    const answer = input1 > input2 ? input1+input2 : input2+input1;
     return answer
   }
 

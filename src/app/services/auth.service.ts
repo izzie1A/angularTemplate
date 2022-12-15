@@ -31,14 +31,19 @@ export class AuthGuard {
     return this.user$.pipe(first()).toPromise();
   }
   
-  tgSignin(){
+  gSignin(){
     let x = signInWithPopup(this.auth, this.provider)
       .then((result) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential?.accessToken;
         this.user$ = result.user;
-        this.firestore.testWriteDoc('root/user',result.user);
-        
+        console.log(result.user)
+        this.firestore.testWriteDoc('root/user'+result.user.uid,{
+          displayName: result.user.displayName,
+          email: result.user.email,
+          profile_picture: result.user.photoURL,
+          uid: result.user.uid,
+        });
         return this.user$
       }).catch((error) => {
         const errorCode = error.code;
@@ -48,7 +53,7 @@ export class AuthGuard {
         // ...
       });
   }
-  gSignin(){
+  ygSignin(){
     let x = signInWithPopup(this.auth, this.provider)
       .then((result) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
