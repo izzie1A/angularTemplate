@@ -41,8 +41,10 @@ export class FirebaseCloudService {
     let result = this.getDoc(input);
     console.log(result); 
     if(result!=undefined){
+      console.log('write'); 
       this.writeDoc(dir, input);
     } else{
+      console.log('add'); 
       this.addDoc(dir, input);
     }                                                                  
   }
@@ -55,7 +57,8 @@ export class FirebaseCloudService {
   }
   writeDoc(dir:string,item:any) {
     const doc = this.firestore.doc(dir.toString());
-    console.log(doc.update(item));
+    const result = doc.update(item)
+    console.log(result);
   }
 
   delete(dir: string, itemId: string) {
